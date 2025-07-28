@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>نتائج الشهادة الثانوية 2025</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+        :root {
+            --background-color: #000000; 
+            --container-color: #0a0a0a; 
+            --primary-green: #00ff99;
+            --text-color: #e0e0e0; 
+            --border-color: #00ff9930;
+            --glow-shadow: 0 0 5px var(--primary-green), 0 0 10px var(--primary-green), 0 0 15px var(--primary-green);
+        }
+        
+        body { 
+            background-color: var(--background-color); 
+            color: var(--text-color); 
+            font-family: 'Tajawal', sans-serif; 
+            margin: 0; 
+            padding: 20px; 
+            transition: background 0.5s ease;
+        }
+        
+        .container { 
+            width: 100%; 
+            max-width: 800px; 
+            margin: auto; 
+            background-color: var(--container-color); 
+            border-radius: 15px; 
+            padding: 30px; 
+            border: 1px solid var(--border-color); 
+            box-shadow: 0 0 25px rgba(0, 255, 153, 0.1); 
+            transition: all 0.5s ease;
+        }
+        
+        .hamburger-menu { 
+            position: fixed; 
+            top: 20px; 
+            right: 20px; 
+            z-index: 1001; 
+            cursor: pointer; 
+            transition: transform 0.3s ease;
+        }
+        
+        .hamburger-menu div { 
+            width: 30px; 
+            height: 3px; 
+            background-color: var(--primary-green); 
+            margin: 6px 0; 
+            transition: 0.4s; 
+            border-radius: 2px;
+        }
+        
+        .hamburger-menu.open div:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger-menu.open div:nth-child(2) { opacity: 0; }
+        .hamburger-menu.open div:nth-child(3) { transform: rotate(-45deg) translate(7px, -6px); }
+        
+        .nav-panel { 
+            position: fixed; 
+            top: 0; 
+            right: -100%; 
+            width: 280px; 
+            height: 100%; 
+            background-color: #111; 
+            z-index: 1000; 
+            transition: 0.5s ease; 
+            padding-top: 80px; 
+            box-shadow: -5px 0 15px rgba(0,0,0,0.5);
+        }
+        
+        .nav-panel.open { 
+            right: 0; 
+        }
+        
+        .nav-panel a, .nav-panel .nav-group-title { 
+            padding: 15px 25px; 
+            text-decoration: none; 
+            font-size: 18px; 
+            color: var(--text-color); 
+            display: block; 
+            transition: 0.3s; 
+            border-left: 3px solid transparent;
+        }
+        
+        .nav-panel a:hover { 
+            background-color: rgba(0, 255, 153, 0.1); 
+            border-left: 3px solid var(--primary-green);
+        }
+        
+        .nav-group-title { 
+            color: #aaa; 
+            font-size: 14px; 
+            text-transform: uppercase; 
+            margin-top: 15px;
+            letter-spacing: 1px;
+        }
+        
+        .language-switcher { 
+            padding: 15px 25px; 
+            display: flex;
+            gap: 10px;
+        }
+        
+        .language-switcher button { 
+            background: #333; 
+            border: 1px solid var(--border-color); 
+            color: var(--text-color); 
+            padding: 8px 15px; 
+            cursor: pointer; 
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        
+        .language-switcher button.active { 
+            background-color: var(--primary-green); 
+            color: #000; 
+            font-weight: bold;
+            transform: scale(1.05);
+        }
+        
+        header h1 { 
+            text-align: center; 
+            color: #ffffff; 
+            margin-bottom: 30px; 
+            text-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        header h1::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, var(--primary-green), transparent);
+            border-radius: 2px;
+        }
+        
+        #search-section { 
+            display: flex; 
+            gap: 10px; 
+            margin-bottom: 30px; 
+            position: relative;
+        }
+        
+        #studentNumberInput { 
+            flex-grow: 1; 
+            padding: 15px 20px; 
+            border-radius: 8px; 
+            border: 1px solid var(--border-color); 
+            background-color: #1a1a1a; 
+            color: #fff; 
+            font-size: 16px; 
+            transition: all 0.3s ease;
+        }
+        
+        #studentNumberInput:focus {
+            outline: none;
+            border-color: var(--primary-green);
+            box-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
+        }
+        
+        #searchButton { 
+            padding: 15px 30px; 
+            border-radius: 8px; 
+            border: 1px solid var(--primary-green); 
+            background-color: transparent; 
+            color: var(--primary-green); 
+            font-size: 16px; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            font-weight: bold;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        #searchButton:hover { 
+            background-color: var(--primary-green); 
+            color: var(--background-color); 
+            box-shadow: var(--glow-shadow);
+            transform: translateY(-2px);
+        }
+        
+        #searchButton::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+        
+        #searchButton:active::after {
+            width: 300px;
+            height: 300px;
+        }
+        
+        #error-message { 
+            color: #ff4d4d; 
+            text-align: center; 
+            display: none; 
+            padding: 10px; 
+            background: rgba(255,77,77,0.1);
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,77,77,0.3);
+        }
+        
+        #results-container { 
+            opacity: 0; 
+            transform: translateY(20px); 
+            transition: opacity 0.5s ease, transform 0.5s ease; 
+            display: none;
+        }
+        
+        #results-container.visible { 
+            opacity: 1; 
+            transform: translateY(0); 
+        }
+        
+        .student-header { 
+            text-align: center; 
+            margin-bottom: 30px; 
+            position: relative;
+        }
+        
+        .student-header h2 { 
+            font-size: 32px; 
+            margin: 10px 0; 
+            color: var(--primary-green);
+            text-shadow: 0 0 10px rgba(0, 255, 153, 0.3);
+        }
+        
+        .student-info { 
+            display: flex; 
+            justify-content: center; 
+            gap: 30px; 
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .student-info-item { 
+            background: rgba(255,255,255,0.05); 
+            padding: 10px 20px; 
+            border-radius: 8px; 
+            border: 1px solid var(--border-color);
+            min-width: 150px;
+            text-align: center;
+        }
+        
+        .student-info-item p { 
+            margin: 5px 0; 
+            color: #aaa; 
+            font-size: 14px;
+        }
+        
+        .student-info-item span { 
+            font-weight: bold; 
+            font-size: 18px; 
+            color: var(--text-color);
+        }
+        
+        .stats-grid { 
+            display: grid; 
+            grid-template-columns: 1fr 1fr; 
+            gap: 20px; 
+            align-items: center; 
+            margin-bottom: 40px; 
+        }
+        
+        .percentage-circle-container { 
+            position: relative; 
+            width: 150px; 
+            height: 150px; 
+            margin: auto; 
+        }
+        
+        .percentage-circle-container svg { 
+            width: 100%; 
+            height: 100%; 
+            transform: rotate(-90deg); 
+        }
+        
+        .circle-bg { 
+            fill: none; 
+            stroke: #ffffff1a; 
+            stroke-width: 10; 
+        }
+        
+        .circle-progress { 
+            fill: none; 
+            stroke: var(--primary-green); 
+            stroke-width: 10; 
+            stroke-linecap: round; 
+            transition: stroke-dashoffset 1s ease-out; 
+        }
+        
+        .percentage-text { 
+            position: absolute; 
+            top: 50%; 
+            left: 50%; 
+            transform: translate(-50%, -50%); 
+            font-size: 28px; 
+            font-weight: bold; 
+            color: var(--primary-green); 
+        }
+        
+        .rank-item { 
+            text-align: center; 
+        }
+        
+        .rank-item p { 
+            margin: 0; 
+            font-size: 16px; 
+            color: #aaa; 
+            margin-bottom: 5px; 
+        }
+        
+        .rank-item span { 
+            font-size: 2.5em; 
+            font-weight: bold; 
+        }
+        
+        .rank-item .rank-normal { 
+            color: var(--text-color); 
+            display: block;
+            font-size: 40px;
+            margin: 10px 0;
+        }
+        
+        .rank-item .rank-unique { 
+            font-size: 1.2em; 
+            color: #aaa; 
+            background: rgba(255,255,255,0.05);
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin-top: 10px;
+        }
+        
+        .subject-bars-container h3 { 
+            text-align: center; 
+            margin-bottom: 20px; 
+            color: var(--primary-green); 
+            font-size: 22px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .subject-bars-container h3::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary-green), transparent);
+        }
+        
+        .subject-bar { 
+            margin-bottom: 20px; 
+        }
+        
+        .subject-bar-info { 
+            display: flex; 
+            justify-content: space-between; 
+            margin-bottom: 5px; 
+            font-size: 16px;
+        }
+        
+        .progress-bar-bg { 
+            width: 100%; 
+            height: 12px; 
+            background-color: #ffffff1a; 
+            border-radius: 6px; 
+            overflow: hidden; 
+        }
+        
+        .progress-bar-fill { 
+            width: 0; 
+            height: 100%; 
+            background: linear-gradient(90deg, #00ff99, #00cc77); 
+            border-radius: 6px; 
+            transition: width 1s ease-out; 
+            position: relative;
+        }
+        
+        .progress-bar-fill::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            background-size: 200% 100%;
+            animation: shine 2s infinite;
+            border-radius: 6px;
+        }
+        
+        @keyframes shine {
+            0% { background-position: -100% 0; }
+            100% { background-position: 100% 0; }
+        }
+        
+        .percentile-stat { 
+            position: fixed; 
+            bottom: -100px; 
+            left: 50%; 
+            transform: translateX(-50%); 
+            background: rgba(0, 255, 153, 0.1); 
+            backdrop-filter: blur(5px); 
+            padding: 15px 30px; 
+            border-radius: 30px; 
+            border: 1px solid var(--border-color); 
+            transition: bottom 0.5s ease-in-out; 
+            z-index: 100; 
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            text-align: center;
+            min-width: 300px;
+        }
+        
+        .percentile-stat.visible { 
+            bottom: 20px; 
+        }
+        
+        .modal { 
+            display: none; 
+            position: fixed; 
+            z-index: 1002; 
+            left: 0; 
+            top: 0; 
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.8); 
+            backdrop-filter: blur(5px); 
+        }
+        
+        .modal-content { 
+            background-color: var(--container-color); 
+            margin: 10% auto; 
+            padding: 30px; 
+            border: 1px solid var(--border-color); 
+            width: 90%; 
+            max-width: 700px; 
+            border-radius: 15px; 
+            position: relative;
+        }
+        
+        .close-button { 
+            color: #aaa; 
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 28px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            transition: color 0.3s ease;
+        }
+        
+        .close-button:hover {
+            color: var(--primary-green);
+        }
+        
+        #top10-list { 
+            padding: 0;
+            list-style: none;
+        }
+        
+        #top10-list li { 
+            background-color: #1a1a1a; 
+            margin-bottom: 10px; 
+            padding: 15px; 
+            border-radius: 8px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            flex-wrap: wrap; 
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+        
+        #top10-list li:hover {
+            transform: translateX(-5px);
+            border-color: var(--primary-green);
+        }
+        
+        #chart-container { 
+            height: 300px; 
+            margin-top: 40px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+            padding: 15px;
+            border: 1px solid var(--border-color);
+        }
+        
+        #performanceChart { 
+            width: 100% !important; 
+            height: 100% !important; 
+        }
+        
+        @media (max-width: 768px) {
+            .stats-grid { grid-template-columns: 1fr; } 
+            .container { padding: 20px; }
+            header h1 { font-size: 24px; } 
+            .hamburger-menu { right: 15px; top: 15px; }
+            .student-info { gap: 10px; }
+            .student-info-item { min-width: 120px; padding: 8px 15px; }
+            .modal-content { margin: 20% auto; padding: 20px; }
+            #chart-container { height: 250px; }
+            .percentile-stat { min-width: 250px; padding: 12px 20px; font-size: 14px; }
+        }
+        
+        .fade-out {
+            animation: fadeOut 1s forwards;
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; bottom: -100px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hamburger-menu">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    
+    <div class="nav-panel">
+        <div class="nav-group-title" data-key="categories">التصنيفات</div>
+        <a href="#" class="top10-link" data-stream="علمي" data-key="top10Science">أفضل 10 (علمي)</a>
+        <a href="#" class="top10-link" data-stream="أدبي" data-key="top10Literature">أفضل 10 (أدبي)</a>
+        <div class="nav-group-title" data-key="developer">المطور</div>
+        <a href="mailto:your-email@example.com" data-key="contactEmail">تواصل عبر الإيميل</a>
+        <div class="nav-group-title" data-key="language">اللغة</div>
+        <div class="language-switcher">
+            <button id="lang-ar" class="active" data-lang="ar">AR</button> 
+            <button id="lang-en" data-lang="en">EN</button> 
+            <button id="lang-tr" data-lang="tr">TR</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <header><h1 data-key="pageTitle">نتائج الشهادة الثانوية - 2025</h1></header>
+        <main>
+            <section id="search-section">
+                <input type="text" id="studentNumberInput" placeholder="أدخل رقم القيد الخاص بك..." data-key="inputPlaceholder">
+                <button id="searchButton" data-key="searchButton">بحث</button>
+            </section>
+            <p id="error-message" data-key="errorMessage">لا يوجد طالب بهذا الرقم.</p>
+            <div id="results-container"></div>
+        </main>
+    </div>
+    
+    <div id="percentileStat" class="percentile-stat"></div>
+    
+    <div id="top10Modal" class="modal">
+      <div class="modal-content">
+        <span class="close-button">&times;</span>
+        <h2 id="top10-title"></h2>
+        <ol id="top10-list"></ol>
+      </div>
+    </div>
+
+    <script>
+        // Translation dictionary
+        const translations = {
+            ar: {
+                pageTitle: "نتائج الشهادة الثانوية - 2025",
+                inputPlaceholder: "أدخل رقم القيد الخاص بك...",
+                searchButton: "بحث",
+                errorMessage: "لا يوجد طالب بهذا الرقم.",
+                studentNumber: "رقم القيد",
+                stream: "المسار",
+                rankTitle: "الترتيب",
+                uniqueRank: "الترتيب الفريد",
+                subjectsLevel: "مستوى المواد",
+                categories: "التصنيفات",
+                top10Science: "أفضل 10 (علمي)",
+                top10Literature: "أفضل 10 (أدبي)",
+                developer: "المطور",
+                contactEmail: "تواصل عبر الإيميل",
+                language: "اللغة",
+                betterThan: "أداؤك أفضل من %s% من الطلاب في نفس المسار.",
+                studentInfo: "معلومات الطالب",
+                overallPercentage: "النسبة المئوية",
+                totalStudents: "عدد الطلاب",
+                close: "إغلاق"
+            },
+            en: {
+                pageTitle: "Secondary Certificate Results - 2025",
+                inputPlaceholder: "Enter your student number...",
+                searchButton: "Search",
+                errorMessage: "No student found with this number.",
+                studentNumber: "Student Number",
+                stream: "Stream",
+                rankTitle: "Rank",
+                uniqueRank: "Unique Rank",
+                subjectsLevel: "Subject Levels",
+                categories: "Categories",
+                top10Science: "Top 10 (Science)",
+                top10Literature: "Top 10 (Literature)",
+                developer: "Developer",
+                contactEmail: "Contact via Email",
+                language: "Language",
+                betterThan: "You performed better than %s% of students in the same stream.",
+                studentInfo: "Student Information",
+                overallPercentage: "Overall Percentage",
+                totalStudents: "Total Students",
+                close: "Close"
+            },
+            tr: {
+                pageTitle: "Lise Sertifika Sonuçları - 2025",
+                inputPlaceholder: "Öğrenci numaranızı girin...",
+                searchButton: "Ara",
+                errorMessage: "Bu numaraya sahip öğrenci bulunamadı.",
+                studentNumber: "Öğrenci Numarası",
+                stream: "Bölüm",
+                rankTitle: "Sıralama",
+                uniqueRank: "Benzersiz Sıralama",
+                subjectsLevel: "Ders Seviyeleri",
+                categories: "Kategoriler",
+                top10Science: "İlk 10 (Fen)",
+                top10Literature: "İlk 10 (Edebiyat)",
+                developer: "Geliştirici",
+                contactEmail: "E-posta ile İletişim",
+                language: "Dil",
+                betterThan: "Aynı bölümdeki öğrencilerin %s%'inden daha iyi performans gösterdiniz.",
+                studentInfo: "Öğrenci Bilgileri",
+                overallPercentage: "Genel Yüzde",
+                totalStudents: "Toplam Öğrenci",
+                close: "Kapat"
+            }
+        };
+        
+        // Student data
+        const studentsData = [
+            // Science Stream - 9 Subjects
+            { number: 1001, name: "علي محمد", stream: "علمي", grades: [ {subject:"التربية الإسلامية", score:85, maxScore:100}, {subject:"اللغة العربية", score:88, maxScore:100}, {subject:"اللغة الإنجليزية", score:92, maxScore:100}, {subject:"الرياضيات", score:80, maxScore:120}, {subject:"الفيزياء", score:78, maxScore:100}, {subject:"الكيمياء", score:85, maxScore:100}, {subject:"الأحياء", score:90, maxScore:100}, {subject:"الميكانيكا", score:75, maxScore:90}, {subject:"تقنية المعلومات", score:88, maxScore:100} ]},
+            { number: 1002, name: "مريم حسن", stream: "علمي", grades: [ {subject:"التربية الإسلامية", score:99, maxScore:100}, {subject:"اللغة العربية", score:97, maxScore:100}, {subject:"اللغة الإنجليزية", score:96, maxScore:100}, {subject:"الرياضيات", score:118, maxScore:120}, {subject:"الفيزياء", score:94, maxScore:100}, {subject:"الكيمياء", score:98, maxScore:100}, {subject:"الأحياء", score:95, maxScore:100}, {subject:"الميكانيكا", score:88, maxScore:90}, {subject:"تقنية المعلومات", score:99, maxScore:100} ]},
+            { number: 1003, name: "أحمد جمال", stream: "علمي", grades: [ {subject:"التربية الإسلامية", score:99, maxScore:100}, {subject:"اللغة العربية", score:97, maxScore:100}, {subject:"اللغة الإنجليزية", score:96, maxScore:100}, {subject:"الرياضيات", score:118, maxScore:120}, {subject:"الفيزياء", score:94, maxScore:100}, {subject:"الكيمياء", score:98, maxScore:100}, {subject:"الأحياء", score:95, maxScore:100}, {subject:"الميكانيكا", score:88, maxScore:90}, {subject:"تقنية المعلومات", score:99, maxScore:100} ]},
+            { number: 1004, name: "سارة خالد", stream: "علمي", grades: [ {subject:"التربية الإسلامية", score:92, maxScore:100}, {subject:"اللغة العربية", score:85, maxScore:100}, {subject:"اللغة الإنجليزية", score:88, maxScore:100}, {subject:"الرياضيات", score:100, maxScore:120}, {subject:"الفيزياء", score:87, maxScore:100}, {subject:"الكيمياء", score:90, maxScore:100}, {subject:"الأحياء", score:85, maxScore:100}, {subject:"الميكانيكا", score:80, maxScore:90}, {subject:"تقنية المعلومات", score:95, maxScore:100} ]},
+            { number: 1005, name: "يوسف عبدالله", stream: "علمي", grades: [ {subject:"التربية الإسلامية", score:90, maxScore:100}, {subject:"اللغة العربية", score:92, maxScore:100}, {subject:"اللغة الإنجليزية", score:85, maxScore:100}, {subject:"الرياضيات", score:110, maxScore:120}, {subject:"الفيزياء", score:92, maxScore:100}, {subject:"الكيمياء", score:88, maxScore:100}, {subject:"الأحياء", score:93, maxScore:100}, {subject:"الميكانيكا", score:85, maxScore:90}, {subject:"تقنية المعلومات", score:90, maxScore:100} ]},
+            { number: 1006, name: "نورا سعيد", stream: "علمي", grades: [ {subject:"التربية الإسلامية", score:95, maxScore:100}, {subject:"اللغة العربية", score:90, maxScore:100}, {subject:"اللغة الإنجليزية", score:93, maxScore:100}, {subject:"الرياضيات", score:115, maxScore:120}, {subject:"الفيزياء", score:89, maxScore:100}, {subject:"الكيمياء", score:92, maxScore:100}, {subject:"الأحياء", score:87, maxScore:100}, {subject:"الميكانيكا", score:82, maxScore:90}, {subject:"تقنية المعلومات", score:96, maxScore:100} ]},
+            { number: 1007, name: "محمد علي", stream: "علمي", grades: [ {subject:"التربية الإسلامية", score:87, maxScore:100}, {subject:"اللغة العربية", score:84, maxScore:100}, {subject:"اللغة الإنجليزية", score:89, maxScore:100}, {subject:"الرياضيات", score:105, maxScore:120}, {subject:"الفيزياء", score:85, maxScore:100}, {subject:"الكيمياء", score:90, maxScore:100}, {subject:"الأحياء", score:88, maxScore:100}, {subject:"الميكانيكا", score:78, maxScore:90}, {subject:"تقنية المعلومات", score:92, maxScore:100} ]},
+            { number: 1008, name: "لمى أحمد", stream: "علمي", grades: [ {subject:"التربية الإسلامية", score:93, maxScore:100}, {subject:"اللغة العربية", score:88, maxScore:100}, {subject:"اللغة الإنجليزية", score:91, maxScore:100}, {subject:"الرياضيات", score:112, maxScore:120}, {subject:"الفيزياء", score:90, maxScore:100}, {subject:"الكيمياء", score:94, maxScore:100}, {subject:"الأحياء", score:91, maxScore:100}, {subject:"الميكانيكا", score:84, maxScore:90}, {subject:"تقنية المعلومات", score:97, maxScore:100} ]},
+            { number: 1009, name: "خالد عمر", stream: "علمي", grades: [ {subject:"التربية الإسلامية", score:88, maxScore:100}, {subject:"اللغة العربية", score:86, maxScore:100}, {subject:"اللغة الإنجليزية", score:87, maxScore:100}, {subject:"الرياضيات", score:102, maxScore:120}, {subject:"الفيزياء", score:83, maxScore:100}, {subject:"الكيمياء", score:87, maxScore:100}, {subject:"الأحياء", score:89, maxScore:100}, {subject:"الميكانيكا", score:80, maxScore:90}, {subject:"تقنية المعلومات", score:91, maxScore:100} ]},
+            { number: 1010, name: "أسماء كمال", stream: "علمي", grades: [ {subject:"التربية الإسلامية", score:96, maxScore:100}, {subject:"اللغة العربية", score:94, maxScore:100}, {subject:"اللغة الإنجليزية", score:95, maxScore:100}, {subject:"الرياضيات", score:116, maxScore:120}, {subject:"الفيزياء", score:91, maxScore:100}, {subject:"الكيمياء", score:93, maxScore:100}, {subject:"الأحياء", score:92, maxScore:100}, {subject:"الميكانيكا", score:86, maxScore:90}, {subject:"تقنية المعلومات", score:98, maxScore:100} ]},
+            { number: 1011, name: "أسماء كمال", stream: "علمي", grades: [ {subject:"التربية الإسلامية", score:96, maxScore:100}, {subject:"اللغة العربية", score:94, maxScore:100}, {subject:"اللغة الإنجليزية", score:95, maxScore:100}, {subject:"الرياضيات", score:116, maxScore:120}, {subject:"الفيزياء", score:91, maxScore:100}, {subject:"الكيمياء", score:93, maxScore:100}, {subject:"الأحياء", score:92, maxScore:100}, {subject:"الميكانيكا", score:86, maxScore:90}, {subject:"تقنية المعلومات", score:98, maxScore:100} ]},
+            { number: 1012, name: "أسماء كمال", stream: "علمي", grades: [ {subject:"التربية الإسلامية", score:96, maxScore:100}, {subject:"اللغة العربية", score:94, maxScore:100}, {subject:"اللغة الإنجليزية", score:95, maxScore:100}, {subject:"الرياضيات", score:106, maxScore:120}, {subject:"الفيزياء", score:91, maxScore:100}, {subject:"الكيمياء", score:93, maxScore:100}, {subject:"الأحياء", score:92, maxScore:100}, {subject:"الميكانيكا", score:86, maxScore:90}, {subject:"تقنية المعلومات", score:98, maxScore:100} ]},
+            { number: 1013, name: "أسماء كمال", stream: "علمي", grades: [ {subject:"التربية الإسلامية", score:96, maxScore:100}, {subject:"اللغة العربية", score:94, maxScore:100}, {subject:"اللغة الإنجليزية", score:95, maxScore:100}, {subject:"الرياضيات", score:116, maxScore:120}, {subject:"الفيزياء", score:91, maxScore:100}, {subject:"الكيمياء", score:93, maxScore:100}, {subject:"الأحياء", score:92, maxScore:100}, {subject:"الميكانيكا", score:86, maxScore:90}, {subject:"تقنية المعلومات", score:98, maxScore:100} ]},
+            { number: 1014, name: "أسماء كمال", stream: "علمي", grades: [ {subject:"التربية الإسلامية", score:96, maxScore:100}, {subject:"اللغة العربية", score:94, maxScore:100}, {subject:"اللغة الإنجليزية", score:95, maxScore:100}, {subject:"الرياضيات", score:11, maxScore:120}, {subject:"الفيزياء", score:91, maxScore:100}, {subject:"الكيمياء", score:93, maxScore:100}, {subject:"الأحياء", score:92, maxScore:100}, {subject:"الميكانيكا", score:86, maxScore:90}, {subject:"تقنية المعلومات", score:98, maxScore:100} ]},
+            { number: 1015, name: "أسماء كمال", stream: "علمي", grades: [ {subject:"التربية الإسلامية", score:96, maxScore:100}, {subject:"اللغة العربية", score:94, maxScore:100}, {subject:"اللغة الإنجليزية", score:95, maxScore:100}, {subject:"الرياضيات", score:110, maxScore:120}, {subject:"الفيزياء", score:91, maxScore:100}, {subject:"الكيمياء", score:93, maxScore:100}, {subject:"الأحياء", score:92, maxScore:100}, {subject:"الميكانيكا", score:86, maxScore:90}, {subject:"تقنية المعلومات", score:98, maxScore:100} ]},
+            { number: 1016, name: "أسماء كمال", stream: "علمي", grades: [ {subject:"التربية الإسلامية", score:96, maxScore:100}, {subject:"اللغة العربية", score:94, maxScore:100}, {subject:"اللغة الإنجليزية", score:95, maxScore:100}, {subject:"الرياضيات", score:18, maxScore:120}, {subject:"الفيزياء", score:91, maxScore:100}, {subject:"الكيمياء", score:93, maxScore:100}, {subject:"الأحياء", score:92, maxScore:100}, {subject:"الميكانيكا", score:86, maxScore:90}, {subject:"تقنية المعلومات", score:98, maxScore:100} ]},
+            
+            // Literature Stream - 6 Subjects
+            { number: 2001, name: "فاطمة أحمد", stream: "أدبي", grades: [ {subject:"التربية الإسلامية", score:92, maxScore:100}, {subject:"اللغة العربية", score:95, maxScore:100}, {subject:"التاريخ", score:88, maxScore:100}, {subject:"الجغرافيا", score:92, maxScore:100}, {subject:"الفلسفة", score:85, maxScore:100}, {subject:"علم النفس", score:81, maxScore:90} ]},
+            { number: 2002, name: "يوسف إبراهيم", stream: "أدبي", grades: [ {subject:"التربية الإسلامية", score:98, maxScore:100}, {subject:"اللغة العربية", score:99, maxScore:100}, {subject:"التاريخ", score:95, maxScore:100}, {subject:"الجغرافيا", score:98, maxScore:100}, {subject:"الفلسفة", score:94, maxScore:100}, {subject:"علم النفس", score:88, maxScore:90} ]},
+            { number: 2003, name: "ندى محمد", stream: "أدبي", grades: [ {subject:"التربية الإسلامية", score:94, maxScore:100}, {subject:"اللغة العربية", score:96, maxScore:100}, {subject:"التاريخ", score:90, maxScore:100}, {subject:"الجغرافيا", score:93, maxScore:100}, {subject:"الفلسفة", score:89, maxScore:100}, {subject:"علم النفس", score:85, maxScore:90} ]},
+            { number: 2004, name: "عمر خالد", stream: "أدبي", grades: [ {subject:"التربية الإسلامية", score:90, maxScore:100}, {subject:"اللغة العربية", score:92, maxScore:100}, {subject:"التاريخ", score:87, maxScore:100}, {subject:"الجغرافيا", score:90, maxScore:100}, {subject:"الفلسفة", score:85, maxScore:100}, {subject:"علم النفس", score:82, maxScore:90} ]},
+            { number: 2005, name: "ريم عبدالرحمن", stream: "أدبي", grades: [ {subject:"التربية الإسلامية", score:95, maxScore:100}, {subject:"اللغة العربية", score:97, maxScore:100}, {subject:"التاريخ", score:92, maxScore:100}, {subject:"الجغرافيا", score:95, maxScore:100}, {subject:"الفلسفة", score:90, maxScore:100}, {subject:"علم النفس", score:86, maxScore:90} ]},
+            { number: 2006, name: "أسامة علي", stream: "أدبي", grades: [ {subject:"التربية الإسلامية", score:89, maxScore:100}, {subject:"اللغة العربية", score:91, maxScore:100}, {subject:"التاريخ", score:85, maxScore:100}, {subject:"الجغرافيا", score:88, maxScore:100}, {subject:"الفلسفة", score:82, maxScore:100}, {subject:"علم النفس", score:80, maxScore:90} ]},
+            { number: 2007, name: "هناء سليمان", stream: "أدبي", grades: [ {subject:"التربية الإسلامية", score:97, maxScore:100}, {subject:"اللغة العربية", score:98, maxScore:100}, {subject:"التاريخ", score:93, maxScore:100}, {subject:"الجغرافيا", score:96, maxScore:100}, {subject:"الفلسفة", score:91, maxScore:100}, {subject:"علم النفس", score:87, maxScore:90} ]},
+            { number: 2008, name: "أحمد محمود", stream: "أدبي", grades: [ {subject:"التربية الإسلامية", score:91, maxScore:100}, {subject:"اللغة العربية", score:93, maxScore:100}, {subject:"التاريخ", score:86, maxScore:100}, {subject:"الجغرافيا", score:89, maxScore:100}, {subject:"الفلسفة", score:84, maxScore:100}, {subject:"علم النفس", score:83, maxScore:90} ]},
+            { number: 2009, name: "سمر حسن", stream: "أدبي", grades: [ {subject:"التربية الإسلامية", score:96, maxScore:100}, {subject:"اللغة العربية", score:94, maxScore:100}, {subject:"التاريخ", score:91, maxScore:100}, {subject:"الجغرافيا", score:94, maxScore:100}, {subject:"الفلسفة", score:88, maxScore:100}, {subject:"علم النفس", score:84, maxScore:90} ]},
+            { number: 2010, name: "طارق يوسف", stream: "أدبي", grades: [ {subject:"التربية الإسلامية", score:93, maxScore:100}, {subject:"اللغة العربية", score:95, maxScore:100}, {subject:"التاريخ", score:89, maxScore:100}, {subject:"الجغرافيا", score:91, maxScore:100}, {subject:"الفلسفة", score:87, maxScore:100}, {subject:"علم النفس", score:85, maxScore:90} ]}
+        ];
+        
+        let performanceChart = null;
+        let currentLanguage = 'ar';
+        let percentileTimeout = null;
+
+        // Calculate rankings with ties and unique ranks
+        const calculateRankings = (stream) => {
+            const streamStudents = studentsData.filter(s => s.stream === stream);
+            const processedStudents = streamStudents.map(student => {
+                const totalScore = student.grades.reduce((sum, g) => sum + g.score, 0);
+                const maxScore = student.grades.reduce((sum, g) => sum + g.maxScore, 0);
+                const percentage = maxScore > 0 ? (totalScore / maxScore) * 100 : 0;
+                return { ...student, totalScore, percentage };
+            });
+            
+            // Sort by percentage descending, then by name ascending
+            processedStudents.sort((a, b) => {
+                if (b.percentage !== a.percentage) {
+                    return b.percentage - a.percentage;
+                }
+                return a.name.localeCompare(b.name, 'ar');
+            });
+            
+            let normalRank = 0;
+            let lastPerc = -1;
+            let rankCount = 0;
+            
+            return processedStudents.map((student, index) => {
+                if (student.percentage !== lastPerc) {
+                    normalRank = index + 1;
+                    lastPerc = student.percentage;
+                    rankCount = 1;
+                } else {
+                    rankCount++;
+                }
+                return { ...student, uniqueRank: index + 1, normalRank };
+            });
+        };
+
+        // Display student results
+        const displayStudentResults = () => {
+            const studentNumber = parseInt(document.getElementById('studentNumberInput').value);
+            const student = studentsData.find(s => s.number === studentNumber);
+            const resultsContainer = document.getElementById('results-container');
+            const errorMsg = document.getElementById('error-message');
+            const percentileStat = document.getElementById('percentileStat');
+            
+            // Clear any existing timeout
+            if (percentileTimeout) {
+                clearTimeout(percentileTimeout);
+                percentileTimeout = null;
+            }
+            
+            percentileStat.classList.remove('visible', 'fade-out');
+            resultsContainer.classList.remove('visible');
+            resultsContainer.style.display = 'none';
+
+            if (!student) { 
+                errorMsg.style.display = 'block'; 
+                return; 
+            }
+            
+            errorMsg.style.display = 'none';
+            const rankedList = calculateRankings(student.stream);
+            const studentResult = rankedList.find(s => s.number === student.number);
+            const totalStudentsInStream = rankedList.length;
+            const percentile = totalStudentsInStream > 1 ? 
+                (totalStudentsInStream - studentResult.uniqueRank) / (totalStudentsInStream - 1) * 100 : 100;
+
+            resultsContainer.innerHTML = `
+                <div class="student-header">
+                    <h2>${studentResult.name}</h2>
+                </div>
+                
+                <div class="student-info">
+                    <div class="student-info-item">
+                        <p>${translations[currentLanguage].studentNumber}</p>
+                        <span>${studentResult.number}</span>
+                    </div>
+                    <div class="student-info-item">
+                        <p>${translations[currentLanguage].stream}</p>
+                        <span>${studentResult.stream}</span>
+                    </div>
+                    <div class="student-info-item">
+                        <p>${translations[currentLanguage].totalStudents}</p>
+                        <span>${totalStudentsInStream}</span>
+                    </div>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="percentage-circle-container">
+                        <svg><circle class="circle-bg" cx="75" cy="75" r="65"></circle><circle id="circleProgress" class="circle-progress" cx="75" cy="75" r="65"></circle></svg>
+                        <div id="percentageText" class="percentage-text">0%</div>
+                        <p>${translations[currentLanguage].overallPercentage}</p>
+                    </div>
+                    
+                    <div class="rank-item">
+                        <p>${translations[currentLanguage].rankTitle}</p>
+                        <span class="rank-normal">#${studentResult.normalRank}</span>
+                        <div class="rank-unique">${translations[currentLanguage].uniqueRank}: #${studentResult.uniqueRank}</div>
+                    </div>
+                </div>
+                
+                <div class="subject-bars-container">
+                    <h3>${translations[currentLanguage].subjectsLevel}</h3>
+                    ${studentResult.grades.map(g => `
+                        <div class="subject-bar">
+                            <div class="subject-bar-info">
+                                <span>${g.subject}</span>
+                                <span>${g.score} / ${g.maxScore}</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar-fill" data-score="${g.score}" data-max="${g.maxScore}"></div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <div id="chart-container"><canvas id="performanceChart"></canvas></div>
+            `;
+            
+            resultsContainer.style.display = 'block';
+            
+            setTimeout(() => {
+                resultsContainer.classList.add('visible');
+                const percentageText = document.getElementById('percentageText');
+                const circleProgress = document.getElementById('circleProgress');
+                const radius = circleProgress.r.baseVal.value;
+                const circumference = 2 * Math.PI * radius;
+                const offset = circumference - (studentResult.percentage / 100) * circumference;
+                
+                circleProgress.style.strokeDasharray = `${circumference} ${circumference}`;
+                circleProgress.style.strokeDashoffset = offset;
+                
+                animateValue(percentageText, 0, studentResult.percentage, 1000, true);
+                
+                document.querySelectorAll('.progress-bar-fill').forEach(f => {
+                    f.style.width = `${(f.dataset.score / f.dataset.max) * 100}%`;
+                });
+                
+                percentileStat.textContent = translations[currentLanguage].betterThan.replace('%s', percentile.toFixed(0));
+                percentileStat.classList.add('visible');
+                
+                // Set timeout to hide the percentile statistic after 10 seconds
+                percentileTimeout = setTimeout(() => {
+                    percentileStat.classList.add('fade-out');
+                }, 10000);
+                
+                if (performanceChart) performanceChart.destroy();
+                
+                performanceChart = new Chart(document.getElementById('performanceChart'), {
+                    type: 'radar',
+                    data: { 
+                        labels: studentResult.grades.map(g => g.subject), 
+                        datasets: [{
+                            data: studentResult.grades.map(g => (g.score / g.maxScore) * 100), 
+                            backgroundColor: 'rgba(0, 255, 153, 0.2)', 
+                            borderColor: 'rgb(0, 255, 153)', 
+                            pointBackgroundColor: 'rgb(0, 255, 153)', 
+                            pointBorderColor: '#fff',
+                            borderWidth: 2,
+                            pointRadius: 4
+                        }] 
+                    },
+                    options: { 
+                        maintainAspectRatio: false,
+                        scales: { 
+                            r: { 
+                                angleLines: { color: 'rgba(255, 255, 255, 0.2)' }, 
+                                grid: { color: 'rgba(255, 255, 255, 0.2)' }, 
+                                pointLabels: { 
+                                    color: '#e0e0e0', 
+                                    font: { size: 12, family: "'Tajawal', sans-serif" } 
+                                }, 
+                                suggestedMin: 0, 
+                                suggestedMax: 100, 
+                                ticks: { 
+                                    display: false,
+                                    stepSize: 20
+                                } 
+                            } 
+                        }, 
+                        plugins: { 
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const subjectIndex = context.dataIndex;
+                                        const subject = studentResult.grades[subjectIndex];
+                                        return `${subject.subject}: ${subject.score}/${subject.maxScore} (${((subject.score / subject.maxScore) * 100).toFixed(1)}%)`;
+                                    }
+                                }
+                            }
+                        } 
+                    }
+                });
+            }, 100);
+        };
+        
+        // Animate numeric values
+        const animateValue = (obj, start, end, duration, isPercent) => {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                let val = isPercent ? (progress * (end - start) + start).toFixed(2) : Math.floor(progress * (end - start) + start);
+                obj.innerHTML = isPercent ? `${val}%` : val;
+                if (progress < 1) window.requestAnimationFrame(step);
+            };
+            window.requestAnimationFrame(step);
+        };
+
+        // Apply translations to the page
+        const applyTranslations = (lang) => {
+            currentLanguage = lang;
+            
+            // Update document direction
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            // Update all translatable elements
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[lang][key]) {
+                    if (el.tagName === 'INPUT') {
+                        el.placeholder = translations[lang][key];
+                    } else {
+                        el.textContent = translations[lang][key];
+                    }
+                }
+            });
+            
+            // Update modal close button
+            document.querySelector('.close-button').textContent = translations[lang].close;
+        };
+
+        // Event Listeners
+        document.querySelector('.hamburger-menu').addEventListener('click', function() {
+            this.classList.toggle('open');
+            document.querySelector('.nav-panel').classList.toggle('open');
+        });
+        
+        document.getElementById('searchButton').addEventListener('click', displayStudentResults);
+        
+        document.getElementById('studentNumberInput').addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') displayStudentResults();
+        });
+        
+        document.querySelectorAll('.top10-link').forEach(link => {
+            link.addEventListener('click', e => {
+                e.preventDefault();
+                const stream = e.target.dataset.stream;
+                const rankedList = calculateRankings(stream).slice(0, 10);
+                
+                document.getElementById('top10-list').innerHTML = rankedList.map(s => `
+                    <li>
+                        <span>${s.uniqueRank}. ${s.name}</span>
+                        <span>(${translations[currentLanguage].rankTitle}: #${s.normalRank}) ${s.percentage.toFixed(2)}%</span>
+                    </li>
+                `).join('');
+                
+                document.getElementById('top10-title').textContent = e.target.textContent;
+                document.getElementById('top10Modal').style.display = 'block';
+                document.querySelector('.nav-panel').classList.remove('open');
+                document.querySelector('.hamburger-menu').classList.remove('open');
+            });
+        });
+        
+        document.querySelector('.close-button').addEventListener('click', () => {
+            document.getElementById('top10Modal').style.display = 'none';
+        });
+        
+        window.addEventListener('click', (e) => {
+            if (e.target === document.getElementById('top10Modal')) {
+                document.getElementById('top10Modal').style.display = 'none';
+            }
+        });
+        
+        // Language switcher
+        document.querySelectorAll('.language-switcher button').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.language-switcher button').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                applyTranslations(this.dataset.lang);
+            });
+        });
+
+        // Initialize the page
+        applyTranslations(currentLanguage);
+    </script>
+</body>
+</html>
