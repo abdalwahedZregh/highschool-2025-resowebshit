@@ -1,0 +1,1452 @@
+[
+    {
+        "number": 1001,
+        "name": "علي محمد",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 85, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 88, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 92, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 45, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 78, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 85, "maxScore": 100},
+            {"subject": "الأحياء", "score": 90, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 75, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 88, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 1002,
+        "name": "مريم حسن",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 99, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 97, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 96, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 118, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 94, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 98, "maxScore": 100},
+            {"subject": "الأحياء", "score": 95, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 88, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 99, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 1003,
+        "name": "أحمد جمال",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 89, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 85, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 90, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 105, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 80, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 85, "maxScore": 100},
+            {"subject": "الأحياء", "score": 92, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 82, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 95, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2001,
+        "name": "فاطمة أحمد",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 92, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 95, "maxScore": 100},
+            {"subject": "التاريخ", "score": 40, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 92, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 45, "maxScore": 100},
+            {"subject": "علم النفس", "score": 81, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 2002,
+        "name": "يوسف إبراهيم",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 98, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 99, "maxScore": 100},
+            {"subject": "التاريخ", "score": 95, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 98, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 94, "maxScore": 100},
+            {"subject": "علم النفس", "score": 88, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 2003,
+        "name": "سارة خالد",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 90, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 92, "maxScore": 100},
+            {"subject": "التاريخ", "score": 82, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 85, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 78, "maxScore": 100},
+            {"subject": "علم النفس", "score": 80, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1004,
+        "name": "عبدالله سالم",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 75, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 80, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 85, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 90, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 70, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 75, "maxScore": 100},
+            {"subject": "الأحياء", "score": 82, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 65, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 80, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2004,
+        "name": "خديجة عمر",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 88, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 85, "maxScore": 100},
+            {"subject": "التاريخ", "score": 78, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 80, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 75, "maxScore": 100},
+            {"subject": "علم النفس", "score": 70, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1005,
+        "name": "محمود علي",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 60, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 65, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 70, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 50, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 40, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 45, "maxScore": 100},
+            {"subject": "الأحياء", "score": 55, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 30, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 60, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2005,
+        "name": "عائشة عبدالله",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 70, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 72, "maxScore": 100},
+            {"subject": "التاريخ", "score": 65, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 68, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 60, "maxScore": 100},
+            {"subject": "علم النفس", "score": 55, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1006,
+        "name": "إبراهيم خالد",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 95, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 92, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 98, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 110, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 90, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 95, "maxScore": 100},
+            {"subject": "الأحياء", "score": 97, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 85, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 96, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2006,
+        "name": "زينب محمد",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 96, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 94, "maxScore": 100},
+            {"subject": "التاريخ", "score": 90, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 92, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 88, "maxScore": 100},
+            {"subject": "علم النفس", "score": 85, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1007,
+        "name": "حسن مصطفى",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 82, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 85, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 88, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 95, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 78, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 82, "maxScore": 100},
+            {"subject": "الأحياء", "score": 87, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 72, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 85, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2007,
+        "name": "رقية أحمد",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 85, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 88, "maxScore": 100},
+            {"subject": "التاريخ", "score": 80, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 82, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 78, "maxScore": 100},
+            {"subject": "علم النفس", "score": 75, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1008,
+        "name": "خالد عبدالله",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 50, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 55, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 60, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 40, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 35, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 40, "maxScore": 100},
+            {"subject": "الأحياء", "score": 45, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 25, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 50, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2008,
+        "name": "حصة سالم",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 60, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 62, "maxScore": 100},
+            {"subject": "التاريخ", "score": 55, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 58, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 50, "maxScore": 100},
+            {"subject": "علم النفس", "score": 45, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1009,
+        "name": "سعيد علي",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 88, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 90, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 95, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 100, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 85, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 90, "maxScore": 100},
+            {"subject": "الأحياء", "score": 92, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 80, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 91, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2009,
+        "name": "نورة خالد",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 90, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 92, "maxScore": 100},
+            {"subject": "التاريخ", "score": 85, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 88, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 82, "maxScore": 100},
+            {"subject": "علم النفس", "score": 80, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1010,
+        "name": "عمر أحمد",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 70, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 75, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 80, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 60, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 50, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 55, "maxScore": 100},
+            {"subject": "الأحياء", "score": 65, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 40, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 70, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2010,
+        "name": "فاطمة الزهراء",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 78, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 80, "maxScore": 100},
+            {"subject": "التاريخ", "score": 72, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 75, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 70, "maxScore": 100},
+            {"subject": "علم النفس", "score": 65, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1011,
+        "name": "ياسين إبراهيم",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 92, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 95, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 97, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 115, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 92, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 96, "maxScore": 100},
+            {"subject": "الأحياء", "score": 98, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 88, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 97, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2011,
+        "name": "مريم عبدالله",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 95, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 96, "maxScore": 100},
+            {"subject": "التاريخ", "score": 92, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 94, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 90, "maxScore": 100},
+            {"subject": "علم النفس", "score": 88, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1012,
+        "name": "أنس محمد",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 80, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 82, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 85, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 88, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 75, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 80, "maxScore": 100},
+            {"subject": "الأحياء", "score": 85, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 70, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 82, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2012,
+        "name": "آمنة علي",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 82, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 85, "maxScore": 100},
+            {"subject": "التاريخ", "score": 78, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 80, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 75, "maxScore": 100},
+            {"subject": "علم النفس", "score": 72, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1013,
+        "name": "بلال حسن",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 40, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 45, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 50, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 30, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 25, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 30, "maxScore": 100},
+            {"subject": "الأحياء", "score": 35, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 20, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 40, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2013,
+        "name": "هند إبراهيم",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 50, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 52, "maxScore": 100},
+            {"subject": "التاريخ", "score": 45, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 48, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 40, "maxScore": 100},
+            {"subject": "علم النفس", "score": 35, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1014,
+        "name": "طارق جمال",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 85, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 88, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 90, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 98, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 82, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 86, "maxScore": 100},
+            {"subject": "الأحياء", "score": 90, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 78, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 88, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2014,
+        "name": "أسماء خالد",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 88, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 90, "maxScore": 100},
+            {"subject": "التاريخ", "score": 82, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 85, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 80, "maxScore": 100},
+            {"subject": "علم النفس", "score": 78, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1015,
+        "name": "رشيد سالم",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 65, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 70, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 75, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 55, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 45, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 50, "maxScore": 100},
+            {"subject": "الأحياء", "score": 60, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 35, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 65, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2015,
+        "name": "سلمى عمر",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 72, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 75, "maxScore": 100},
+            {"subject": "التاريخ", "score": 68, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 70, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 65, "maxScore": 100},
+            {"subject": "علم النفس", "score": 60, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1016,
+        "name": "جاسر عبدالله",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 98, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 96, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 99, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 118, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 95, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 98, "maxScore": 100},
+            {"subject": "الأحياء", "score": 99, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 89, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 98, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2016,
+        "name": "ليلى محمد",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 97, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 98, "maxScore": 100},
+            {"subject": "التاريخ", "score": 94, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 96, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 92, "maxScore": 100},
+            {"subject": "علم النفس", "score": 90, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1017,
+        "name": "زكريا حسن",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 84, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 86, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 89, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 92, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 80, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 84, "maxScore": 100},
+            {"subject": "الأحياء", "score": 88, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 75, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 86, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2017,
+        "name": "حنان علي",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 86, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 89, "maxScore": 100},
+            {"subject": "التاريخ", "score": 81, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 83, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 79, "maxScore": 100},
+            {"subject": "علم النفس", "score": 76, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1018,
+        "name": "أيمن مصطفى",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 30, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 35, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 40, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 20, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 15, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 20, "maxScore": 100},
+            {"subject": "الأحياء", "score": 25, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 10, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 30, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2018,
+        "name": "ريم إبراهيم",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 40, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 42, "maxScore": 100},
+            {"subject": "التاريخ", "score": 35, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 38, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 30, "maxScore": 100},
+            {"subject": "علم النفس", "score": 25, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1019,
+        "name": "فهد عبدالله",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 90, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 92, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 94, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 105, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 88, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 91, "maxScore": 100},
+            {"subject": "الأحياء", "score": 93, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 82, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 92, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2019,
+        "name": "جواهر خالد",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 91, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 93, "maxScore": 100},
+            {"subject": "التاريخ", "score": 86, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 89, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 84, "maxScore": 100},
+            {"subject": "علم النفس", "score": 81, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1020,
+        "name": "معاذ أحمد",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 72, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 78, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 82, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 65, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 55, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 60, "maxScore": 100},
+            {"subject": "الأحياء", "score": 70, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 45, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 72, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2020,
+        "name": "شهد عمر",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 80, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 82, "maxScore": 100},
+            {"subject": "التاريخ", "score": 75, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 78, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 72, "maxScore": 100},
+            {"subject": "علم النفس", "score": 68, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1021,
+        "name": "عبدالرحمن علي",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 94, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 96, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 98, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 112, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 93, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 97, "maxScore": 100},
+            {"subject": "الأحياء", "score": 98, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 87, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 96, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2021,
+        "name": "حصة عبدالله",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 96, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 97, "maxScore": 100},
+            {"subject": "التاريخ", "score": 93, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 95, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 91, "maxScore": 100},
+            {"subject": "علم النفس", "score": 89, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1022,
+        "name": "سليمان محمد",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 81, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 83, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 86, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 90, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 76, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 81, "maxScore": 100},
+            {"subject": "الأحياء", "score": 86, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 71, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 83, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2022,
+        "name": "دلال علي",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 83, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 86, "maxScore": 100},
+            {"subject": "التاريخ", "score": 79, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 81, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 76, "maxScore": 100},
+            {"subject": "علم النفس", "score": 73, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1023,
+        "name": "منصور حسن",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 35, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 40, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 45, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 25, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 20, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 25, "maxScore": 100},
+            {"subject": "الأحياء", "score": 30, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 15, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 35, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2023,
+        "name": "فجر إبراهيم",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 45, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 48, "maxScore": 100},
+            {"subject": "التاريخ", "score": 40, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 42, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 35, "maxScore": 100},
+            {"subject": "علم النفس", "score": 30, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1024,
+        "name": "ناصر جمال",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 86, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 89, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 91, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 102, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 84, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 87, "maxScore": 100},
+            {"subject": "الأحياء", "score": 91, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 79, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 89, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2024,
+        "name": "لطيفة خالد",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 89, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 91, "maxScore": 100},
+            {"subject": "التاريخ", "score": 84, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 86, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 81, "maxScore": 100},
+            {"subject": "علم النفس", "score": 79, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1025,
+        "name": "مبارك سالم",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 68, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 72, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 78, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 58, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 48, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 52, "maxScore": 100},
+            {"subject": "الأحياء", "score": 62, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 38, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 68, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2025,
+        "name": "بشاير عمر",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 75, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 78, "maxScore": 100},
+            {"subject": "التاريخ", "score": 70, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 72, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 68, "maxScore": 100},
+            {"subject": "علم النفس", "score": 62, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1026,
+        "name": "راشد عبدالله",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 97, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 95, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 98, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 116, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 94, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 97, "maxScore": 100},
+            {"subject": "الأحياء", "score": 98, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 88, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 97, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2026,
+        "name": "منيرة محمد",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 98, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 99, "maxScore": 100},
+            {"subject": "التاريخ", "score": 95, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 97, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 93, "maxScore": 100},
+            {"subject": "علم النفس", "score": 91, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1027,
+        "name": "فواز حسن",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 83, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 85, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 87, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 91, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 79, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 83, "maxScore": 100},
+            {"subject": "الأحياء", "score": 87, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 74, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 85, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2027,
+        "name": "شيخة علي",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 85, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 87, "maxScore": 100},
+            {"subject": "التاريخ", "score": 80, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 82, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 77, "maxScore": 100},
+            {"subject": "علم النفس", "score": 74, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1028,
+        "name": "مشعل مصطفى",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 32, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 38, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 42, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 22, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 18, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 22, "maxScore": 100},
+            {"subject": "الأحياء", "score": 28, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 12, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 32, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2028,
+        "name": "غالية إبراهيم",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 42, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 45, "maxScore": 100},
+            {"subject": "التاريخ", "score": 38, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 40, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 32, "maxScore": 100},
+            {"subject": "علم النفس", "score": 28, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1029,
+        "name": "تركي عبدالله",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 91, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 93, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 96, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 108, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 89, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 92, "maxScore": 100},
+            {"subject": "الأحياء", "score": 94, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 83, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 93, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2029,
+        "name": "عنود خالد",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 92, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 94, "maxScore": 100},
+            {"subject": "التاريخ", "score": 87, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 90, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 85, "maxScore": 100},
+            {"subject": "علم النفس", "score": 82, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1030,
+        "name": "عزام أحمد",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 74, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 79, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 83, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 68, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 58, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 62, "maxScore": 100},
+            {"subject": "الأحياء", "score": 72, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 48, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 74, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2030,
+        "name": "أمل عمر",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 81, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 83, "maxScore": 100},
+            {"subject": "التاريخ", "score": 76, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 79, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 73, "maxScore": 100},
+            {"subject": "علم النفس", "score": 69, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1031,
+        "name": "هيثم إبراهيم",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 93, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 95, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 97, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 114, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 91, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 95, "maxScore": 100},
+            {"subject": "الأحياء", "score": 97, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 86, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 95, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2031,
+        "name": "دانه عبدالله",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 94, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 96, "maxScore": 100},
+            {"subject": "التاريخ", "score": 91, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 93, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 89, "maxScore": 100},
+            {"subject": "علم النفس", "score": 87, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1032,
+        "name": "بدر محمد",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 82, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 84, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 86, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 89, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 77, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 82, "maxScore": 100},
+            {"subject": "الأحياء", "score": 86, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 72, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 84, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2032,
+        "name": "شوق علي",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 84, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 86, "maxScore": 100},
+            {"subject": "التاريخ", "score": 79, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 81, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 76, "maxScore": 100},
+            {"subject": "علم النفس", "score": 73, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1033,
+        "name": "جمال حسن",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 38, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 42, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 48, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 28, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 22, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 28, "maxScore": 100},
+            {"subject": "الأحياء", "score": 32, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 18, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 38, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2033,
+        "name": "أثير إبراهيم",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 48, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 50, "maxScore": 100},
+            {"subject": "التاريخ", "score": 42, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 45, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 38, "maxScore": 100},
+            {"subject": "علم النفس", "score": 32, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1034,
+        "name": "صالح جمال",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 87, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 90, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 92, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 104, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 85, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 88, "maxScore": 100},
+            {"subject": "الأحياء", "score": 92, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 80, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 90, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2034,
+        "name": "أفنان خالد",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 90, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 92, "maxScore": 100},
+            {"subject": "التاريخ", "score": 85, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 87, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 82, "maxScore": 100},
+            {"subject": "علم النفس", "score": 80, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1035,
+        "name": "طلال سالم",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 69, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 73, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 79, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 59, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 49, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 53, "maxScore": 100},
+            {"subject": "الأحياء", "score": 63, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 39, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 69, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2035,
+        "name": "وضحى عمر",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 76, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 79, "maxScore": 100},
+            {"subject": "التاريخ", "score": 71, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 73, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 69, "maxScore": 100},
+            {"subject": "علم النفس", "score": 63, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1036,
+        "name": "بندر عبدالله",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 96, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 94, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 97, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 115, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 93, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 96, "maxScore": 100},
+            {"subject": "الأحياء", "score": 97, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 87, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 96, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2036,
+        "name": "هيا محمد",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 97, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 98, "maxScore": 100},
+            {"subject": "التاريخ", "score": 94, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 96, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 92, "maxScore": 100},
+            {"subject": "علم النفس", "score": 90, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1037,
+        "name": "مشاري حسن",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 84, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 86, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 88, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 93, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 81, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 84, "maxScore": 100},
+            {"subject": "الأحياء", "score": 88, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 76, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 86, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2037,
+        "name": "غادة علي",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 86, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 88, "maxScore": 100},
+            {"subject": "التاريخ", "score": 81, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 83, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 78, "maxScore": 100},
+            {"subject": "علم النفس", "score": 75, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1038,
+        "name": "متعب مصطفى",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 34, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 39, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 44, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 24, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 19, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 24, "maxScore": 100},
+            {"subject": "الأحياء", "score": 29, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 14, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 34, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2038,
+        "name": "أريج إبراهيم",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 44, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 46, "maxScore": 100},
+            {"subject": "التاريخ", "score": 39, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 41, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 34, "maxScore": 100},
+            {"subject": "علم النفس", "score": 29, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1039,
+        "name": "عبدالعزيز عبدالله",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 92, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 94, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 96, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 109, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 90, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 93, "maxScore": 100},
+            {"subject": "الأحياء", "score": 95, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 84, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 94, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2039,
+        "name": "ريم خالد",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 93, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 95, "maxScore": 100},
+            {"subject": "التاريخ", "score": 88, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 91, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 86, "maxScore": 100},
+            {"subject": "علم النفس", "score": 83, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1040,
+        "name": "بسام أحمد",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 76, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 80, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 84, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 70, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 60, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 64, "maxScore": 100},
+            {"subject": "الأحياء", "score": 74, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 50, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 76, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2040,
+        "name": "نجود عمر",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 82, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 84, "maxScore": 100},
+            {"subject": "التاريخ", "score": 77, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 80, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 74, "maxScore": 100},
+            {"subject": "علم النفس", "score": 70, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1041,
+        "name": "ريان إبراهيم",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 95, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 97, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 99, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 117, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 96, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 98, "maxScore": 100},
+            {"subject": "الأحياء", "score": 99, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 89, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 98, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2041,
+        "name": "أشواق عبدالله",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 96, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 98, "maxScore": 100},
+            {"subject": "التاريخ", "score": 93, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 95, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 91, "maxScore": 100},
+            {"subject": "علم النفس", "score": 89, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1042,
+        "name": "وليد محمد",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 83, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 85, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 87, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 91, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 78, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 83, "maxScore": 100},
+            {"subject": "الأحياء", "score": 87, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 73, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 85, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2042,
+        "name": "عهد علي",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 85, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 87, "maxScore": 100},
+            {"subject": "التاريخ", "score": 80, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 82, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 77, "maxScore": 100},
+            {"subject": "علم النفس", "score": 74, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1043,
+        "name": "حمزة حسن",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 39, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 43, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 49, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 29, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 23, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 29, "maxScore": 100},
+            {"subject": "الأحياء", "score": 33, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 19, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 39, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2043,
+        "name": "مها إبراهيم",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 49, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 51, "maxScore": 100},
+            {"subject": "التاريخ", "score": 43, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 46, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 39, "maxScore": 100},
+            {"subject": "علم النفس", "score": 33, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1044,
+        "name": "هاشم جمال",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 88, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 91, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 93, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 106, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 86, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 89, "maxScore": 100},
+            {"subject": "الأحياء", "score": 93, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 81, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 91, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2044,
+        "name": "مرام خالد",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 91, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 93, "maxScore": 100},
+            {"subject": "التاريخ", "score": 86, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 88, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 83, "maxScore": 100},
+            {"subject": "علم النفس", "score": 81, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1045,
+        "name": "فيصل سالم",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 71, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 74, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 80, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 61, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 51, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 54, "maxScore": 100},
+            {"subject": "الأحياء", "score": 64, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 41, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 71, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2045,
+        "name": "جود عمر",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 77, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 80, "maxScore": 100},
+            {"subject": "التاريخ", "score": 72, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 74, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 70, "maxScore": 100},
+            {"subject": "علم النفس", "score": 64, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1046,
+        "name": "سلطان عبدالله",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 99, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 98, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 100, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 120, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 98, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 99, "maxScore": 100},
+            {"subject": "الأحياء", "score": 100, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 90, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 99, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2046,
+        "name": "دانة محمد",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 100, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 99, "maxScore": 100},
+            {"subject": "التاريخ", "score": 98, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 99, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 97, "maxScore": 100},
+            {"subject": "علم النفس", "score": 90, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1047,
+        "name": "نايف حسن",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 85, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 87, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 89, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 94, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 82, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 85, "maxScore": 100},
+            {"subject": "الأحياء", "score": 89, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 77, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 87, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2047,
+        "name": "مشاعل علي",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 87, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 89, "maxScore": 100},
+            {"subject": "التاريخ", "score": 82, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 84, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 79, "maxScore": 100},
+            {"subject": "علم النفس", "score": 76, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1048,
+        "name": "عادل مصطفى",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 36, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 41, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 46, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 26, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 21, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 26, "maxScore": 100},
+            {"subject": "الأحياء", "score": 31, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 16, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 36, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2048,
+        "name": "أروى إبراهيم",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 46, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 49, "maxScore": 100},
+            {"subject": "التاريخ", "score": 41, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 43, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 36, "maxScore": 100},
+            {"subject": "علم النفس", "score": 31, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1049,
+        "name": "مهند عبدالله",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 93, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 95, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 97, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 111, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 91, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 94, "maxScore": 100},
+            {"subject": "الأحياء", "score": 96, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 85, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 95, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2049,
+        "name": "شذى خالد",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 94, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 96, "maxScore": 100},
+            {"subject": "التاريخ", "score": 89, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 92, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 87, "maxScore": 100},
+            {"subject": "علم النفس", "score": 84, "maxScore": 90}
+        ]
+    },
+    {
+        "number": 1050,
+        "name": "جواد أحمد",
+        "stream": "علمي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 77, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 81, "maxScore": 100},
+            {"subject": "اللغة الإنجليزية", "score": 85, "maxScore": 100},
+            {"subject": "الرياضيات", "score": 71, "maxScore": 120},
+            {"subject": "الفيزياء", "score": 61, "maxScore": 100},
+            {"subject": "الكيمياء", "score": 65, "maxScore": 100},
+            {"subject": "الأحياء", "score": 75, "maxScore": 100},
+            {"subject": "الميكانيكا", "score": 51, "maxScore": 90},
+            {"subject": "تقنية المعلومات", "score": 77, "maxScore": 100}
+        ]
+    },
+    {
+        "number": 2050,
+        "name": "أحلام عمر",
+        "stream": "أدبي",
+        "grades": [
+            {"subject": "التربية الإسلامية", "score": 83, "maxScore": 100},
+            {"subject": "اللغة العربية", "score": 85, "maxScore": 100},
+            {"subject": "التاريخ", "score": 78, "maxScore": 100},
+            {"subject": "الجغرافيا", "score": 81, "maxScore": 100},
+            {"subject": "الفلسفة", "score": 75, "maxScore": 100},
+            {"subject": "علم النفس", "score": 71, "maxScore": 90}
+        ]
+    }
+]
