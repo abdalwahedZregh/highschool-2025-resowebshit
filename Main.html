@@ -165,7 +165,6 @@
             border-radius: 2px;
         }
         
-       
         #home-page .container {
             max-width: 800px;
         }
@@ -503,7 +502,6 @@
             height: 100% !important; 
         }
         
-        
         .analytics-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
@@ -761,7 +759,6 @@
             background: rgba(255, 77, 77, 0.1);
         }
         
-        
         .stream-section {
             margin-bottom: 50px;
         }
@@ -799,6 +796,18 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
             margin-bottom: 25px;
+        }
+        
+        /* Loading Styles */
+        .loading-message {
+            text-align: center;
+            padding: 40px;
+            font-size: 20px;
+            color: var(--primary-green);
+        }
+        
+        .fa-spinner {
+            margin-left: 10px;
         }
         
         /* Responsive Design */
@@ -883,7 +892,6 @@
         </div>
     </nav>
 
-   
     <div id="home-page" class="page active">
         <div class="container">
             <div class="page-header">
@@ -914,12 +922,11 @@
             </div>
             
             <div id="analytics-container">
-                
+                <!-- Content will be loaded dynamically -->
             </div>
         </div>
     </div>
 
-  
     <div id="about-page" class="page">
         <div class="container">
             <div class="page-header">
@@ -965,7 +972,6 @@
         </div>
     </div>
 
-    
     <div class="modal-overlay" id="supportModal">
         <div class="modal-content">
             <button class="modal-close" id="modalClose">&times;</button>
@@ -1001,420 +1007,837 @@
     </div>
 
     <script>
- 
-    const studentResultsCache = {};
-    // subjectAnalyticsCache is no longer needed globally.
-
-    let performanceChart = null;
-    let feedbackTimeout = null;
-    let currentPage = 'home-page';
-    let studentsData = [];
-
-    const sampleData = [
-        {
-            "number": 3390599, "name": "دعاء سالم الهادى التميمى", "stream": "علمي",
-            "overallPercentage": 86.8, "result": "ممتاز", "subjectsPassed": 9, "subjectsFailed": 0,
-            "grades": [
-                { "subject": "التربية الإسلامية", "total": "76.0 / 80.0", "status": "ناجح" },
-                { "subject": "اللغة العربية (علمي)", "total": "152.0 / 160.0", "status": "ناجح" },
-                { "subject": "اللغة الإنجليزية (علمي)", "total": "135.0 / 160.0", "status": "ناجح" },
-                { "subject": "تقنية المعلومات (علمي)", "total": "74.0 / 80.0", "status": "ناجح" },
-                { "subject": "الرياضيات", "total": "176.0 / 200.0", "status": "ناجح" },
-                { "subject": "الإحصاء (علمي)", "total": "72.0 / 80.0", "status": "ناجح" },
-                { "subject": "الفيزياء", "total": "160.0 / 200.0", "status": "ناجح" },
-                { "subject": "الكيمياء", "total": "129.0 / 160.0", "status": "ناجح" },
-                { "subject": "الأحياء", "total": "137.0 / 160.0", "status": "ناجح" }
-            ]
-        }
-    ];
-
-    async function fetchStudentData() {
-        try {
-            const response = await fetch('data.json');
-            if (!response.ok) {
-                throw new Error('Failed to fetch student data');
-            }
-            studentsData = await response.json();
-        } catch (error) {
-            console.error('Error loading student data:', error);
-            studentsData = sampleData;
-        }
+        const studentResultsCache = {};
+        const subjectAnalyticsCache = {};
         
-        // CORRECT: We only pre-cache student results. 
-        // The slow analytics function is no longer called here.
-        preCacheStudentResults();
+        let performanceChart = null;
+        let feedbackTimeout = null;
+        let currentPage = 'home-page';
+        let studentsData = [];
         
-        if (currentPage === 'analytics-page') {
-            displaySubjectAnalytics();
-        }
-    }
-
-    function preCacheStudentResults() {
-        studentsData.forEach(student => {
-            let totalScore = 0;
-            let maxScore = 0;
-            let hasFailure = false;
-            const gradesWithStatus = student.grades.map(grade => {
-                const [scoreStr, maxScoreStr] = grade.total.split('/').map(s => parseFloat(s.trim()));
-                totalScore += scoreStr;
-                maxScore += maxScoreStr;
-                const percentage = (scoreStr / maxScoreStr) * 100;
-                const failed = grade.status === "راسب" || percentage < 50;
-                if (failed) hasFailure = true;
-                return { subject: grade.subject, score: scoreStr, maxScore: maxScoreStr, failed: failed };
-            });
-            const percentage = maxScore > 0 ? (totalScore / maxScore) * 100 : 0;
-            studentResultsCache[student.number] = {
-                name: student.name, number: student.number, stream: student.stream,
-                percentage: percentage, result: student.result, subjectsPassed: student.subjectsPassed,
-                subjectsFailed: student.subjectsFailed, hasFailure: hasFailure, grades: gradesWithStatus,
-                totalScore: totalScore
-            };
-        });
-        const allStudents = Object.values(studentResultsCache);
-        allStudents.sort((a, b) => b.percentage - a.percentage);
-        allStudents.forEach((student, index) => {
-            student.normalRank = index + 1;
-            student.uniqueRank = index + 1;
-            student.totalStudents = allStudents.length;
-            student.percentile = (allStudents.length - (index + 1)) / (allStudents.length - 1) * 100;
-        });
-    }
-
-    document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const pageId = this.dataset.page;
-            const hash = this.getAttribute('href');
-            history.pushState({ page: pageId }, '', hash);
-            loadPage(pageId);
-        });
-    });
-
-    window.addEventListener('popstate', function(event) {
-        const hash = window.location.hash;
-        let pageId = 'home-page';
-        if (hash === '#analytics') pageId = 'analytics-page';
-        else if (hash === '#about') pageId = 'about-page';
-        loadPage(pageId);
-    });
-
-    function loadPage(pageId) {
-        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-        document.querySelector(`.nav-link[data-page="${pageId}"]`).classList.add('active');
-        document.querySelectorAll('.page').forEach(page => {
-            page.classList.remove('active');
-        });
-        document.getElementById(pageId).classList.add('active');
-        currentPage = pageId;
-        if (pageId === 'analytics-page' && studentsData.length > 0) { // check if data is loaded
-            displaySubjectAnalytics();
-        }
-    }
-
-    function initRouting() {
-        const hash = window.location.hash;
-        let pageId = 'home-page';
-        if (hash === '#analytics') pageId = 'analytics-page';
-        else if (hash === '#about') pageId = 'about-page';
-        loadPage(pageId);
-    }
-
-    function displayStudentResults() {
-        const studentNumber = parseInt(document.getElementById('studentNumberInput').value);
-        const resultsContainer = document.getElementById('results-container');
-        const errorMsg = document.getElementById('error-message');
-        const feedbackBanner = document.getElementById('result-feedback-banner');
-        if (feedbackTimeout) {
-            clearTimeout(feedbackTimeout);
-            feedbackTimeout = null;
-        }
-        feedbackBanner.classList.remove('visible', 'fade-out', 'has-failure');
-        resultsContainer.classList.remove('visible');
-        resultsContainer.style.display = "none";
-        const studentResult = studentResultsCache[studentNumber];
-        if (!studentResult) {
-            errorMsg.style.display = 'block';
-            return;
-        }
-        errorMsg.style.display = 'none';
-        resultsContainer.innerHTML = '';
-        const studentHeader = document.createElement('div');
-        studentHeader.className = 'student-header';
-        const studentName = document.createElement('h2');
-        studentName.textContent = studentResult.name;
-        studentHeader.appendChild(studentName);
-        resultsContainer.appendChild(studentHeader);
-        const studentInfo = document.createElement('div');
-        studentInfo.className = 'student-info';
-        const infoItems = [
-            { label: 'رقم القيد', value: studentResult.number },
-            { label: 'المسار', value: studentResult.stream },
-            { label: 'المجموع الكلي', value: studentResult.totalScore },
-            { label: 'النتيجة', value: studentResult.result },
-            { label: 'النسبة المئوية', value: studentResult.percentage.toFixed(1) + '%' }
-        ];
-        infoItems.forEach(item => {
-            const infoItem = document.createElement('div');
-            infoItem.className = 'student-info-item';
-            const label = document.createElement('p');
-            label.textContent = item.label;
-            infoItem.appendChild(label);
-            const value = document.createElement('span');
-            value.textContent = item.value;
-            infoItem.appendChild(value);
-            studentInfo.appendChild(infoItem);
-        });
-        resultsContainer.appendChild(studentInfo);
-        const statsGrid = document.createElement('div');
-        statsGrid.className = 'stats-grid';
-        const percentageContainer = document.createElement('div');
-        percentageContainer.className = `percentage-circle-container ${studentResult.hasFailure ? 'has-failure' : ''}`;
-        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-        const circleBg = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        circleBg.setAttribute('class', 'circle-bg');
-        circleBg.setAttribute('cx', '75');
-        circleBg.setAttribute('cy', '75');
-        circleBg.setAttribute('r', '65');
-        const circleProgress = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        circleProgress.setAttribute('id', 'circleProgress');
-        circleProgress.setAttribute('class', 'circle-progress');
-        circleProgress.setAttribute('cx', '75');
-        circleProgress.setAttribute('cy', '75');
-        circleProgress.setAttribute('r', '65');
-        svg.appendChild(circleBg);
-        svg.appendChild(circleProgress);
-        percentageContainer.appendChild(svg);
-        const percentageText = document.createElement('div');
-        percentageText.id = 'percentageText';
-        percentageText.className = 'percentage-text';
-        percentageText.textContent = '0%';
-        percentageContainer.appendChild(percentageText);
-        statsGrid.appendChild(percentageContainer);
-        const rankItem = document.createElement('div');
-        rankItem.className = 'rank-item';
-        const rankTitle = document.createElement('p');
-        rankTitle.textContent = 'الترتيب';
-        rankItem.appendChild(rankTitle);
-        const normalRank = document.createElement('span');
-        normalRank.className = 'rank-normal';
-        normalRank.textContent = `#${studentResult.normalRank}`;
-        rankItem.appendChild(normalRank);
-        const rankSubtitle = document.createElement('p');
-        rankSubtitle.textContent = `من أصل ${studentResult.totalStudents} طالب`;
-        rankItem.appendChild(rankSubtitle);
-        statsGrid.appendChild(rankItem);
-        resultsContainer.appendChild(statsGrid);
-        // ... and so on for the rest of the displayStudentResults function
-    }
-
-    function displaySubjectAnalytics() {
-        const container = document.getElementById('analytics-container');
-        container.innerHTML = `<div class="page-header" style="margin-bottom: 50px;">
-                                 <h1><i class="fas fa-spinner fa-spin"></i> جاري تحليل البيانات...</h1>
-                                 <p>قد تستغرق هذه العملية بضع لحظات للبيانات الكبيرة.</p>
-                               </div>`;
-        const worker = new Worker('analytics-worker.js');
-        worker.postMessage(studentsData);
-        worker.onmessage = function(e) {
-            const calculatedAnalytics = e.data;
-            renderAnalyticsUI(calculatedAnalytics);
-        };
-    }
-
-    function renderAnalyticsUI(calculatedAnalytics) {
-        const container = document.getElementById('analytics-container');
-        container.innerHTML = '';
-        const streams = ['علمي', 'أدبي'];
-        streams.forEach(stream => {
-            if (!calculatedAnalytics.stream_summary[stream] || calculatedAnalytics.stream_summary[stream].totalStudents === 0) {
-                return;
-            }
-            const streamSection = document.createElement('div');
-            streamSection.className = 'stream-section';
-            const streamTitle = document.createElement('h2');
-            streamTitle.className = 'stream-title';
-            streamTitle.innerHTML = `<i class="fas fa-stream"></i> مسار ${stream}`;
-            streamSection.appendChild(streamTitle);
-            const streamSummary = calculatedAnalytics['stream_summary'][stream];
-            const summaryCard = document.createElement('div');
-            summaryCard.className = 'stream-summary-card';
-            const summaryTitle = document.createElement('h3');
-            summaryTitle.className = 'stream-summary-title';
-            summaryTitle.innerHTML = `<i class="fas fa-chart-bar"></i> ملخص مسار ${stream}`;
-            summaryCard.appendChild(summaryTitle);
-            const summaryStats = document.createElement('div');
-            summaryStats.className = 'stream-summary-stats';
-            const stats = [
-                { label: 'عدد الطلاب الناجحين', value: streamSummary.passingStudents },
-                { label: 'عدد الطلاب الراسبين', value: streamSummary.failingStudents },
-                { label: 'إجمالي عدد الطلاب', value: streamSummary.totalStudents },
-                { label: 'نسبة النجاح', value: `${((streamSummary.passingStudents / streamSummary.totalStudents) * 100).toFixed(1)}%` }
-            ];
-            stats.forEach(stat => {
-                const statCard = document.createElement('div');
-                statCard.className = 'stat-card';
-                const label = document.createElement('h4');
-                label.textContent = stat.label;
-                statCard.appendChild(label);
-                const value = document.createElement('div');
-                value.className = 'value';
-                value.textContent = stat.value;
-                statCard.appendChild(value);
-                summaryStats.appendChild(statCard);
-            });
-            summaryCard.appendChild(summaryStats);
-            const gradeDistribution = document.createElement('div');
-            gradeDistribution.className = 'grade-distribution';
-            const distributionTitle = document.createElement('h3');
-            distributionTitle.innerHTML = '<i class="fas fa-chart-pie"></i> توزيع الدرجات الكلي';
-            gradeDistribution.appendChild(distributionTitle);
-            const histogramContainer = document.createElement('div');
-            histogramContainer.className = 'histogram-container';
-            const canvas = document.createElement('canvas');
-            canvas.id = `stream-chart-${stream}`;
-            histogramContainer.appendChild(canvas);
-            gradeDistribution.appendChild(histogramContainer);
-            summaryCard.appendChild(gradeDistribution);
-            streamSection.appendChild(summaryCard);
-            const streamSubjects = Object.values(calculatedAnalytics)
-                .filter(subject => subject && typeof subject === 'object' && subject.stream === stream)
-                .sort((a, b) => a.subjectName.localeCompare(b.subjectName));
-            const subjectsGrid = document.createElement('div');
-            subjectsGrid.className = 'analytics-grid';
-            streamSubjects.forEach(subject => {
-                const subjectCard = document.createElement('div');
-                subjectCard.className = 'subject-card';
-                const subjectHeader = document.createElement('div');
-                subjectHeader.className = 'subject-header';
-                const subjectTitle = document.createElement('h3');
-                subjectTitle.className = 'subject-title';
-                subjectTitle.textContent = `${subject.subjectName}`;
-                subjectHeader.appendChild(subjectTitle);
-                subjectCard.appendChild(subjectHeader);
-                const subjectStats = document.createElement('div');
-                subjectStats.className = 'subject-stats';
-                const subjectStatsData = [
-                   { label: 'الدرجة الأعلى', value: subject.highestScore },
-                   { label: 'الدرجة الأدنى', value: subject.lowestScore },
-                   { label: 'الوسيط', value: subject.medianScore.toFixed(1) },
-                   { label: 'المتوسط', value: `${subject.averagePercentage}%` }
-                ];
-                subjectStatsData.forEach(stat => {
-                   const statCard = document.createElement('div');
-                   statCard.className = 'stat-card';
-                   const label = document.createElement('h4');
-                   label.textContent = stat.label;
-                   statCard.appendChild(label);
-                   const value = document.createElement('div');
-                   value.className = 'value';
-                   value.textContent = stat.value;
-                   statCard.appendChild(value);
-                   subjectStats.appendChild(statCard);
-                });
-                subjectCard.appendChild(subjectStats);
-                const passFailStats = document.createElement('div');
-                passFailStats.className = 'pass-fail-stats';
-                const passStat = document.createElement('div');
-                passStat.className = 'pass-stat';
-                const passLabel = document.createElement('h4');
-                passLabel.textContent = 'الناجحون';
-                passStat.appendChild(passLabel);
-                const passValue = document.createElement('div');
-                passValue.className = 'value';
-                passValue.textContent = `${subject.passCount} (${((subject.passCount / (subject.passCount + subject.failCount)) * 100).toFixed(1)}%)`;
-                passStat.appendChild(passValue);
-                passFailStats.appendChild(passStat);
-                const failStat = document.createElement('div');
-                failStat.className = 'fail-stat';
-                const failLabel = document.createElement('h4');
-                failLabel.textContent = 'الراسبون';
-                failStat.appendChild(failLabel);
-                const failValue = document.createElement('div');
-                failValue.className = 'value';
-                failValue.textContent = `${subject.failCount} (${((subject.failCount / (subject.passCount + subject.failCount)) * 100).toFixed(1)}%)`;
-                failStat.appendChild(failValue);
-                passFailStats.appendChild(failStat);
-                subjectCard.appendChild(passFailStats);
-                const subjectGradeDistribution = document.createElement('div');
-                subjectGradeDistribution.className = 'grade-distribution';
-                const subjectDistributionTitle = document.createElement('h3');
-                subjectDistributionTitle.innerHTML = '<i class="fas fa-chart-pie"></i> توزيع درجات الناجحين';
-                subjectGradeDistribution.appendChild(subjectDistributionTitle);
-                const subjectHistogramContainer = document.createElement('div');
-                subjectHistogramContainer.className = 'histogram-container';
-                const subjectCanvas = document.createElement('canvas');
-                subjectCanvas.id = `chart-${subject.subjectName.replace(/\s/g, '-')}-${subject.stream}`;
-                subjectHistogramContainer.appendChild(subjectCanvas);
-                subjectGradeDistribution.appendChild(subjectHistogramContainer);
-                subjectCard.appendChild(subjectGradeDistribution);
-                subjectsGrid.appendChild(subjectCard);
-            });
-            streamSection.appendChild(subjectsGrid);
-            container.appendChild(streamSection);
-            setTimeout(() => {
-                const streamCtx = document.getElementById(`stream-chart-${stream}`).getContext('2d');
-                new Chart(streamCtx, {
-                    type: 'bar',
-                    data: {
-                        labels: Object.keys(streamSummary.gradeDistribution),
-                        datasets: [{ label: 'عدد الطلاب', data: Object.values(streamSummary.gradeDistribution), backgroundColor: ['rgba(0, 255, 153, 0.7)', 'rgba(77, 148, 255, 0.7)', 'rgba(166, 77, 255, 0.7)', 'rgba(255, 206, 86, 0.7)', 'rgba(255, 99, 132, 0.7)'] }]
+        const sampleData = [
+            {
+                "number": 3390599,
+                "name": "دعاء سالم الهادى التميمى",
+                "stream": "علمي",
+                "overallPercentage": 86.8,
+                "result": "ممتاز",
+                "subjectsPassed": 9,
+                "subjectsFailed": 0,
+                "grades": [
+                    {
+                        "subject": "التربية الإسلامية",
+                        "total": "76.0 / 80.0",
+                        "status": "ناجح"
                     },
-                    options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { ticks: { color: '#aaa' }, grid: { color: 'rgba(255,255,255,0.1)' } }, x: { ticks: { color: '#aaa' }, grid: { display: false } } } }
+                    {
+                        "subject": "اللغة العربية (علمي)",
+                        "total": "152.0 / 160.0",
+                        "status": "ناجح"
+                    },
+                    {
+                        "subject": "اللغة الإنجليزية (علمي)",
+                        "total": "135.0 / 160.0",
+                        "status": "ناجح"
+                    },
+                    {
+                        "subject": "تقنية المعلومات (علمي)",
+                        "total": "74.0 / 80.0",
+                        "status": "ناجح"
+                    },
+                    {
+                        "subject": "الرياضيات",
+                        "total": "176.0 / 200.0",
+                        "status": "ناجح"
+                    },
+                    {
+                        "subject": "الإحصاء (علمي)",
+                        "total": "72.0 / 80.0",
+                        "status": "ناجح"
+                    },
+                    {
+                        "subject": "الفيزياء",
+                        "total": "160.0 / 200.0",
+                        "status": "ناجح"
+                    },
+                    {
+                        "subject": "الكيمياء",
+                        "total": "129.0 / 160.0",
+                        "status": "ناجح"
+                    },
+                    {
+                        "subject": "الأحياء",
+                        "total": "137.0 / 160.0",
+                        "status": "ناجح"
+                    }
+                ]
+            }
+        ];
+
+        async function fetchStudentData() {
+            try {
+                const response = await fetch('data.json');
+                if (!response.ok) {
+                    throw new Error('Failed to fetch student data');
+                }
+                studentsData = await response.json();
+            } catch (error) {
+                console.error('Error loading student data:', error);
+                studentsData = sampleData;
+            }
+            
+            preCacheStudentResults();
+            
+            if (currentPage === 'analytics-page') {
+                displaySubjectAnalytics();
+            }
+        }
+
+        function preCacheStudentResults() {
+            studentsData.forEach(student => {
+                let totalScore = 0;
+                let maxScore = 0;
+                let hasFailure = false;
+                
+                const gradesWithStatus = student.grades.map(grade => {
+                    const [scoreStr, maxScoreStr] = grade.total.split('/').map(s => parseFloat(s.trim()));
+                    totalScore += scoreStr;
+                    maxScore += maxScoreStr;
+                    
+                    const percentage = (scoreStr / maxScoreStr) * 100;
+                    const failed = grade.status === "راسب" || percentage < 50;
+                    if (failed) hasFailure = true;
+                    
+                    return {
+                        subject: grade.subject,
+                        score: scoreStr,
+                        maxScore: maxScoreStr,
+                        failed: failed
+                    };
                 });
+                
+                const percentage = maxScore > 0 ? (totalScore / maxScore) * 100 : 0;
+            
+                studentResultsCache[student.number] = {
+                    name: student.name,
+                    number: student.number,
+                    stream: student.stream,
+                    percentage: percentage,
+                    result: student.result,
+                    subjectsPassed: student.subjectsPassed,
+                    subjectsFailed: student.subjectsFailed,
+                    hasFailure: hasFailure,
+                    grades: gradesWithStatus,
+                    totalScore: totalScore
+                };
+            });
+            
+            const allStudents = Object.values(studentResultsCache);
+            allStudents.sort((a, b) => b.percentage - a.percentage);
+            
+            allStudents.forEach((student, index) => {
+                student.normalRank = index + 1;
+                student.uniqueRank = index + 1;
+                student.totalStudents = allStudents.length;
+                student.percentile = (allStudents.length - (index + 1)) / (allStudents.length - 1) * 100;
+            });
+        }
+        
+        function displaySubjectAnalytics() {
+            const container = document.getElementById('analytics-container');
+            container.innerHTML = '<div class="loading-message"><i class="fas fa-spinner fa-spin"></i> جاري تحميل التحليلات...</div>';
+            
+            const worker = new Worker('analytics-worker.js');
+            
+            worker.onmessage = function(e) {
+                const { subjectAnalyticsCache, streamSummaries } = e.data;
+                renderAnalyticsUI({
+                    subjectAnalyticsCache: subjectAnalyticsCache,
+                    streamSummaries: streamSummaries
+                });
+                worker.terminate();
+            };
+            
+            worker.postMessage(studentsData);
+        }
+
+        function renderAnalyticsUI(data) {
+            const { subjectAnalyticsCache, streamSummaries } = data;
+            const container = document.getElementById('analytics-container');
+            
+            container.innerHTML = '';
+            
+            const streams = ['علمي', 'أدبي'];
+            
+            streams.forEach(stream => {
+                const streamSection = document.createElement('div');
+                streamSection.className = 'stream-section';
+                
+                const streamTitle = document.createElement('h2');
+                streamTitle.className = 'stream-title';
+                streamTitle.innerHTML = `<i class="fas fa-stream"></i> مسار ${stream}`;
+                streamSection.appendChild(streamTitle);
+                
+                const streamSummary = streamSummaries[stream];
+                
+                const summaryCard = document.createElement('div');
+                summaryCard.className = 'stream-summary-card';
+                
+                const summaryTitle = document.createElement('h3');
+                summaryTitle.className = 'stream-summary-title';
+                summaryTitle.innerHTML = `<i class="fas fa-chart-bar"></i> ملخص مسار ${stream}`;
+                summaryCard.appendChild(summaryTitle);
+                
+                const summaryStats = document.createElement('div');
+                summaryStats.className = 'stream-summary-stats';
+                
+                const stats = [
+                    { label: 'عدد الطلاب الناجحين', value: streamSummary.passingStudents },
+                    { label: 'عدد الطلاب الراسبين', value: streamSummary.failingStudents },
+                    { label: 'إجمالي عدد الطلاب', value: streamSummary.totalStudents },
+                    { label: 'نسبة النجاح', value: `${((streamSummary.passingStudents / streamSummary.totalStudents) * 100).toFixed(1)}%` }
+                ];
+                
+                stats.forEach(stat => {
+                    const statCard = document.createElement('div');
+                    statCard.className = 'stat-card';
+                    
+                    const label = document.createElement('h4');
+                    label.textContent = stat.label;
+                    statCard.appendChild(label);
+                    
+                    const value = document.createElement('div');
+                    value.className = 'value';
+                    value.textContent = stat.value;
+                    statCard.appendChild(value);
+                    
+                    summaryStats.appendChild(statCard);
+                });
+                
+                summaryCard.appendChild(summaryStats);
+                
+                const gradeDistribution = document.createElement('div');
+                gradeDistribution.className = 'grade-distribution';
+                
+                const distributionTitle = document.createElement('h3');
+                distributionTitle.innerHTML = '<i class="fas fa-chart-pie"></i> توزيع الدرجات الكلي';
+                gradeDistribution.appendChild(distributionTitle);
+                
+                const histogramContainer = document.createElement('div');
+                histogramContainer.className = 'histogram-container';
+                
+                const canvas = document.createElement('canvas');
+                canvas.id = `stream-chart-${stream}`;
+                histogramContainer.appendChild(canvas);
+                
+                gradeDistribution.appendChild(histogramContainer);
+                summaryCard.appendChild(gradeDistribution);
+                
+                streamSection.appendChild(summaryCard);
+                
+                const streamSubjects = Object.values(subjectAnalyticsCache)
+                    .filter(subject => subject.stream === stream)
+                    .sort((a, b) => a.subjectName.localeCompare(b.subjectName));
+                
+                const subjectsGrid = document.createElement('div');
+                subjectsGrid.className = 'analytics-grid';
+                
                 streamSubjects.forEach(subject => {
-                    const subjectCtx = document.getElementById(`chart-${subject.subjectName.replace(/\s/g, '-')}-${subject.stream}`).getContext('2d');
-                    new Chart(subjectCtx, {
+                    const subjectCard = document.createElement('div');
+                    subjectCard.className = 'subject-card';
+                    
+                    const subjectHeader = document.createElement('div');
+                    subjectHeader.className = 'subject-header';
+                    
+                    const subjectTitle = document.createElement('h3');
+                    subjectTitle.className = 'subject-title';
+                    subjectTitle.textContent = `${subject.subjectName} (${subject.stream})`;
+                    subjectHeader.appendChild(subjectTitle);
+                    
+                    const averagePercentage = document.createElement('div');
+                    averagePercentage.className = 'average-percentage';
+                    averagePercentage.textContent = `${subject.averagePercentage}%`;
+                    subjectHeader.appendChild(averagePercentage);
+                    
+                    subjectCard.appendChild(subjectHeader);
+                    
+                    const subjectStats = document.createElement('div');
+                    subjectStats.className = 'subject-stats';
+                    
+                    const stats = [
+                        { label: 'الدرجة الأعلى', value: subject.highestScore },
+                        { label: 'الدرجة الأدنى', value: subject.lowestScore },
+                        { label: 'الدرجة المتوسطة', value: subject.medianScore.toFixed(1) },
+                        { label: 'عدد الطلاب', value: subject.passCount + subject.failCount }
+                    ];
+                    
+                    stats.forEach(stat => {
+                        const statCard = document.createElement('div');
+                        statCard.className = 'stat-card';
+                        
+                        const label = document.createElement('h4');
+                        label.textContent = stat.label;
+                        statCard.appendChild(label);
+                        
+                        const value = document.createElement('div');
+                        value.className = 'value';
+                        value.textContent = stat.value;
+                        statCard.appendChild(value);
+                        
+                        subjectStats.appendChild(statCard);
+                    });
+                    
+                    subjectCard.appendChild(subjectStats);
+                    
+                    const passFailStats = document.createElement('div');
+                    passFailStats.className = 'pass-fail-stats';
+                    
+                    const passStat = document.createElement('div');
+                    passStat.className = 'pass-stat';
+                    
+                    const passLabel = document.createElement('h4');
+                    passLabel.textContent = 'الطلاب الناجحون';
+                    passStat.appendChild(passLabel);
+                    
+                    const passValue = document.createElement('div');
+                    passValue.className = 'value';
+                    passValue.textContent = subject.passCount;
+                    passStat.appendChild(passValue);
+                    
+                    passFailStats.appendChild(passStat);
+                    
+                    const failStat = document.createElement('div');
+                    failStat.className = 'fail-stat';
+                    
+                    const failLabel = document.createElement('h4');
+                    failLabel.textContent = 'الطلاب الراسبون';
+                    failStat.appendChild(failLabel);
+                    
+                    const failValue = document.createElement('div');
+                    failValue.className = 'value';
+                    failValue.textContent = subject.failCount;
+                    failStat.appendChild(failValue);
+                    
+                    passFailStats.appendChild(failStat);
+                    subjectCard.appendChild(passFailStats);
+                    
+                    const gradeDistribution = document.createElement('div');
+                    gradeDistribution.className = 'grade-distribution';
+                    
+                    const distributionTitle = document.createElement('h3');
+                    distributionTitle.innerHTML = '<i class="fas fa-chart-pie"></i> توزيع درجات الناجحين';
+                    gradeDistribution.appendChild(distributionTitle);
+                    
+                    const histogramContainer = document.createElement('div');
+                    histogramContainer.className = 'histogram-container';
+                    
+                    const canvas = document.createElement('canvas');
+                    canvas.id = `chart-${subject.subjectName}-${subject.stream}`;
+                    histogramContainer.appendChild(canvas);
+                    
+                    gradeDistribution.appendChild(histogramContainer);
+                    subjectCard.appendChild(gradeDistribution);
+                    
+                    subjectsGrid.appendChild(subjectCard);
+                });
+                
+                streamSection.appendChild(subjectsGrid);
+                container.appendChild(streamSection);
+                
+                setTimeout(() => {
+                    const streamCtx = document.getElementById(`stream-chart-${stream}`).getContext('2d');
+                    
+                    const streamLabels = Object.keys(streamSummary.gradeDistribution);
+                    const streamData = Object.values(streamSummary.gradeDistribution);
+                    
+                    new Chart(streamCtx, {
                         type: 'bar',
                         data: {
-                            labels: ['50-59', '60-69', '70-79', '80-89', '90-100'],
-                            datasets: [{ label: 'عدد الطلاب', data: Object.values(subject.gradeDistribution), backgroundColor: ['rgba(0, 255, 153, 0.7)', 'rgba(77, 148, 255, 0.7)', 'rgba(166, 77, 255, 0.7)', 'rgba(255, 206, 86, 0.7)', 'rgba(255, 99, 132, 0.7)'] }]
+                            labels: streamLabels,
+                            datasets: [{
+                                label: 'عدد الطلاب',
+                                data: streamData,
+                                backgroundColor: [
+                                    'rgba(0, 255, 153, 0.7)',
+                                    'rgba(77, 148, 255, 0.7)',
+                                    'rgba(166, 77, 255, 0.7)',
+                                    'rgba(255, 206, 86, 0.7)',
+                                    'rgba(255, 99, 132, 0.7)'
+                                ],
+                                borderColor: [
+                                    'rgba(0, 255, 153, 1)',
+                                    'rgba(77, 148, 255, 1)',
+                                    'rgba(166, 77, 255, 1)',
+                                    'rgba(255, 206, 86, 1)',
+                                    'rgba(255, 99, 132, 1)'
+                                ],
+                                borderWidth: 1
+                            }]
                         },
-                        options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { ticks: { color: '#aaa' }, grid: { color: 'rgba(255,255,255,0.1)' } }, x: { ticks: { color: '#aaa' }, grid: { display: false } } } }
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    ticks: {
+                                        color: '#aaa'
+                                    },
+                                    grid: {
+                                        color: 'rgba(255, 255, 255, 0.1)'
+                                    }
+                                },
+                                x: {
+                                    ticks: {
+                                        color: '#aaa'
+                                    },
+                                    grid: {
+                                        display: false
+                                    }
+                                }
+                            },
+                            plugins: {
+                                legend: {
+                                    display: false
+                                }
+                            }
+                        }
                     });
+                    
+                    streamSubjects.forEach(subject => {
+                        const ctx = document.getElementById(`chart-${subject.subjectName}-${subject.stream}`).getContext('2d');
+                        
+                        const labels = ['50-59', '60-69', '70-79', '80-89', '90-100'];
+                        const data = [
+                            subject.gradeDistribution['50-59'],
+                            subject.gradeDistribution['60-69'],
+                            subject.gradeDistribution['70-79'],
+                            subject.gradeDistribution['80-89'],
+                            subject.gradeDistribution['90-100']
+                        ];
+                        
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: labels,
+                                datasets: [{
+                                    label: 'عدد الطلاب',
+                                    data: data,
+                                    backgroundColor: [
+                                        'rgba(0, 255, 153, 0.7)',
+                                        'rgba(77, 148, 255, 0.7)',
+                                        'rgba(166, 77, 255, 0.7)',
+                                        'rgba(255, 206, 86, 0.7)',
+                                        'rgba(255, 99, 132, 0.7)'
+                                    ],
+                                    borderColor: [
+                                        'rgba(0, 255, 153, 1)',
+                                        'rgba(77, 148, 255, 1)',
+                                        'rgba(166, 77, 255, 1)',
+                                        'rgba(255, 206, 86, 1)',
+                                        'rgba(255, 99, 132, 1)'
+                                    ],
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                scales: {
+                                    y: {
+                                        beginAtZero: true,
+                                        ticks: {
+                                            color: '#aaa'
+                                        },
+                                        grid: {
+                                            color: 'rgba(255, 255, 255, 0.1)'
+                                        }
+                                    },
+                                    x: {
+                                        ticks: {
+                                            color: '#aaa'
+                                        },
+                                        grid: {
+                                            display: false
+                                        }
+                                    }
+                                },
+                                plugins: {
+                                    legend: {
+                                        display: false
+                                    }
+                                }
+                            }
+                        });
+                    });
+                }, 100);
+            });
+        }
+
+        function displayStudentResults() {
+            const studentNumber = parseInt(document.getElementById('studentNumberInput').value);
+            const resultsContainer = document.getElementById('results-container');
+            const errorMsg = document.getElementById('error-message');
+            const feedbackBanner = document.getElementById('result-feedback-banner');
+            
+            if (feedbackTimeout) {
+                clearTimeout(feedbackTimeout);
+                feedbackTimeout = null;
+            }
+            
+            feedbackBanner.classList.remove('visible', 'fade-out', 'has-failure');
+            resultsContainer.classList.remove('visible');
+            resultsContainer.style.display = "none";
+
+            const studentResult = studentResultsCache[studentNumber];
+            
+            if (!studentResult) { 
+                errorMsg.style.display = 'block'; 
+                return; 
+            }
+            
+            errorMsg.style.display = 'none';
+
+            resultsContainer.innerHTML = '';
+          
+            const studentHeader = document.createElement('div');
+            studentHeader.className = 'student-header';
+            
+            const studentName = document.createElement('h2');
+            studentName.textContent = studentResult.name;
+            studentHeader.appendChild(studentName);
+            resultsContainer.appendChild(studentHeader);
+            
+            const studentInfo = document.createElement('div');
+            studentInfo.className = 'student-info';
+            
+            const infoItems = [
+                { label: 'رقم القيد', value: studentResult.number },
+                { label: 'المسار', value: studentResult.stream },
+                { label: 'المجموع الكلي', value: studentResult.totalScore },
+                { label: 'النتيجة', value: studentResult.result },
+                { label: 'النسبة المئوية', value: studentResult.percentage.toFixed(1) + '%' }
+            ];
+            
+            infoItems.forEach(item => {
+                const infoItem = document.createElement('div');
+                infoItem.className = 'student-info-item';
+                
+                const label = document.createElement('p');
+                label.textContent = item.label;
+                infoItem.appendChild(label);
+                
+                const value = document.createElement('span');
+                value.textContent = item.value;
+                infoItem.appendChild(value);
+                
+                studentInfo.appendChild(infoItem);
+            });
+            
+            resultsContainer.appendChild(studentInfo);
+            
+            const statsGrid = document.createElement('div');
+            statsGrid.className = 'stats-grid';
+            
+            const percentageContainer = document.createElement('div');
+            percentageContainer.className = `percentage-circle-container ${studentResult.hasFailure ? 'has-failure' : ''}`;
+            
+            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+            const circleBg = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            circleBg.setAttribute('class', 'circle-bg');
+            circleBg.setAttribute('cx', '75');
+            circleBg.setAttribute('cy', '75');
+            circleBg.setAttribute('r', '65');
+            
+            const circleProgress = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+            circleProgress.setAttribute('id', 'circleProgress');
+            circleProgress.setAttribute('class', 'circle-progress');
+            circleProgress.setAttribute('cx', '75');
+            circleProgress.setAttribute('cy', '75');
+            circleProgress.setAttribute('r', '65');
+            
+            svg.appendChild(circleBg);
+            svg.appendChild(circleProgress);
+            percentageContainer.appendChild(svg);
+            
+            const percentageText = document.createElement('div');
+            percentageText.id = 'percentageText';
+            percentageText.className = 'percentage-text';
+            percentageText.textContent = '0%';
+            percentageContainer.appendChild(percentageText);
+            
+            const percentageLabel = document.createElement('p');
+            percentageLabel.textContent = 'النسبة المئوية';
+            percentageContainer.appendChild(percentageLabel);
+            
+            statsGrid.appendChild(percentageContainer);
+            
+            const rankItem = document.createElement('div');
+            rankItem.className = 'rank-item';
+            
+            const rankTitle = document.createElement('p');
+            rankTitle.textContent = 'الترتيب';
+            rankItem.appendChild(rankTitle);
+            
+            const normalRank = document.createElement('span');
+            normalRank.className = 'rank-normal';
+            normalRank.textContent = `#${studentResult.normalRank}`;
+            rankItem.appendChild(normalRank);
+            
+            const rankSubtitle = document.createElement('p');
+            rankSubtitle.textContent = `من أصل ${studentResult.totalStudents} طالب`;
+            rankItem.appendChild(rankSubtitle);
+            
+            statsGrid.appendChild(rankItem);
+            resultsContainer.appendChild(statsGrid);
+            
+            const subjectBarsContainer = document.createElement('div');
+            subjectBarsContainer.className = 'subject-bars-container';
+            
+            const subjectTitle = document.createElement('h3');
+            subjectTitle.textContent = 'مستوى المواد';
+            subjectBarsContainer.appendChild(subjectTitle);
+            
+            studentResult.grades.forEach(grade => {
+                const subjectBar = document.createElement('div');
+                subjectBar.className = 'subject-bar';
+                
+                const subjectBarInfo = document.createElement('div');
+                subjectBarInfo.className = 'subject-bar-info';
+                
+                const subjectName = document.createElement('span');
+                subjectName.textContent = grade.subject;
+                subjectBarInfo.appendChild(subjectName);
+                
+                const scoreInfo = document.createElement('span');
+                scoreInfo.textContent = `${grade.score} / ${grade.maxScore}`;
+                
+                if (grade.failed) {
+                    const failedLabel = document.createElement('span');
+                    failedLabel.className = 'failed-label';
+                    failedLabel.textContent = '(مادة راسبة)';
+                    scoreInfo.appendChild(document.createTextNode(' '));
+                    scoreInfo.appendChild(failedLabel);
+                }
+                
+                subjectBarInfo.appendChild(scoreInfo);
+                subjectBar.appendChild(subjectBarInfo);
+                
+                const progressBarBg = document.createElement('div');
+                progressBarBg.className = 'progress-bar-bg';
+                
+                const progressBarFill = document.createElement('div');
+                progressBarFill.className = `progress-bar-fill ${grade.failed ? 'failed' : ''}`;
+                progressBarFill.dataset.score = grade.score;
+                progressBarFill.dataset.max = grade.maxScore;
+                
+                progressBarBg.appendChild(progressBarFill);
+                subjectBar.appendChild(progressBarBg);
+                
+                subjectBarsContainer.appendChild(subjectBar);
+            });
+            
+            resultsContainer.appendChild(subjectBarsContainer);
+            
+            const chartContainer = document.createElement('div');
+            chartContainer.id = 'chart-container';
+            
+            const performanceCanvas = document.createElement('canvas');
+            performanceCanvas.id = 'performanceChart';
+            chartContainer.appendChild(performanceCanvas);
+            
+            resultsContainer.appendChild(chartContainer);
+            
+            resultsContainer.style.display = 'block';
+            
+            setTimeout(() => {
+                resultsContainer.classList.add('visible');
+                
+                const radius = circleProgress.r.baseVal.value;
+                const circumference = 2 * Math.PI * radius;
+                const offset = circumference - (studentResult.percentage / 100) * circumference;
+                
+                circleProgress.style.strokeDasharray = `${circumference} ${circumference}`;
+                circleProgress.style.strokeDashoffset = offset;
+                
+                animateValue(percentageText, 0, studentResult.percentage, 1000, true);
+                
+                document.querySelectorAll('.progress-bar-fill').forEach(f => {
+                    const percentage = (f.dataset.score / f.dataset.max) * 100;
+                    f.style.width = `${percentage}%`;
+                });
+                
+                if (studentResult.hasFailure) {
+                    const failedSubjects = studentResult.grades
+                        .filter(grade => grade.failed)
+                        .map(grade => grade.subject)
+                        .join('، ');
+                    
+                    feedbackBanner.innerHTML = `
+                        <p>لقد فشلت في ${studentResult.subjectsFailed} مادة. هل ترغب في الحصول على معلومات حول دورات الدعم؟</p>
+                        <button class="support-btn" id="supportButton">طلب دورة الدعم</button>
+                    `;
+                    feedbackBanner.classList.add('has-failure');
+                    
+                    document.getElementById('supportButton').addEventListener('click', () => {
+                        document.getElementById('studentName').value = studentResult.name;
+                        document.getElementById('failingSubjects').value = failedSubjects;
+                        
+                        document.getElementById('supportModal').classList.add('active');
+                    });
+                } else {
+                    feedbackBanner.textContent = `ممتاز! لقد نجحت في جميع المواد بنسبة ${studentResult.percentage.toFixed(1)}%.`;
+                }
+                
+                feedbackBanner.classList.add('visible');
+                
+                feedbackTimeout = setTimeout(() => {
+                    feedbackBanner.classList.add('fade-out');
+                }, 10000);
+                
+                if (performanceChart) performanceChart.destroy();
+                
+                const subjectLabels = studentResult.grades.map(g => g.subject);
+                const subjectData = studentResult.grades.map(g => (g.score / g.maxScore) * 100);
+                
+                performanceChart = new Chart(performanceCanvas, {
+                    type: 'radar',
+                    data: { 
+                        labels: subjectLabels, 
+                        datasets: [{
+                            data: subjectData, 
+                            backgroundColor: 'rgba(0, 255, 153, 0.2)', 
+                            borderColor: 'rgb(0, 255, 153)', 
+                            pointBackgroundColor: 'rgb(0, 255, 153)', 
+                            pointBorderColor: '#fff',
+                            borderWidth: 2,
+                            pointRadius: 4
+                        }] 
+                    },
+                    options: { 
+                        maintainAspectRatio: false,
+                        scales: { 
+                            r: { 
+                                angleLines: { color: 'rgba(255, 255, 255, 0.2)' }, 
+                                grid: { color: 'rgba(255, 255, 255, 0.2)' }, 
+                                pointLabels: { 
+                                    color: '#e0e0e0', 
+                                    font: { size: 12 } 
+                                }, 
+                                suggestedMin: 0, 
+                                suggestedMax: 100, 
+                                ticks: { 
+                                    display: false,
+                                    stepSize: 20
+                                } 
+                            } 
+                        }, 
+                        plugins: { 
+                            legend: { display: false },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        const subjectIndex = context.dataIndex;
+                                        const subject = studentResult.grades[subjectIndex];
+                                        return `${subject.subject}: ${subject.score}/${subject.maxScore} (${((subject.score / subject.maxScore) * 100).toFixed(1)}%)`;
+                                    }
+                                }
+                            }
+                        } 
+                    }
                 });
             }, 100);
-        });
-    }
-
-    function animateValue(obj, start, end, duration, isPercent) {
-        let startTimestamp = null;
-        const step = (timestamp) => {
-            if (!startTimestamp) startTimestamp = timestamp;
-            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-            let val = isPercent ? (progress * (end - start) + start).toFixed(1) : Math.floor(progress * (end - start) + start);
-            obj.textContent = isPercent ? `${val}%` : val;
-            if (progress < 1) window.requestAnimationFrame(step);
-        };
-        window.requestAnimationFrame(step);
-    }
-
-    document.getElementById('searchButton').addEventListener('click', displayStudentResults);
-    document.getElementById('studentNumberInput').addEventListener('keyup', (e) => {
-        if (e.key === 'Enter') displayStudentResults();
-    });
-    document.getElementById('modalClose').addEventListener('click', () => {
-        document.getElementById('supportModal').classList.remove('active');
-    });
-    document.getElementById('cancelSupport').addEventListener('click', () => {
-        document.getElementById('supportModal').classList.remove('active');
-    });
-    document.getElementById('supportForm').addEventListener('submit', (e) => {
-        e.preventDefault();
-        alert('تم إرسال طلبك بنجاح');
-        document.getElementById('supportModal').classList.remove('active');
-    });
-    document.getElementById('supportModal').addEventListener('click', (e) => {
-        if (e.target === document.getElementById('supportModal')) {
-            document.getElementById('supportModal').classList.remove('active');
         }
-    });
+        
+        function animateValue(obj, start, end, duration, isPercent) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                let val = isPercent ? (progress * (end - start) + start).toFixed(2) : Math.floor(progress * (end - start) + start);
+                obj.textContent = isPercent ? `${val}%` : val;
+                if (progress < 1) window.requestAnimationFrame(step);
+            };
+            window.requestAnimationFrame(step);
+        }
 
-    window.addEventListener('DOMContentLoaded', () => {
-        initRouting();
-        fetchStudentData();
-    });
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const pageId = this.dataset.page;
+                const hash = this.getAttribute('href');
+                history.pushState({ page: pageId }, '', hash);
+                
+                loadPage(pageId);
+            });
+        });
+        
+        window.addEventListener('popstate', function(event) {
+            const hash = window.location.hash;
+            let pageId = 'home-page';
+            
+            if (hash === '#analytics') pageId = 'analytics-page';
+            else if (hash === '#about') pageId = 'about-page';
+            
+            loadPage(pageId);
+        });
+        
+        function loadPage(pageId) {
+            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+            document.querySelector(`.nav-link[data-page="${pageId}"]`).classList.add('active');
+            
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            document.getElementById(pageId).classList.add('active');
+            currentPage = pageId;
+            
+            if (pageId === 'analytics-page') {
+                displaySubjectAnalytics();
+            }
+        }
+        
+        function initRouting() {
+            const hash = window.location.hash;
+            let pageId = 'home-page';
+            
+            if (hash === '#analytics') pageId = 'analytics-page';
+            else if (hash === '#about') pageId = 'about-page';
+            
+            loadPage(pageId);
+        }
 
+        document.getElementById('searchButton').addEventListener('click', displayStudentResults);
+        
+        document.getElementById('studentNumberInput').addEventListener('keyup', (e) => {
+            if (e.key === 'Enter') displayStudentResults();
+        });
+        
+        document.getElementById('modalClose').addEventListener('click', () => {
+            document.getElementById('supportModal').classList.remove('active');
+        });
+        
+        document.getElementById('cancelSupport').addEventListener('click', () => {
+            document.getElementById('supportModal').classList.remove('active');
+        });
+        
+        document.getElementById('supportForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('تم إرسال طلبك بنجاح');
+            document.getElementById('supportModal').classList.remove('active');
+        });
+        
+        document.getElementById('supportModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('supportModal')) {
+                document.getElementById('supportModal').classList.remove('active');
+            }
+        });
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initRouting();
+            fetchStudentData();
+        });
     </script>
 </body>
 </html>
