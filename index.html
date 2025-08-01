@@ -118,11 +118,10 @@
             font-size: 20px;
         }
         
-        /* Language Selector Styles - Updated position */
+        /* Language Selector Styles - Moved to the end of nav links */
         .language-selector {
             position: relative;
-            margin-left: auto; /* Changed to auto for proper positioning */
-            margin-right: 20px; /* Added space between language and nav links */
+            margin-left: 20px;
         }
         
         .language-toggle {
@@ -163,7 +162,7 @@
         .language-dropdown {
             position: absolute;
             top: 100%;
-            right: 0; /* Changed to right for RTL alignment */
+            right: 0;
             background-color: var(--container-color);
             border: 1px solid var(--border-color);
             border-radius: 8px;
@@ -183,7 +182,7 @@
             color: var(--text-color);
             cursor: pointer;
             transition: all 0.3s ease;
-            text-align: right; /* Align text to right for RTL */
+            text-align: right;
         }
         
         .language-option:hover {
@@ -911,7 +910,6 @@
             .language-selector {
                 margin-left: 0;
                 margin-top: 10px;
-                margin-right: 0;
             }
             
             .page-header h1 {
@@ -959,20 +957,6 @@
             <span>منصة التحليل التعليمي</span>
         </div>
         
-        <!-- Language Selector - Moved to the right -->
-        <div class="language-selector">
-            <div class="language-toggle" id="languageToggle">
-                <span class="language-icon">🌐</span>
-                <span class="language-code">AR</span>
-                <span class="language-chevron">▼</span>
-            </div>
-            <div class="language-dropdown" id="languageDropdown">
-                <div class="language-option" data-lang="en">English</div>
-                <div class="language-option" data-lang="tr">Türkçe</div>
-                <div class="language-option" data-lang="ar">العربية</div> <!-- Added Arabic option -->
-            </div>
-        </div>
-        
         <div class="nav-links">
             <a href="#home" class="nav-link active" data-page="home-page">
                 <i class="fas fa-home"></i> الرئيسية
@@ -983,6 +967,20 @@
             <a href="#about" class="nav-link" data-page="about-page">
                 <i class="fas fa-info-circle"></i> من نحن
             </a>
+            
+            <!-- Language Selector - Now placed next to "About Us" -->
+            <div class="language-selector">
+                <div class="language-toggle" id="languageToggle">
+                    <span class="language-icon">🌐</span>
+                    <span class="language-code">AR</span>
+                    <span class="language-chevron">▼</span>
+                </div>
+                <div class="language-dropdown" id="languageDropdown">
+                    <div class="language-option" data-lang="en">English</div>
+                    <div class="language-option" data-lang="tr">Türkçe</div>
+                    <div class="language-option" data-lang="ar">العربية</div>
+                </div>
+            </div>
         </div>
     </nav>
 
@@ -1030,37 +1028,37 @@
             
             <div class="about-content">
                 <div class="about-section">
-                    <h2><i class="fas fa-file-contract"></i> شروط الخدمة</h2>
-                    <p>مرحبًا بكم في منصة التحليل التعليمي. يرجى قراءة شروط الخدمة هذه بعناية قبل استخدام موقعنا.</p>
+                    <h2><i class="fas fa-file-contract"></i> <span class="translatable" data-key="termsTitle">شروط الخدمة</span></h2>
+                    <p class="translatable" data-key="termsIntro">مرحبًا بكم في منصة التحليل التعليمي. يرجى قراءة شروط الخدمة هذه بعناية قبل استخدام موقعنا.</p>
                     
                     <div class="info-box">
-                        <p><strong>القبول بالشروط:</strong> باستخدامك لهذه المنصة، فإنك توافق على الالتزام بهذه الشروط والأحكام.</p>
+                        <p class="translatable" data-key="termsAcceptance"><strong>القبول بالشروط:</strong> باستخدامك لهذه المنصة، فإنك توافق على الالتزام بهذه الشروط والأحكام.</p>
                     </div>
                     
-                    <p><strong>1. الاستخدام المسموح به:</strong> يُسمح لك باستخدام هذه المنصة لأغراض شخصية وغير تجارية فقط. لا يجوز لك استخدام محتوى المنصة لأي غرض تجاري دون الحصول على إذن كتابي مسبق منا.</p>
+                    <p class="translatable" data-key="termsUsage"><strong>1. الاستخدام المسموح به:</strong> يُسمح لك باستخدام هذه المنصة لأغراض شخصية وغير تجارية فقط. لا يجوز لك استخدام محتوى المنصة لأي غرض تجاري دون الحصول على إذن كتابي مسبق منا.</p>
                     
-                    <p><strong>2. دقة المعلومات:</strong> نبذل جهودًا معقولة لضمان دقة المعلومات المعروضة على المنصة، ولكننا لا نضمن اكتمالها أو دقتها أو موثوقيتها. أي اعتماد على هذه المعلومات يكون على مسؤوليتك الخاصة.</p>
+                    <p class="translatable" data-key="termsAccuracy"><strong>2. دقة المعلومات:</strong> نبذل جهودًا معقولة لضمان دقة المعلومات المعروضة على المنصة، ولكننا لا نضمن اكتمالها أو دقتها أو موثوقيتها. أي اعتماد على هذه المعلومات يكون على مسؤوليتك الخاصة.</p>
                     
-                    <p><strong>3. الملكية الفكرية:</strong> جميع المحتويات الموجودة على المنصة، بما في ذلك النصوص والرسومات والشعارات والصور والبرمجيات، هي ملك لنا أو لموردينا ومحمية بقوانين الملكية الفكرية.</p>
+                    <p class="translatable" data-key="termsIntellectual"><strong>3. الملكية الفكرية:</strong> جميع المحتويات الموجودة على المنصة، بما في ذلك النصوص والرسومات والشعارات والصور والبرمجيات، هي ملك لنا أو لموردينا ومحمية بقوانين الملكية الفكرية.</p>
                     
-                    <p><strong>4. التعديلات:</strong> نحتفظ بالحق في تعديل هذه الشروط في أي وقت. سيتم نشر أي تغييرات على هذه الصفحة، وسيكون تاريخ التحديث الأخير في أسفل الصفحة.</p>
+                    <p class="translatable" data-key="termsModifications"><strong>4. التعديلات:</strong> نحتفظ بالحق في تعديل هذه الشروط في أي وقت. سيتم نشر أي تغييرات على هذه الصفحة، وسيكون تاريخ التحديث الأخير في أسفل الصفحة.</p>
                 </div>
                 
                 <div class="about-section">
-                    <h2><i class="fas fa-database"></i> مصدر البيانات</h2>
-                    <p>تلتزم منصتنا بالشفافية فيما يتعلق بمصادر البيانات التي نعرضها:</p>
+                    <h2><i class="fas fa-database"></i> <span class="translatable" data-key="dataTitle">مصدر البيانات</span></h2>
+                    <p class="translatable" data-key="dataIntro">تلتزم منصتنا بالشفافية فيما يتعلق بمصادر البيانات التي نعرضها:</p>
                     
                     <div class="info-box">
-                        <p>جميع البيانات المعروضة على هذه المنصة تم الحصول عليها من المصادر الرسمية المعلنة من قبل وزارة التعليم.</p>
+                        <p class="translatable" data-key="dataSource">جميع البيانات المعروضة على هذه المنصة تم الحصول عليها من المصادر الرسمية المعلنة من قبل وزارة التعليم.</p>
                     </div>
                     
-                    <p><strong>1. المصادر الرسمية:</strong> تستند جميع البيانات المعروضة على هذه المنصة إلى المعلومات المنشورة رسميًا من قبل وزارة التعليم والجهات التابعة لها. نحن نضمن أن البيانات التي نقدمها هي نفسها المتاحة للجمهور عبر القنوات الرسمية.</p>
+                    <p class="translatable" data-key="dataOfficial"><strong>1. المصادر الرسمية:</strong> تستند جميع البيانات المعروضة على هذه المنصة إلى المعلومات المنشورة رسميًا من قبل وزارة التعليم والجهات التابعة لها. نحن نضمن أن البيانات التي نقدمها هي نفسها المتاحة للجمهور عبر القنوات الرسمية.</p>
                     
-                    <p><strong>2. تحديث البيانات:</strong> يتم تحديث البيانات بشكل دوري لضمان دقتها وحداثتها. ومع ذلك، قد يكون هناك تأخير بين نشر البيانات رسميًا وعرضها على منصتنا.</p>
+                    <p class="translatable" data-key="dataUpdates"><strong>2. تحديث البيانات:</strong> يتم تحديث البيانات بشكل دوري لضمان دقتها وحداثتها. ومع ذلك، قد يكون هناك تأخير بين نشر البيانات رسميًا وعرضها على منصتنا.</p>
                     
-                    <p><strong>3. خصوصية البيانات:</strong> نحن نلتزم التزامًا تامًا بقوانين حماية البيانات وخصوصية المعلومات. لا نقوم بجمع أو تخزين أي معلومات شخصية حساسة خارج نطاق البيانات المتاحة للعموم.</p>
+                    <p class="translatable" data-key="dataPrivacy"><strong>3. خصوصية البيانات:</strong> نحن نلتزم التزامًا تامًا بقوانين حماية البيانات وخصوصية المعلومات. لا نقوم بجمع أو تخزين أي معلومات شخصية حساسة خارج نطاق البيانات المتاحة للعموم.</p>
                     
-                    <p><strong>4. الشفافية:</strong> نؤمن بحق الجمهور في الوصول إلى المعلومات التعليمية بشكل شفاف. تهدف منصتنا إلى تقديم هذه المعلومات بطريقة سهلة الفهم والاستخدام.</p>
+                    <p class="translatable" data-key="dataTransparency"><strong>4. الشفافية:</strong> نؤمن بحق الجمهور في الوصول إلى المعلومات التعليمية بشكل شفاف. تهدف منصتنا إلى تقديم هذه المعلومات بطريقة سهلة الفهم والاستخدام.</p>
                 </div>
             </div>
         </div>
@@ -1101,271 +1099,409 @@
     </div>
 
     <script>
-        const studentResultsCache = {};
-        const subjectAnalyticsCache = {};
-        
-        let performanceChart = null;
-        let feedbackTimeout = null;
-        let currentPage = 'home-page';
-        let studentsData = [];
-        
-        const sampleData = [
-            {
-                "number": 3390599,
-                "name": "دعاء سالم الهادى التميمى",
-                "stream": "علمي",
-                "overallPercentage": 86.8,
-                "result": "ممتاز",
-                "subjectsPassed": 9,
-                "subjectsFailed": 0,
-                "grades": [
-                    {
-                        "subject": "التربية الإسلامية",
-                        "total": "76.0 / 80.0",
-                        "status": "ناجح"
-                    },
-                    {
-                        "subject": "اللغة العربية (علمي)",
-                        "total": "152.0 / 160.0",
-                        "status": "ناجح"
-                    },
-                    {
-                        "subject": "اللغة الإنجليزية (علمي)",
-                        "total": "135.0 / 160.0",
-                        "status": "ناجح"
-                    },
-                    {
-                        "subject": "تقنية المعلومات (علمي)",
-                        "total": "74.0 / 80.0",
-                        "status": "ناجح"
-                    },
-                    {
-                        "subject": "الرياضيات",
-                        "total": "176.0 / 200.0",
-                        "status": "ناجح"
-                    },
-                    {
-                        "subject": "الإحصاء (علمي)",
-                        "total": "72.0 / 80.0",
-                        "status": "ناجح"
-                    },
-                    {
-                        "subject": "الفيزياء",
-                        "total": "160.0 / 200.0",
-                        "status": "ناجح"
-                    },
-                    {
-                        "subject": "الكيمياء",
-                        "total": "129.0 / 160.0",
-                        "status": "ناجح"
-                    },
-                    {
-                        "subject": "الأحياء",
-                        "total": "137.0 / 160.0",
-                        "status": "ناجح"
-                    }
-                ]
-            }
-        ];
 
-        // Language management
-        const translations = {
-            'ar': {
-                'home': 'الرئيسية',
-                'analytics': 'التحليلات',
-                'about': 'من نحن',
-                'searchPlaceholder': 'أدخل رقم القيد الخاص بك...',
-                'searchButton': 'بحث',
-                'errorMessage': 'لا يوجد طالب بهذا الرقم.',
-                'resultsTitle': 'نتائج الشهادة الثانوية - 2025',
-                'resultsSubtitle': 'استعرض نتائجك التفصيلية، احصل على تحليل أدائك، وقارن نفسك مع زملائك في جميع المواد الدراسية',
-                'analyticsTitle': 'تحليلات المواد الدراسية',
-                'analyticsSubtitle': 'استكشف أداء الطلاب في جميع المواد الدراسية، احصل على إحصائيات مفصلة وتوزيع الدرجات لكل مادة',
-                'aboutTitle': 'عن المنصة التعليمية',
-                'aboutSubtitle': 'تعرف على منصتنا، مصادر بياناتنا، وشروط استخدام الخدمة'
-            },
-            'en': {
-                'home': 'Home',
-                'analytics': 'Analytics',
-                'about': 'About',
-                'searchPlaceholder': 'Enter your student number...',
-                'searchButton': 'Search',
-                'errorMessage': 'No student found with this number.',
-                'resultsTitle': 'Secondary Certificate Results - 2025',
-                'resultsSubtitle': 'View your detailed results, get performance analysis, and compare yourself with peers in all subjects',
-                'analyticsTitle': 'Subject Analytics',
-                'analyticsSubtitle': 'Explore student performance in all subjects, get detailed statistics and grade distributions',
-                'aboutTitle': 'About the Platform',
-                'aboutSubtitle': 'Learn about our platform, data sources, and terms of service'
-            },
-            'tr': {
-                'home': 'Ana Sayfa',
-                'analytics': 'Analizler',
-                'about': 'Hakkımızda',
-                'searchPlaceholder': 'Öğrenci numaranızı girin...',
-                'searchButton': 'Ara',
-                'errorMessage': 'Bu numaraya sahip öğrenci bulunamadı.',
-                'resultsTitle': 'Lise Sertifika Sonuçları - 2025',
-                'resultsSubtitle': 'Detaylı sonuçlarınızı görüntüleyin, performans analizi alın ve tüm derslerde kendinizi akranlarınızla karşılaştırın',
-                'analyticsTitle': 'Ders Analizleri',
-                'analyticsSubtitle': 'Tüm derslerde öğrenci performansını keşfedin, detaylı istatistikler ve not dağılımları alın',
-                'aboutTitle': 'Platform Hakkında',
-                'aboutSubtitle': 'Platformumuz, veri kaynaklarımız ve hizmet şartları hakkında bilgi edinin'
-            }
-        };
-
-        let currentLanguage = 'ar';
-
-        function updateLanguage(lang) {
-            currentLanguage = lang;
-            document.querySelector('.language-code').textContent = lang.toUpperCase();
-            
-            // Update navigation links
-            document.querySelector('[data-page="home-page"]').innerHTML = `<i class="fas fa-home"></i> ${translations[lang]['home']}`;
-            document.querySelector('[data-page="analytics-page"]').innerHTML = `<i class="fas fa-chart-bar"></i> ${translations[lang]['analytics']}`;
-            document.querySelector('[data-page="about-page"]').innerHTML = `<i class="fas fa-info-circle"></i> ${translations[lang]['about']}`;
-            
-            // Update home page
-            document.querySelector('#home-page .page-header h1').textContent = translations[lang]['resultsTitle'];
-            document.querySelector('#home-page .page-header p').textContent = translations[lang]['resultsSubtitle'];
-            document.querySelector('#studentNumberInput').placeholder = translations[lang]['searchPlaceholder'];
-            document.querySelector('#searchButton').innerHTML = `<i class="fas fa-search"></i> ${translations[lang]['searchButton']}`;
-            document.querySelector('#error-message').textContent = translations[lang]['errorMessage'];
-            
-            // Update analytics page
-            document.querySelector('#analytics-page .page-header h1').textContent = translations[lang]['analyticsTitle'];
-            document.querySelector('#analytics-page .page-header p').textContent = translations[lang]['analyticsSubtitle'];
-            
-            // Update about page
-            document.querySelector('#about-page .page-header h1').textContent = translations[lang]['aboutTitle'];
-            document.querySelector('#about-page .page-header p').textContent = translations[lang]['aboutSubtitle'];
-            
-            // Close dropdown
-            document.getElementById('languageDropdown').classList.remove('show');
-        }
-
-        async function fetchStudentData() {
-            try {
-                const response = await fetch('data.json');
-                if (!response.ok) {
-                    throw new Error('Failed to fetch student data');
+    const studentResultsCache = {};
+    const subjectAnalyticsCache = {};
+    
+    let performanceChart = null;
+    let feedbackTimeout = null;
+    let currentPage = 'home-page';
+    let studentsData = [];
+    
+    const sampleData = [
+        {
+            "number": 3390599,
+            "name": "دعاء سالم الهادى التميمى",
+            "stream": "علمي",
+            "overallPercentage": 86.8,
+            "result": "ممتاز",
+            "subjectsPassed": 9,
+            "subjectsFailed": 0,
+            "grades": [
+                {
+                    "subject": "التربية الإسلامية",
+                    "total": "76.0 / 80.0",
+                    "status": "ناجح"
+                },
+                {
+                    "subject": "اللغة العربية (علمي)",
+                    "total": "152.0 / 160.0",
+                    "status": "ناجح"
+                },
+                {
+                    "subject": "اللغة الإنجليزية (علمي)",
+                    "total": "135.0 / 160.0",
+                    "status": "ناجح"
+                },
+                {
+                    "subject": "تقنية المعلومات (علمي)",
+                    "total": "74.0 / 80.0",
+                    "status": "ناجح"
+                },
+                {
+                    "subject": "الرياضيات",
+                    "total": "176.0 / 200.0",
+                    "status": "ناجح"
+                },
+                {
+                    "subject": "الإحصاء (علمي)",
+                    "total": "72.0 / 80.0",
+                    "status": "ناجح"
+                },
+                {
+                    "subject": "الفيزياء",
+                    "total": "160.0 / 200.0",
+                    "status": "ناجح"
+                },
+                {
+                    "subject": "الكيمياء",
+                    "total": "129.0 / 160.0",
+                    "status": "ناجح"
+                },
+                {
+                    "subject": "الأحياء",
+                    "total": "137.0 / 160.0",
+                    "status": "ناجح"
                 }
-                studentsData = await response.json();
-            } catch (error) {
-                console.error('Error loading student data:', error);
-                studentsData = sampleData;
-            }
-            
-            preCacheStudentResults();
-            
-            if (currentPage === 'analytics-page') {
-                displaySubjectAnalytics();
-            }
+            ]
         }
+    ];
 
-        function preCacheStudentResults() {
-            studentsData.forEach(student => {
-                let totalScore = 0;
-                let maxScore = 0;
-                let hasFailure = false;
-                
-                const gradesWithStatus = student.grades.map(grade => {
-                    const [scoreStr, maxScoreStr] = grade.total.split('/').map(s => parseFloat(s.trim()));
-                    totalScore += scoreStr;
-                    maxScore += maxScoreStr;
-                    
-                    const percentage = (scoreStr / maxScoreStr) * 100;
-                    const failed = grade.status === "راسب" || percentage < 50;
-                    if (failed) hasFailure = true;
-                    
-                    return {
-                        subject: grade.subject,
-                        score: scoreStr,
-                        maxScore: maxScoreStr,
-                        failed: failed
-                    };
-                });
-                
-                const percentage = maxScore > 0 ? (totalScore / maxScore) * 100 : 0;
+    // Enhanced translations with about page content
+    const translations = {
+        'ar': {
+            'home': 'الرئيسية',
+            'analytics': 'التحليلات',
+            'about': 'من نحن',
+            'searchPlaceholder': 'أدخل رقم القيد الخاص بك...',
+            'searchButton': 'بحث',
+            'errorMessage': 'لا يوجد طالب بهذا الرقم.',
+            'resultsTitle': 'نتائج الشهادة الثانوية - 2025',
+            'resultsSubtitle': 'استعرض نتائجك التفصيلية، احصل على تحليل أدائك، وقارن نفسك مع زملائك في جميع المواد الدراسية',
+            'analyticsTitle': 'تحليلات المواد الدراسية',
+            'analyticsSubtitle': 'استكشف أداء الطلاب في جميع المواد الدراسية، احصل على إحصائيات مفصلة وتوزيع الدرجات لكل مادة',
+            'aboutTitle': 'عن المنصة التعليمية',
+            'aboutSubtitle': 'تعرف على منصتنا، مصادر بياناتنا، وشروط استخدام الخدمة',
+            'termsTitle': 'شروط الخدمة',
+            'termsIntro': 'مرحبًا بكم في منصة التحليل التعليمي. يرجى قراءة شروط الخدمة هذه بعناية قبل استخدام موقعنا.',
+            'termsAcceptance': '<strong>القبول بالشروط:</strong> باستخدامك لهذه المنصة، فإنك توافق على الالتزام بهذه الشروط والأحكام.',
+            'termsUsage': '<strong>1. الاستخدام المسموح به:</strong> يُسمح لك باستخدام هذه المنصة لأغراض شخصية وغير تجارية فقط. لا يجوز لك استخدام محتوى المنصة لأي غرض تجاري دون الحصول على إذن كتابي مسبق منا.',
+            'termsAccuracy': '<strong>2. دقة المعلومات:</strong> نبذل جهودًا معقولة لضمان دقة المعلومات المعروضة على المنصة، ولكننا لا نضمن اكتمالها أو دقتها أو موثوقيتها. أي اعتماد على هذه المعلومات يكون على مسؤوليتك الخاصة.',
+            'termsIntellectual': '<strong>3. الملكية الفكرية:</strong> جميع المحتويات الموجودة على المنصة، بما في ذلك النصوص والرسومات والشعارات والصور والبرمجيات، هي ملك لنا أو لموردينا ومحمية بقوانين الملكية الفكرية.',
+            'termsModifications': '<strong>4. التعديلات:</strong> نحتفظ بالحق في تعديل هذه الشروط في أي وقت. سيتم نشر أي تغييرات على هذه الصفحة، وسيكون تاريخ التحديث الأخير في أسفل الصفحة.',
+            'dataTitle': 'مصدر البيانات',
+            'dataIntro': 'تلتزم منصتنا بالشفافية فيما يتعلق بمصادر البيانات التي نعرضها:',
+            'dataSource': 'جميع البيانات المعروضة على هذه المنصة تم الحصول عليها من المصادر الرسمية المعلنة من قبل وزارة التعليم.',
+            'dataOfficial': '<strong>1. المصادر الرسمية:</strong> تستند جميع البيانات المعروضة على هذه المنصة إلى المعلومات المنشورة رسميًا من قبل وزارة التعليم والجهات التابعة لها. نحن نضمن أن البيانات التي نقدمها هي نفسها المتاحة للجمهور عبر القنوات الرسمية.',
+            'dataUpdates': '<strong>2. تحديث البيانات:</strong> يتم تحديث البيانات بشكل دوري لضمان دقتها وحداثتها. ومع ذلك، قد يكون هناك تأخير بين نشر البيانات رسميًا وعرضها على منصتنا.',
+            'dataPrivacy': '<strong>3. خصوصية البيانات:</strong> نحن نلتزم التزامًا تامًا بقوانين حماية البيانات وخصوصية المعلومات. لا نقوم بجمع أو تخزين أي معلومات شخصية حساسة خارج نطاق البيانات المتاحة للعموم.',
+            'dataTransparency': '<strong>4. الشفافية:</strong> نؤمن بحق الجمهور في الوصول إلى المعلومات التعليمية بشكل شفاف. تهدف منصتنا إلى تقديم هذه المعلومات بطريقة سهلة الفهم والاستخدام.'
+        },
+        'en': {
+            'home': 'Home',
+            'analytics': 'Analytics',
+            'about': 'About',
+            'searchPlaceholder': 'Enter your student number...',
+            'searchButton': 'Search',
+            'errorMessage': 'No student found with this number.',
+            'resultsTitle': 'Secondary Certificate Results - 2025',
+            'resultsSubtitle': 'View your detailed results, get performance analysis, and compare yourself with peers in all subjects',
+            'analyticsTitle': 'Subject Analytics',
+            'analyticsSubtitle': 'Explore student performance in all subjects, get detailed statistics and grade distributions',
+            'aboutTitle': 'About the Platform',
+            'aboutSubtitle': 'Learn about our platform, data sources, and terms of service',
+            'termsTitle': 'Terms of Service',
+            'termsIntro': 'Welcome to the Educational Analysis Platform. Please read these Terms of Service carefully before using our site.',
+            'termsAcceptance': '<strong>Acceptance of Terms:</strong> By using this platform, you agree to comply with these terms and conditions.',
+            'termsUsage': '<strong>1. Permitted Use:</strong> You are allowed to use this platform for personal and non-commercial purposes only. You may not use the content of the platform for any commercial purpose without obtaining prior written permission from us.',
+            'termsAccuracy': '<strong>2. Accuracy of Information:</strong> We make reasonable efforts to ensure the accuracy of the information displayed on the platform, but we do not guarantee its completeness, accuracy, or reliability. Any reliance on this information is at your own risk.',
+            'termsIntellectual': '<strong>3. Intellectual Property:</strong> All content on the platform, including texts, graphics, logos, images, and software, is owned by us or our suppliers and is protected by intellectual property laws.',
+            'termsModifications': '<strong>4. Modifications:</strong> We reserve the right to modify these terms at any time. Any changes will be published on this page, and the last update date will be at the bottom of the page.',
+            'dataTitle': 'Data Source',
+            'dataIntro': 'Our platform is committed to transparency regarding the sources of the data we display:',
+            'dataSource': 'All data displayed on this platform has been obtained from official sources announced by the Ministry of Education.',
+            'dataOfficial': '<strong>1. Official Sources:</strong> All data displayed on this platform is based on information officially published by the Ministry of Education and its affiliated entities. We guarantee that the data we provide is the same as that available to the public through official channels.',
+            'dataUpdates': '<strong>2. Data Updates:</strong> Data is updated periodically to ensure its accuracy and timeliness. However, there may be a delay between the official publication of data and its display on our platform.',
+            'dataPrivacy': '<strong>3. Data Privacy:</strong> We are fully committed to data protection laws and privacy of information. We do not collect or store any sensitive personal information beyond the scope of publicly available data.',
+            'dataTransparency': '<strong>4. Transparency:</strong> We believe in the public\'s right to access educational information transparently. Our platform aims to present this information in an easy-to-understand and usable manner.'
+        },
+        'tr': {
+            'home': 'Ana Sayfa',
+            'analytics': 'Analizler',
+            'about': 'Hakkımızda',
+            'searchPlaceholder': 'Öğrenci numaranızı girin...',
+            'searchButton': 'Ara',
+            'errorMessage': 'Bu numaraya sahip öğrenci bulunamadı.',
+            'resultsTitle': 'Lise Sertifika Sonuçları - 2025',
+            'resultsSubtitle': 'Detaylı sonuçlarınızı görüntüleyin, performans analizi alın ve tüm derslerde kendinizi akranlarınızla karşılaştırın',
+            'analyticsTitle': 'Ders Analizleri',
+            'analyticsSubtitle': 'Tüm derslerde öğrenci performansını keşfedin, detaylı istatistikler ve not dağılımları alın',
+            'aboutTitle': 'Platform Hakkında',
+            'aboutSubtitle': 'Platformumuz, veri kaynaklarımız ve hizmet şartları hakkında bilgi edinin',
+            'termsTitle': 'Hizmet Şartları',
+            'termsIntro': 'Eğitim Analiz Platformuna hoş geldiniz. Sitemizi kullanmadan önce lütfen bu Hizmet Şartlarını dikkatlice okuyun.',
+            'termsAcceptance': '<strong>Şartları Kabul:</strong> Bu platformu kullanarak, bu şart ve koşullara uymayı kabul etmiş olursunuz.',
+            'termsUsage': '<strong>1. İzin Verilen Kullanım:</strong> Bu platformu yalnızca kişisel ve ticari olmayan amaçlar için kullanabilirsiniz. Platformun içeriğini bizden önceden yazılı izin almadan herhangi bir ticari amaç için kullanamazsınız.',
+            'termsAccuracy': '<strong>2. Bilgilerin Doğruluğu:</strong> Platformda görüntülenen bilgilerin doğruluğunu sağlamak için makul çabalar sarf ediyoruz, ancak bunların tamlığını, doğruluğunu veya güvenilirliğini garanti etmiyoruz. Bu bilgilere güvenmek kendi sorumluluğunuzdadır.',
+            'termsIntellectual': '<strong>3. Fikri Mülkiyet:</strong> Platformdaki tüm içerikler (metinler, grafikler, logolar, resimler ve yazılımlar dahil) bizim veya tedarikçilerimiz tarafından sahiplenilir ve fikri mülkiyet yasalarıyla korunur.',
+            'termsModifications': '<strong>4. Değişiklikler:</strong> Bu şartları istediğimiz zaman değiştirme hakkını saklı tutarız. Herhangi bir değişiklik bu sayfada yayınlanacak ve son güncelleme tarihi sayfanın altında yer alacaktır.',
+            'dataTitle': 'Veri Kaynağı',
+            'dataIntro': 'Platformumuz, görüntülediğimiz verilerin kaynakları konusunda şeffaflığa bağlıdır:',
+            'dataSource': 'Bu platformda görüntülenen tüm veriler Eğitim Bakanlığı tarafından açıklanan resmi kaynaklardan elde edilmiştir.',
+            'dataOfficial': '<strong>1. Resmi Kaynaklar:</strong> Bu platformda görüntülenen tüm veriler, Eğitim Bakanlığı ve bağlı kuruluşları tarafından resmi olarak yayınlanan bilgilere dayanmaktadır. Sağladığımız verilerin resmi kanallar aracılığıyla kamuya açık olanlarla aynı olduğunu garanti ediyoruz.',
+            'dataUpdates': '<strong>2. Veri Güncellemeleri:</strong> Verilerin doğruluğunu ve güncelliğini sağlamak için periyodik olarak güncellenir. Ancak, verilerin resmi olarak yayınlanması ile platformumuzda görüntülenmesi arasında bir gecikme olabilir.',
+            'dataPrivacy': '<strong>3. Veri Gizliliği:</strong> Veri koruma yasalarına ve bilgi gizliliğine tam olarak bağlıyız. Kamuya açık verilerin kapsamı dışında herhangi bir hassas kişisel bilgiyi toplamıyoruz veya depolamıyoruz.',
+            'dataTransparency': '<strong>4. Şeffaflık:</strong> Kamunun eğitim bilgilerine şeffaf bir şekilde erişme hakkına inanıyoruz. Platformumuz, bu bilgileri kolay anlaşılır ve kullanılabilir bir şekilde sunmayı amaçlamaktadır.'
+        }
+    };
+
+    let currentLanguage = 'ar';
+
+    function updateLanguage(lang) {
+        currentLanguage = lang;
+        document.querySelector('.language-code').textContent = lang.toUpperCase();
+        
+        // Update navigation links
+        document.querySelector('[data-page="home-page"]').innerHTML = `<i class="fas fa-home"></i> ${translations[lang]['home']}`;
+        document.querySelector('[data-page="analytics-page"]').innerHTML = `<i class="fas fa-chart-bar"></i> ${translations[lang]['analytics']}`;
+        document.querySelector('[data-page="about-page"]').innerHTML = `<i class="fas fa-info-circle"></i> ${translations[lang]['about']}`;
+        
+        // Update home page
+        document.querySelector('#home-page .page-header h1').textContent = translations[lang]['resultsTitle'];
+        document.querySelector('#home-page .page-header p').textContent = translations[lang]['resultsSubtitle'];
+        document.querySelector('#studentNumberInput').placeholder = translations[lang]['searchPlaceholder'];
+        document.querySelector('#searchButton').innerHTML = `<i class="fas fa-search"></i> ${translations[lang]['searchButton']}`;
+        document.querySelector('#error-message').textContent = translations[lang]['errorMessage'];
+        
+        // Update analytics page
+        document.querySelector('#analytics-page .page-header h1').textContent = translations[lang]['analyticsTitle'];
+        document.querySelector('#analytics-page .page-header p').textContent = translations[lang]['analyticsSubtitle'];
+        
+        // Update about page
+        document.querySelector('#about-page .page-header h1').textContent = translations[lang]['aboutTitle'];
+        document.querySelector('#about-page .page-header p').textContent = translations[lang]['aboutSubtitle'];
+        
+        // Update about page content
+        document.querySelectorAll('.translatable').forEach(element => {
+            const key = element.getAttribute('data-key');
+            if (translations[lang][key]) {
+                if (element.tagName === 'P') {
+                    element.innerHTML = translations[lang][key];
+                } else {
+                    element.textContent = translations[lang][key];
+                }
+            }
+        });
+        
+        // Close dropdown
+        document.getElementById('languageDropdown').classList.remove('show');
+    }
+
+    async function fetchStudentData() {
+        try {
+            const response = await fetch('data.json');
+            if (!response.ok) {
+                throw new Error('Failed to fetch student data');
+            }
+            studentsData = await response.json();
+        } catch (error) {
+            console.error('Error loading student data:', error);
+            studentsData = sampleData;
+        }
+        
+        preCacheStudentResults();
+        
+        if (currentPage === 'analytics-page') {
+            displaySubjectAnalytics();
+        }
+    }
+
+    function preCacheStudentResults() {
+        studentsData.forEach(student => {
+            let totalScore = 0;
+            let maxScore = 0;
+            let hasFailure = false;
             
-                studentResultsCache[student.number] = {
-                    name: student.name,
-                    number: student.number,
-                    stream: student.stream,
-                    percentage: percentage,
-                    result: student.result,
-                    subjectsPassed: student.subjectsPassed,
-                    subjectsFailed: student.subjectsFailed,
-                    hasFailure: hasFailure,
-                    grades: gradesWithStatus,
-                    totalScore: totalScore
+            const gradesWithStatus = student.grades.map(grade => {
+                const [scoreStr, maxScoreStr] = grade.total.split('/').map(s => parseFloat(s.trim()));
+                totalScore += scoreStr;
+                maxScore += maxScoreStr;
+                
+                const percentage = (scoreStr / maxScoreStr) * 100;
+                const failed = grade.status === "راسب" || percentage < 50;
+                if (failed) hasFailure = true;
+                
+                return {
+                    subject: grade.subject,
+                    score: scoreStr,
+                    maxScore: maxScoreStr,
+                    failed: failed
                 };
             });
             
-            const allStudents = Object.values(studentResultsCache);
-            allStudents.sort((a, b) => b.percentage - a.percentage);
-            
-            allStudents.forEach((student, index) => {
-                student.normalRank = index + 1;
-                student.uniqueRank = index + 1;
-                student.totalStudents = allStudents.length;
-                student.percentile = (allStudents.length - (index + 1)) / (allStudents.length - 1) * 100;
-            });
-        }
+            const percentage = maxScore > 0 ? (totalScore / maxScore) * 100 : 0;
         
-        function displaySubjectAnalytics() {
-            const container = document.getElementById('analytics-container');
-            container.innerHTML = '<div class="loading-message"><i class="fas fa-spinner fa-spin"></i> جاري تحميل التحليلات...</div>';
-            
-            const worker = new Worker('analytics-worker.js');
-            
-            worker.onmessage = function(e) {
-                const { subjectAnalyticsCache, streamSummaries } = e.data;
-                renderAnalyticsUI({
-                    subjectAnalyticsCache: subjectAnalyticsCache,
-                    streamSummaries: streamSummaries
-                });
-                worker.terminate();
+            studentResultsCache[student.number] = {
+                name: student.name,
+                number: student.number,
+                stream: student.stream,
+                percentage: percentage,
+                result: student.result,
+                subjectsPassed: student.subjectsPassed,
+                subjectsFailed: student.subjectsFailed,
+                hasFailure: hasFailure,
+                grades: gradesWithStatus,
+                totalScore: totalScore
             };
-            
-            worker.postMessage(studentsData);
-        }
+        });
+        
+        const allStudents = Object.values(studentResultsCache);
+        allStudents.sort((a, b) => b.percentage - a.percentage);
+        
+        allStudents.forEach((student, index) => {
+            student.normalRank = index + 1;
+            student.uniqueRank = index + 1;
+            student.totalStudents = allStudents.length;
+            student.percentile = (allStudents.length - (index + 1)) / (allStudents.length - 1) * 100;
+        });
+    }
+    
+    function displaySubjectAnalytics() {
+        const container = document.getElementById('analytics-container');
+        container.innerHTML = '<div class="loading-message"><i class="fas fa-spinner fa-spin"></i> جاري تحميل التحليلات...</div>';
+        
+        // Check if the worker file exists before trying to create a worker
+        fetch('analytics-worker.js')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('analytics-worker.js not found');
+                }
+                const worker = new Worker('analytics-worker.js');
+                worker.onmessage = function(e) {
+                    const { subjectAnalyticsCache, streamSummaries } = e.data;
+                    renderAnalyticsUI({
+                        subjectAnalyticsCache: subjectAnalyticsCache,
+                        streamSummaries: streamSummaries
+                    });
+                    worker.terminate();
+                };
+                worker.postMessage(studentsData);
+            })
+            .catch(error => {
+                console.error("Worker Error:", error.message);
+                container.innerHTML = `<div id="error-message" style="display: block;">فشل تحميل التحليلات. الملف ${error.message} مفقود.</div>`;
+            });
+    }
 
-        function renderAnalyticsUI(data) {
-            const { subjectAnalyticsCache, streamSummaries } = data;
-            const container = document.getElementById('analytics-container');
+
+    function renderAnalyticsUI(data) {
+        const { subjectAnalyticsCache, streamSummaries } = data;
+        const container = document.getElementById('analytics-container');
+        
+        container.innerHTML = '';
+        
+        const streams = ['علمي', 'أدبي'];
+        
+        streams.forEach(stream => {
+            const streamSection = document.createElement('div');
+            streamSection.className = 'stream-section';
             
-            container.innerHTML = '';
+            const streamTitle = document.createElement('h2');
+            streamTitle.className = 'stream-title';
+            streamTitle.innerHTML = `<i class="fas fa-stream"></i> مسار ${stream}`;
+            streamSection.appendChild(streamTitle);
             
-            const streams = ['علمي', 'أدبي'];
+            const streamSummary = streamSummaries[stream];
             
-            streams.forEach(stream => {
-                const streamSection = document.createElement('div');
-                streamSection.className = 'stream-section';
+            const summaryCard = document.createElement('div');
+            summaryCard.className = 'stream-summary-card';
+            
+            const summaryTitle = document.createElement('h3');
+            summaryTitle.className = 'stream-summary-title';
+            summaryTitle.innerHTML = `<i class="fas fa-chart-bar"></i> ملخص مسار ${stream}`;
+            summaryCard.appendChild(summaryTitle);
+            
+            const summaryStats = document.createElement('div');
+            summaryStats.className = 'stream-summary-stats';
+            
+            const stats = [
+                { label: 'عدد الطلاب الناجحين', value: streamSummary.passingStudents },
+                { label: 'عدد الطلاب الراسبين', value: streamSummary.failingStudents },
+                { label: 'إجمالي عدد الطلاب', value: streamSummary.totalStudents },
+                { label: 'نسبة النجاح', value: `${((streamSummary.passingStudents / streamSummary.totalStudents) * 100).toFixed(1)}%` }
+            ];
+            
+            stats.forEach(stat => {
+                const statCard = document.createElement('div');
+                statCard.className = 'stat-card';
                 
-                const streamTitle = document.createElement('h2');
-                streamTitle.className = 'stream-title';
-                streamTitle.innerHTML = `<i class="fas fa-stream"></i> مسار ${stream}`;
-                streamSection.appendChild(streamTitle);
+                const label = document.createElement('h4');
+                label.textContent = stat.label;
+                statCard.appendChild(label);
                 
-                const streamSummary = streamSummaries[stream];
+                const value = document.createElement('div');
+                value.className = 'value';
+                value.textContent = stat.value;
+                statCard.appendChild(value);
                 
-                const summaryCard = document.createElement('div');
-                summaryCard.className = 'stream-summary-card';
+                summaryStats.appendChild(statCard);
+            });
+            
+            summaryCard.appendChild(summaryStats);
+            
+            const gradeDistribution = document.createElement('div');
+            gradeDistribution.className = 'grade-distribution';
+            
+            const distributionTitle = document.createElement('h3');
+            distributionTitle.innerHTML = '<i class="fas fa-chart-pie"></i> توزيع الدرجات الكلي';
+            gradeDistribution.appendChild(distributionTitle);
+            
+            const histogramContainer = document.createElement('div');
+            histogramContainer.className = 'histogram-container';
+            
+            const canvas = document.createElement('canvas');
+            canvas.id = `stream-chart-${stream}`;
+            histogramContainer.appendChild(canvas);
+            
+            gradeDistribution.appendChild(histogramContainer);
+            summaryCard.appendChild(gradeDistribution);
+            
+            streamSection.appendChild(summaryCard);
+            
+            const streamSubjects = Object.values(subjectAnalyticsCache)
+                .filter(subject => subject.stream === stream)
+                .sort((a, b) => a.subjectName.localeCompare(b.subjectName));
+            
+            const subjectsGrid = document.createElement('div');
+            subjectsGrid.className = 'analytics-grid';
+            
+            streamSubjects.forEach(subject => {
+                const subjectCard = document.createElement('div');
+                subjectCard.className = 'subject-card';
                 
-                const summaryTitle = document.createElement('h3');
-                summaryTitle.className = 'stream-summary-title';
-                summaryTitle.innerHTML = `<i class="fas fa-chart-bar"></i> ملخص مسار ${stream}`;
-                summaryCard.appendChild(summaryTitle);
+                const subjectHeader = document.createElement('div');
+                subjectHeader.className = 'subject-header';
                 
-                const summaryStats = document.createElement('div');
-                summaryStats.className = 'stream-summary-stats';
+                const subjectTitle = document.createElement('h3');
+                subjectTitle.className = 'subject-title';
+                subjectTitle.textContent = `${subject.subjectName} (${subject.stream})`;
+                subjectHeader.appendChild(subjectTitle);
+                
+                const averagePercentage = document.createElement('div');
+                averagePercentage.className = 'average-percentage';
+                averagePercentage.textContent = `${subject.averagePercentage}%`;
+                subjectHeader.appendChild(averagePercentage);
+                
+                subjectCard.appendChild(subjectHeader);
+                
+                const subjectStats = document.createElement('div');
+                subjectStats.className = 'subject-stats';
                 
                 const stats = [
-                    { label: 'عدد الطلاب الناجحين', value: streamSummary.passingStudents },
-                    { label: 'عدد الطلاب الراسبين', value: streamSummary.failingStudents },
-                    { label: 'إجمالي عدد الطلاب', value: streamSummary.totalStudents },
-                    { label: 'نسبة النجاح', value: `${((streamSummary.passingStudents / streamSummary.totalStudents) * 100).toFixed(1)}%` }
+                    { label: 'الدرجة الأعلى', value: subject.highestScore },
+                    { label: 'الدرجة الأدنى', value: subject.lowestScore },
+                    { label: 'الدرجة المتوسطة', value: subject.medianScore.toFixed(1) },
+                    { label: 'عدد الطلاب', value: subject.passCount + subject.failCount }
                 ];
                 
                 stats.forEach(stat => {
@@ -1381,152 +1517,145 @@
                     value.textContent = stat.value;
                     statCard.appendChild(value);
                     
-                    summaryStats.appendChild(statCard);
+                    subjectStats.appendChild(statCard);
                 });
                 
-                summaryCard.appendChild(summaryStats);
+                subjectCard.appendChild(subjectStats);
+                
+                const passFailStats = document.createElement('div');
+                passFailStats.className = 'pass-fail-stats';
+                
+                const passStat = document.createElement('div');
+                passStat.className = 'pass-stat';
+                
+                const passLabel = document.createElement('h4');
+                passLabel.textContent = 'الطلاب الناجحون';
+                passStat.appendChild(passLabel);
+                
+                const passValue = document.createElement('div');
+                passValue.className = 'value';
+                passValue.textContent = subject.passCount;
+                passStat.appendChild(passValue);
+                
+                passFailStats.appendChild(passStat);
+                
+                const failStat = document.createElement('div');
+                failStat.className = 'fail-stat';
+                
+                const failLabel = document.createElement('h4');
+                failLabel.textContent = 'الطلاب الراسبون';
+                failStat.appendChild(failLabel);
+                
+                const failValue = document.createElement('div');
+                failValue.className = 'value';
+                failValue.textContent = subject.failCount;
+                failStat.appendChild(failValue);
+                
+                passFailStats.appendChild(failStat);
+                subjectCard.appendChild(passFailStats);
                 
                 const gradeDistribution = document.createElement('div');
                 gradeDistribution.className = 'grade-distribution';
                 
                 const distributionTitle = document.createElement('h3');
-                distributionTitle.innerHTML = '<i class="fas fa-chart-pie"></i> توزيع الدرجات الكلي';
+                distributionTitle.innerHTML = '<i class="fas fa-chart-pie"></i> توزيع درجات الناجحين';
                 gradeDistribution.appendChild(distributionTitle);
                 
                 const histogramContainer = document.createElement('div');
                 histogramContainer.className = 'histogram-container';
                 
                 const canvas = document.createElement('canvas');
-                canvas.id = `stream-chart-${stream}`;
+                canvas.id = `chart-${subject.subjectName}-${subject.stream}`;
                 histogramContainer.appendChild(canvas);
                 
                 gradeDistribution.appendChild(histogramContainer);
-                summaryCard.appendChild(gradeDistribution);
+                subjectCard.appendChild(gradeDistribution);
                 
-                streamSection.appendChild(summaryCard);
+                subjectsGrid.appendChild(subjectCard);
+            });
+            
+            streamSection.appendChild(subjectsGrid);
+            container.appendChild(streamSection);
+            
+            setTimeout(() => {
+                const streamCtx = document.getElementById(`stream-chart-${stream}`).getContext('2d');
                 
-                const streamSubjects = Object.values(subjectAnalyticsCache)
-                    .filter(subject => subject.stream === stream)
-                    .sort((a, b) => a.subjectName.localeCompare(b.subjectName));
+                const streamLabels = Object.keys(streamSummary.gradeDistribution);
+                const streamData = Object.values(streamSummary.gradeDistribution);
                 
-                const subjectsGrid = document.createElement('div');
-                subjectsGrid.className = 'analytics-grid';
-                
-                streamSubjects.forEach(subject => {
-                    const subjectCard = document.createElement('div');
-                    subjectCard.className = 'subject-card';
-                    
-                    const subjectHeader = document.createElement('div');
-                    subjectHeader.className = 'subject-header';
-                    
-                    const subjectTitle = document.createElement('h3');
-                    subjectTitle.className = 'subject-title';
-                    subjectTitle.textContent = `${subject.subjectName} (${subject.stream})`;
-                    subjectHeader.appendChild(subjectTitle);
-                    
-                    const averagePercentage = document.createElement('div');
-                    averagePercentage.className = 'average-percentage';
-                    averagePercentage.textContent = `${subject.averagePercentage}%`;
-                    subjectHeader.appendChild(averagePercentage);
-                    
-                    subjectCard.appendChild(subjectHeader);
-                    
-                    const subjectStats = document.createElement('div');
-                    subjectStats.className = 'subject-stats';
-                    
-                    const stats = [
-                        { label: 'الدرجة الأعلى', value: subject.highestScore },
-                        { label: 'الدرجة الأدنى', value: subject.lowestScore },
-                        { label: 'الدرجة المتوسطة', value: subject.medianScore.toFixed(1) },
-                        { label: 'عدد الطلاب', value: subject.passCount + subject.failCount }
-                    ];
-                    
-                    stats.forEach(stat => {
-                        const statCard = document.createElement('div');
-                        statCard.className = 'stat-card';
-                        
-                        const label = document.createElement('h4');
-                        label.textContent = stat.label;
-                        statCard.appendChild(label);
-                        
-                        const value = document.createElement('div');
-                        value.className = 'value';
-                        value.textContent = stat.value;
-                        statCard.appendChild(value);
-                        
-                        subjectStats.appendChild(statCard);
-                    });
-                    
-                    subjectCard.appendChild(subjectStats);
-                    
-                    const passFailStats = document.createElement('div');
-                    passFailStats.className = 'pass-fail-stats';
-                    
-                    const passStat = document.createElement('div');
-                    passStat.className = 'pass-stat';
-                    
-                    const passLabel = document.createElement('h4');
-                    passLabel.textContent = 'الطلاب الناجحون';
-                    passStat.appendChild(passLabel);
-                    
-                    const passValue = document.createElement('div');
-                    passValue.className = 'value';
-                    passValue.textContent = subject.passCount;
-                    passStat.appendChild(passValue);
-                    
-                    passFailStats.appendChild(passStat);
-                    
-                    const failStat = document.createElement('div');
-                    failStat.className = 'fail-stat';
-                    
-                    const failLabel = document.createElement('h4');
-                    failLabel.textContent = 'الطلاب الراسبون';
-                    failStat.appendChild(failLabel);
-                    
-                    const failValue = document.createElement('div');
-                    failValue.className = 'value';
-                    failValue.textContent = subject.failCount;
-                    failStat.appendChild(failValue);
-                    
-                    passFailStats.appendChild(failStat);
-                    subjectCard.appendChild(passFailStats);
-                    
-                    const gradeDistribution = document.createElement('div');
-                    gradeDistribution.className = 'grade-distribution';
-                    
-                    const distributionTitle = document.createElement('h3');
-                    distributionTitle.innerHTML = '<i class="fas fa-chart-pie"></i> توزيع درجات الناجحين';
-                    gradeDistribution.appendChild(distributionTitle);
-                    
-                    const histogramContainer = document.createElement('div');
-                    histogramContainer.className = 'histogram-container';
-                    
-                    const canvas = document.createElement('canvas');
-                    canvas.id = `chart-${subject.subjectName}-${subject.stream}`;
-                    histogramContainer.appendChild(canvas);
-                    
-                    gradeDistribution.appendChild(histogramContainer);
-                    subjectCard.appendChild(gradeDistribution);
-                    
-                    subjectsGrid.appendChild(subjectCard);
+                new Chart(streamCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: streamLabels,
+                        datasets: [{
+                            label: 'عدد الطلاب',
+                            data: streamData,
+                            backgroundColor: [
+                                'rgba(0, 255, 153, 0.7)',
+                                'rgba(77, 148, 255, 0.7)',
+                                'rgba(166, 77, 255, 0.7)',
+                                'rgba(255, 206, 86, 0.7)',
+                                'rgba(255, 99, 132, 0.7)'
+                            ],
+                            borderColor: [
+                                'rgba(0, 255, 153, 1)',
+                                'rgba(77, 148, 255, 1)',
+                                'rgba(166, 77, 255, 1)',
+                                'rgba(255, 206, 86, 1)',
+                                'rgba(255, 99, 132, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    color: '#aaa'
+                                },
+                                grid: {
+                                    color: 'rgba(255, 255, 255, 0.1)'
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    color: '#aaa'
+                                },
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: false
+                            }
+                        }
+                    }
                 });
                 
-                streamSection.appendChild(subjectsGrid);
-                container.appendChild(streamSection);
-                
-                setTimeout(() => {
-                    const streamCtx = document.getElementById(`stream-chart-${stream}`).getContext('2d');
+                streamSubjects.forEach(subject => {
+                    const ctx = document.getElementById(`chart-${subject.subjectName}-${subject.stream}`).getContext('2d');
                     
-                    const streamLabels = Object.keys(streamSummary.gradeDistribution);
-                    const streamData = Object.values(streamSummary.gradeDistribution);
+                    const labels = ['50-59', '60-69', '70-79', '80-89', '90-100'];
+                    const data = [
+                        subject.gradeDistribution['50-59'],
+                        subject.gradeDistribution['60-69'],
+                        subject.gradeDistribution['70-79'],
+                        subject.gradeDistribution['80-89'],
+                        subject.gradeDistribution['90-100']
+                    ];
                     
-                    new Chart(streamCtx, {
+                    new Chart(ctx, {
                         type: 'bar',
                         data: {
-                            labels: streamLabels,
+                            labels: labels,
                             datasets: [{
                                 label: 'عدد الطلاب',
-                                data: streamData,
+                                data: data,
                                 backgroundColor: [
                                     'rgba(0, 255, 153, 0.7)',
                                     'rgba(77, 148, 255, 0.7)',
@@ -1573,459 +1702,394 @@
                             }
                         }
                     });
-                    
-                    streamSubjects.forEach(subject => {
-                        const ctx = document.getElementById(`chart-${subject.subjectName}-${subject.stream}`).getContext('2d');
-                        
-                        const labels = ['50-59', '60-69', '70-79', '80-89', '90-100'];
-                        const data = [
-                            subject.gradeDistribution['50-59'],
-                            subject.gradeDistribution['60-69'],
-                            subject.gradeDistribution['70-79'],
-                            subject.gradeDistribution['80-89'],
-                            subject.gradeDistribution['90-100']
-                        ];
-                        
-                        new Chart(ctx, {
-                            type: 'bar',
-                            data: {
-                                labels: labels,
-                                datasets: [{
-                                    label: 'عدد الطلاب',
-                                    data: data,
-                                    backgroundColor: [
-                                        'rgba(0, 255, 153, 0.7)',
-                                        'rgba(77, 148, 255, 0.7)',
-                                        'rgba(166, 77, 255, 0.7)',
-                                        'rgba(255, 206, 86, 0.7)',
-                                        'rgba(255, 99, 132, 0.7)'
-                                    ],
-                                    borderColor: [
-                                        'rgba(0, 255, 153, 1)',
-                                        'rgba(77, 148, 255, 1)',
-                                        'rgba(166, 77, 255, 1)',
-                                        'rgba(255, 206, 86, 1)',
-                                        'rgba(255, 99, 132, 1)'
-                                    ],
-                                    borderWidth: 1
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                maintainAspectRatio: false,
-                                scales: {
-                                    y: {
-                                        beginAtZero: true,
-                                        ticks: {
-                                            color: '#aaa'
-                                        },
-                                        grid: {
-                                            color: 'rgba(255, 255, 255, 0.1)'
-                                        }
-                                    },
-                                    x: {
-                                        ticks: {
-                                            color: '#aaa'
-                                        },
-                                        grid: {
-                                            display: false
-                                        }
-                                    }
-                                },
-                                plugins: {
-                                    legend: {
-                                        display: false
-                                    }
-                                }
-                            }
-                        });
-                    });
-                }, 100);
-            });
-        }
-
-        function displayStudentResults() {
-            const studentNumber = parseInt(document.getElementById('studentNumberInput').value);
-            const resultsContainer = document.getElementById('results-container');
-            const errorMsg = document.getElementById('error-message');
-            const feedbackBanner = document.getElementById('result-feedback-banner');
-            
-            if (feedbackTimeout) {
-                clearTimeout(feedbackTimeout);
-                feedbackTimeout = null;
-            }
-            
-            feedbackBanner.classList.remove('visible', 'fade-out', 'has-failure');
-            resultsContainer.classList.remove('visible');
-            resultsContainer.style.display = "none";
-
-            const studentResult = studentResultsCache[studentNumber];
-            
-            if (!studentResult) { 
-                errorMsg.style.display = 'block'; 
-                return; 
-            }
-            
-            errorMsg.style.display = 'none';
-
-            resultsContainer.innerHTML = '';
-          
-            const studentHeader = document.createElement('div');
-            studentHeader.className = 'student-header';
-            
-            const studentName = document.createElement('h2');
-            studentName.textContent = studentResult.name;
-            studentHeader.appendChild(studentName);
-            resultsContainer.appendChild(studentHeader);
-            
-            const studentInfo = document.createElement('div');
-            studentInfo.className = 'student-info';
-            
-            const infoItems = [
-                { label: 'رقم القيد', value: studentResult.number },
-                { label: 'المسار', value: studentResult.stream },
-                { label: 'المجموع الكلي', value: studentResult.totalScore },
-                { label: 'النتيجة', value: studentResult.result },
-                { label: 'النسبة المئوية', value: studentResult.percentage.toFixed(1) + '%' }
-            ];
-            
-            infoItems.forEach(item => {
-                const infoItem = document.createElement('div');
-                infoItem.className = 'student-info-item';
-                
-                const label = document.createElement('p');
-                label.textContent = item.label;
-                infoItem.appendChild(label);
-                
-                const value = document.createElement('span');
-                value.textContent = item.value;
-                infoItem.appendChild(value);
-                
-                studentInfo.appendChild(infoItem);
-            });
-            
-            resultsContainer.appendChild(studentInfo);
-            
-            const statsGrid = document.createElement('div');
-            statsGrid.className = 'stats-grid';
-            
-            const percentageContainer = document.createElement('div');
-            percentageContainer.className = `percentage-circle-container ${studentResult.hasFailure ? 'has-failure' : ''}`;
-            
-            const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-            const circleBg = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-            circleBg.setAttribute('class', 'circle-bg');
-            circleBg.setAttribute('cx', '75');
-            circleBg.setAttribute('cy', '75');
-            circleBg.setAttribute('r', '65');
-            
-            const circleProgress = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-            circleProgress.setAttribute('id', 'circleProgress');
-            circleProgress.setAttribute('class', 'circle-progress');
-            circleProgress.setAttribute('cx', '75');
-            circleProgress.setAttribute('cy', '75');
-            circleProgress.setAttribute('r', '65');
-            
-            svg.appendChild(circleBg);
-            svg.appendChild(circleProgress);
-            percentageContainer.appendChild(svg);
-            
-            const percentageText = document.createElement('div');
-            percentageText.id = 'percentageText';
-            percentageText.className = 'percentage-text';
-            percentageText.textContent = '0%';
-            percentageContainer.appendChild(percentageText);
-            
-            const percentageLabel = document.createElement('p');
-            percentageLabel.textContent = 'النسبة المئوية';
-            percentageContainer.appendChild(percentageLabel);
-            
-            statsGrid.appendChild(percentageContainer);
-            
-            const rankItem = document.createElement('div');
-            rankItem.className = 'rank-item';
-            
-            const rankTitle = document.createElement('p');
-            rankTitle.textContent = 'الترتيب';
-            rankItem.appendChild(rankTitle);
-            
-            const normalRank = document.createElement('span');
-            normalRank.className = 'rank-normal';
-            normalRank.textContent = `#${studentResult.normalRank}`;
-            rankItem.appendChild(normalRank);
-            
-            const rankSubtitle = document.createElement('p');
-            rankSubtitle.textContent = `من أصل ${studentResult.totalStudents} طالب`;
-            rankItem.appendChild(rankSubtitle);
-            
-            statsGrid.appendChild(rankItem);
-            resultsContainer.appendChild(statsGrid);
-            
-            const subjectBarsContainer = document.createElement('div');
-            subjectBarsContainer.className = 'subject-bars-container';
-            
-            const subjectTitle = document.createElement('h3');
-            subjectTitle.textContent = 'مستوى المواد';
-            subjectBarsContainer.appendChild(subjectTitle);
-            
-            studentResult.grades.forEach(grade => {
-                const subjectBar = document.createElement('div');
-                subjectBar.className = 'subject-bar';
-                
-                const subjectBarInfo = document.createElement('div');
-                subjectBarInfo.className = 'subject-bar-info';
-                
-                const subjectName = document.createElement('span');
-                subjectName.textContent = grade.subject;
-                subjectBarInfo.appendChild(subjectName);
-                
-                const scoreInfo = document.createElement('span');
-                scoreInfo.textContent = `${grade.score} / ${grade.maxScore}`;
-                
-                if (grade.failed) {
-                    const failedLabel = document.createElement('span');
-                    failedLabel.className = 'failed-label';
-                    failedLabel.textContent = '(مادة راسبة)';
-                    scoreInfo.appendChild(document.createTextNode(' '));
-                    scoreInfo.appendChild(failedLabel);
-                }
-                
-                subjectBarInfo.appendChild(scoreInfo);
-                subjectBar.appendChild(subjectBarInfo);
-                
-                const progressBarBg = document.createElement('div');
-                progressBarBg.className = 'progress-bar-bg';
-                
-                const progressBarFill = document.createElement('div');
-                progressBarFill.className = `progress-bar-fill ${grade.failed ? 'failed' : ''}`;
-                progressBarFill.dataset.score = grade.score;
-                progressBarFill.dataset.max = grade.maxScore;
-                
-                progressBarBg.appendChild(progressBarFill);
-                subjectBar.appendChild(progressBarBg);
-                
-                subjectBarsContainer.appendChild(subjectBar);
-            });
-            
-            resultsContainer.appendChild(subjectBarsContainer);
-            
-            const chartContainer = document.createElement('div');
-            chartContainer.id = 'chart-container';
-            
-            const performanceCanvas = document.createElement('canvas');
-            performanceCanvas.id = 'performanceChart';
-            chartContainer.appendChild(performanceCanvas);
-            
-            resultsContainer.appendChild(chartContainer);
-            
-            resultsContainer.style.display = 'block';
-            
-            setTimeout(() => {
-                resultsContainer.classList.add('visible');
-                
-                const radius = circleProgress.r.baseVal.value;
-                const circumference = 2 * Math.PI * radius;
-                const offset = circumference - (studentResult.percentage / 100) * circumference;
-                
-                circleProgress.style.strokeDasharray = `${circumference} ${circumference}`;
-                circleProgress.style.strokeDashoffset = offset;
-                
-                animateValue(percentageText, 0, studentResult.percentage, 1000, true);
-                
-                document.querySelectorAll('.progress-bar-fill').forEach(f => {
-                    const percentage = (f.dataset.score / f.dataset.max) * 100;
-                    f.style.width = `${percentage}%`;
-                });
-                
-                if (studentResult.hasFailure) {
-                    const failedSubjects = studentResult.grades
-                        .filter(grade => grade.failed)
-                        .map(grade => grade.subject)
-                        .join('، ');
-                    
-                    feedbackBanner.innerHTML = `
-                        <p>لقد فشلت في ${studentResult.subjectsFailed} مادة. هل ترغب في الحصول على معلومات حول دورات الدعم؟</p>
-                        <button class="support-btn" id="supportButton">طلب دورة الدعم</button>
-                    `;
-                    feedbackBanner.classList.add('has-failure');
-                    
-                    document.getElementById('supportButton').addEventListener('click', () => {
-                        document.getElementById('studentName').value = studentResult.name;
-                        document.getElementById('failingSubjects').value = failedSubjects;
-                        
-                        document.getElementById('supportModal').classList.add('active');
-                    });
-                } else {
-                    feedbackBanner.textContent = `ممتاز! لقد نجحت في جميع المواد بنسبة ${studentResult.percentage.toFixed(1)}%.`;
-                }
-                
-                feedbackBanner.classList.add('visible');
-                
-                feedbackTimeout = setTimeout(() => {
-                    feedbackBanner.classList.add('fade-out');
-                }, 10000);
-                
-                if (performanceChart) performanceChart.destroy();
-                
-                const subjectLabels = studentResult.grades.map(g => g.subject);
-                const subjectData = studentResult.grades.map(g => (g.score / g.maxScore) * 100);
-                
-                performanceChart = new Chart(performanceCanvas, {
-                    type: 'radar',
-                    data: { 
-                        labels: subjectLabels, 
-                        datasets: [{
-                            data: subjectData, 
-                            backgroundColor: 'rgba(0, 255, 153, 0.2)', 
-                            borderColor: 'rgb(0, 255, 153)', 
-                            pointBackgroundColor: 'rgb(0, 255, 153)', 
-                            pointBorderColor: '#fff',
-                            borderWidth: 2,
-                            pointRadius: 4
-                        }] 
-                    },
-                    options: { 
-                        maintainAspectRatio: false,
-                        scales: { 
-                            r: { 
-                                angleLines: { color: 'rgba(255, 255, 255, 0.2)' }, 
-                                grid: { color: 'rgba(255, 255, 255, 0.2)' }, 
-                                pointLabels: { 
-                                    color: '#e0e0e0', 
-                                    font: { size: 12 } 
-                                }, 
-                                suggestedMin: 0, 
-                                suggestedMax: 100, 
-                                ticks: { 
-                                    display: false,
-                                    stepSize: 20
-                                } 
-                            } 
-                        }, 
-                        plugins: { 
-                            legend: { display: false },
-                            tooltip: {
-                                callbacks: {
-                                    label: function(context) {
-                                        const subjectIndex = context.dataIndex;
-                                        const subject = studentResult.grades[subjectIndex];
-                                        return `${subject.subject}: ${subject.score}/${subject.maxScore} (${((subject.score / subject.maxScore) * 100).toFixed(1)}%)`;
-                                    }
-                                }
-                            }
-                        } 
-                    }
                 });
             }, 100);
-        }
-        
-        function animateValue(obj, start, end, duration, isPercent) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                let val = isPercent ? (progress * (end - start) + start).toFixed(2) : Math.floor(progress * (end - start) + start);
-                obj.textContent = isPercent ? `${val}%` : val;
-                if (progress < 1) window.requestAnimationFrame(step);
-            };
-            window.requestAnimationFrame(step);
-        }
+        });
+    }
 
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                
-                const pageId = this.dataset.page;
-                const hash = this.getAttribute('href');
-                history.pushState({ page: pageId }, '', hash);
-                
-                loadPage(pageId);
-            });
+    function displayStudentResults() {
+        const studentNumber = parseInt(document.getElementById('studentNumberInput').value);
+        const resultsContainer = document.getElementById('results-container');
+        const errorMsg = document.getElementById('error-message');
+        const feedbackBanner = document.getElementById('result-feedback-banner');
+        
+        if (feedbackTimeout) {
+            clearTimeout(feedbackTimeout);
+            feedbackTimeout = null;
+        }
+        
+        feedbackBanner.classList.remove('visible', 'fade-out', 'has-failure');
+        resultsContainer.classList.remove('visible');
+        resultsContainer.style.display = "none";
+
+        const studentResult = studentResultsCache[studentNumber];
+        
+        if (!studentResult) { 
+            errorMsg.style.display = 'block'; 
+            return; 
+        }
+        
+        errorMsg.style.display = 'none';
+
+        resultsContainer.innerHTML = '';
+    
+        const studentHeader = document.createElement('div');
+        studentHeader.className = 'student-header';
+        
+        const studentName = document.createElement('h2');
+        studentName.textContent = studentResult.name;
+        studentHeader.appendChild(studentName);
+        resultsContainer.appendChild(studentHeader);
+        
+        const studentInfo = document.createElement('div');
+        studentInfo.className = 'student-info';
+        
+        // Removed duplicate percentage display
+        const infoItems = [
+            { label: 'رقم القيد', value: studentResult.number },
+            { label: 'المسار', value: studentResult.stream },
+            { label: 'المجموع الكلي', value: studentResult.totalScore },
+            { label: 'النتيجة', value: studentResult.result }
+        ];
+        
+        infoItems.forEach(item => {
+            const infoItem = document.createElement('div');
+            infoItem.className = 'student-info-item';
+            
+            const label = document.createElement('p');
+            label.textContent = item.label;
+            infoItem.appendChild(label);
+            
+            const value = document.createElement('span');
+            value.textContent = item.value;
+            infoItem.appendChild(value);
+            
+            studentInfo.appendChild(infoItem);
         });
         
-        window.addEventListener('popstate', function(event) {
-            const hash = window.location.hash;
-            let pageId = 'home-page';
-            
-            if (hash === '#analytics') pageId = 'analytics-page';
-            else if (hash === '#about') pageId = 'about-page';
-            
-            loadPage(pageId);
-        });
+        resultsContainer.appendChild(studentInfo);
         
-        function loadPage(pageId) {
-            document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
-            document.querySelector(`.nav-link[data-page="${pageId}"]`).classList.add('active');
+        const statsGrid = document.createElement('div');
+        statsGrid.className = 'stats-grid';
+        
+        const percentageContainer = document.createElement('div');
+        percentageContainer.className = `percentage-circle-container ${studentResult.hasFailure ? 'has-failure' : ''}`;
+        
+        const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+        const circleBg = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circleBg.setAttribute('class', 'circle-bg');
+        circleBg.setAttribute('cx', '75');
+        circleBg.setAttribute('cy', '75');
+        circleBg.setAttribute('r', '65');
+        
+        const circleProgress = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        circleProgress.setAttribute('id', 'circleProgress');
+        circleProgress.setAttribute('class', 'circle-progress');
+        circleProgress.setAttribute('cx', '75');
+        circleProgress.setAttribute('cy', '75');
+        circleProgress.setAttribute('r', '65');
+        
+        svg.appendChild(circleBg);
+        svg.appendChild(circleProgress);
+        percentageContainer.appendChild(svg);
+        
+        const percentageText = document.createElement('div');
+        percentageText.id = 'percentageText';
+        percentageText.className = 'percentage-text';
+        percentageText.textContent = '0%';
+        percentageContainer.appendChild(percentageText);
+        
+        const percentageLabel = document.createElement('p');
+        percentageLabel.textContent = 'النسبة المئوية';
+        percentageContainer.appendChild(percentageLabel);
+        
+        statsGrid.appendChild(percentageContainer);
+        
+        const rankItem = document.createElement('div');
+        rankItem.className = 'rank-item';
+        
+        const rankTitle = document.createElement('p');
+        rankTitle.textContent = 'الترتيب';
+        rankItem.appendChild(rankTitle);
+        
+        const normalRank = document.createElement('span');
+        normalRank.className = 'rank-normal';
+        normalRank.textContent = `#${studentResult.normalRank}`;
+        rankItem.appendChild(normalRank);
+        
+        const rankSubtitle = document.createElement('p');
+        rankSubtitle.textContent = `من أصل ${studentResult.totalStudents} طالب`;
+        rankItem.appendChild(rankSubtitle);
+        
+        statsGrid.appendChild(rankItem);
+        resultsContainer.appendChild(statsGrid);
+        
+        const subjectBarsContainer = document.createElement('div');
+        subjectBarsContainer.className = 'subject-bars-container';
+        
+        const subjectTitle = document.createElement('h3');
+        subjectTitle.textContent = 'مستوى المواد';
+        subjectBarsContainer.appendChild(subjectTitle);
+        
+        studentResult.grades.forEach(grade => {
+            const subjectBar = document.createElement('div');
+            subjectBar.className = 'subject-bar';
             
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            document.getElementById(pageId).classList.add('active');
-            currentPage = pageId;
+            const subjectBarInfo = document.createElement('div');
+            subjectBarInfo.className = 'subject-bar-info';
             
-            if (pageId === 'analytics-page') {
-                displaySubjectAnalytics();
+            const subjectName = document.createElement('span');
+            subjectName.textContent = grade.subject;
+            subjectBarInfo.appendChild(subjectName);
+            
+            const scoreInfo = document.createElement('span');
+            scoreInfo.textContent = `${grade.score} / ${grade.maxScore}`;
+            
+            if (grade.failed) {
+                const failedLabel = document.createElement('span');
+                failedLabel.className = 'failed-label';
+                failedLabel.textContent = '(مادة راسبة)';
+                scoreInfo.appendChild(document.createTextNode(' '));
+                scoreInfo.appendChild(failedLabel);
             }
-        }
-        
-        function initRouting() {
-            const hash = window.location.hash;
-            let pageId = 'home-page';
             
-            if (hash === '#analytics') pageId = 'analytics-page';
-            else if (hash === '#about') pageId = 'about-page';
+            subjectBarInfo.appendChild(scoreInfo);
+            subjectBar.appendChild(subjectBarInfo);
             
-            loadPage(pageId);
-        }
-
-        // Language selector functionality
-        document.getElementById('languageToggle').addEventListener('click', function(e) {
-            e.stopPropagation();
-            document.getElementById('languageDropdown').classList.toggle('show');
+            const progressBarBg = document.createElement('div');
+            progressBarBg.className = 'progress-bar-bg';
+            
+            const progressBarFill = document.createElement('div');
+            progressBarFill.className = `progress-bar-fill ${grade.failed ? 'failed' : ''}`;
+            progressBarFill.dataset.score = grade.score;
+            progressBarFill.dataset.max = grade.maxScore;
+            
+            progressBarBg.appendChild(progressBarFill);
+            subjectBar.appendChild(progressBarBg);
+            
+            subjectBarsContainer.appendChild(subjectBar);
         });
         
-        document.querySelectorAll('.language-option').forEach(option => {
-            option.addEventListener('click', function() {
-                const lang = this.dataset.lang;
-                updateLanguage(lang);
+        resultsContainer.appendChild(subjectBarsContainer);
+        
+        const chartContainer = document.createElement('div');
+        chartContainer.id = 'chart-container';
+        
+        const performanceCanvas = document.createElement('canvas');
+        performanceCanvas.id = 'performanceChart';
+        chartContainer.appendChild(performanceCanvas);
+        
+        resultsContainer.appendChild(chartContainer);
+        
+        resultsContainer.style.display = 'block';
+        
+        setTimeout(() => {
+            resultsContainer.classList.add('visible');
+            
+            const radius = circleProgress.r.baseVal.value;
+            const circumference = 2 * Math.PI * radius;
+            const offset = circumference - (studentResult.percentage / 100) * circumference;
+            
+            circleProgress.style.strokeDasharray = `${circumference} ${circumference}`;
+            circleProgress.style.strokeDashoffset = offset;
+            
+            animateValue(percentageText, 0, studentResult.percentage, 1000, true);
+            
+            document.querySelectorAll('.progress-bar-fill').forEach(f => {
+                const percentage = (f.dataset.score / f.dataset.max) * 100;
+                f.style.width = `${percentage}%`;
             });
-        });
-        
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function() {
-            document.getElementById('languageDropdown').classList.remove('show');
-        });
+            
+            if (studentResult.hasFailure) {
+                const failedSubjects = studentResult.grades
+                    .filter(grade => grade.failed)
+                    .map(grade => grade.subject)
+                    .join('، ');
+                
+                feedbackBanner.innerHTML = `
+                    <p>لقد فشلت في ${studentResult.subjectsFailed} مادة. هل ترغب في الحصول على معلومات حول دورات الدعم؟</p>
+                    <button class="support-btn" id="supportButton">طلب دورة الدعم</button>
+                `;
+                feedbackBanner.classList.add('has-failure');
+                
+                document.getElementById('supportButton').addEventListener('click', () => {
+                    document.getElementById('studentName').value = studentResult.name;
+                    document.getElementById('failingSubjects').value = failedSubjects;
+                    
+                    document.getElementById('supportModal').classList.add('active');
+                });
+            } else {
+                feedbackBanner.textContent = `ممتاز! لقد نجحت في جميع المواد بنسبة ${studentResult.percentage.toFixed(1)}%.`;
+            }
+            
+            feedbackBanner.classList.add('visible');
+            
+            feedbackTimeout = setTimeout(() => {
+                feedbackBanner.classList.add('fade-out');
+            }, 10000);
+            
+            if (performanceChart) performanceChart.destroy();
+            
+            const subjectLabels = studentResult.grades.map(g => g.subject);
+            // ✅ FIX: Added the missing closing parenthesis here
+            const subjectData = studentResult.grades.map(g => (g.score / g.maxScore) * 100); 
+            
+            performanceChart = new Chart(performanceCanvas, {
+                type: 'radar',
+                data: { 
+                    labels: subjectLabels, 
+                    datasets: [{
+                        data: subjectData, 
+                        backgroundColor: 'rgba(0, 255, 153, 0.2)', 
+                        borderColor: 'rgb(0, 255, 153)', 
+                        pointBackgroundColor: 'rgb(0, 255, 153)', 
+                        pointBorderColor: '#fff',
+                        borderWidth: 2,
+                        pointRadius: 4
+                    }] 
+                },
+                options: { 
+                    maintainAspectRatio: false,
+                    scales: { 
+                        r: { 
+                            angleLines: { color: 'rgba(255, 255, 255, 0.2)' }, 
+                            grid: { color: 'rgba(255, 255, 255, 0.2)' }, 
+                            pointLabels: { 
+                                color: '#e0e0e0', 
+                                font: { size: 12 } 
+                            }, 
+                            suggestedMin: 0, 
+                            suggestedMax: 100, 
+                            ticks: { 
+                                display: false,
+                                stepSize: 20
+                            } 
+                        } 
+                    }, 
+                    plugins: { 
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    const subjectIndex = context.dataIndex;
+                                    const subject = studentResult.grades[subjectIndex];
+                                    return `${subject.subject}: ${subject.score}/${subject.maxScore} (${((subject.score / subject.maxScore) * 100).toFixed(1)}%)`;
+                                }
+                            }
+                        }
+                    } 
+                }
+            });
+        }, 100);
+    }
+    
+    function animateValue(obj, start, end, duration, isPercent) {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            let val = isPercent ? (progress * (end - start) + start).toFixed(2) : Math.floor(progress * (end - start) + start);
+            obj.textContent = isPercent ? `${val}%` : val;
+            if (progress < 1) window.requestAnimationFrame(step);
+        };
+        window.requestAnimationFrame(step);
+    }
 
-        document.getElementById('searchButton').addEventListener('click', displayStudentResults);
-        
-        document.getElementById('studentNumberInput').addEventListener('keyup', (e) => {
-            if (e.key === 'Enter') displayStudentResults();
-        });
-        
-        document.getElementById('modalClose').addEventListener('click', () => {
-            document.getElementById('supportModal').classList.remove('active');
-        });
-        
-        document.getElementById('cancelSupport').addEventListener('click', () => {
-            document.getElementById('supportModal').classList.remove('active');
-        });
-        
-        document.getElementById('supportForm').addEventListener('submit', (e) => {
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
             e.preventDefault();
-            alert('تم إرسال طلبك بنجاح');
-            document.getElementById('supportModal').classList.remove('active');
+            
+            const pageId = this.dataset.page;
+            const hash = this.getAttribute('href');
+            history.pushState({ page: pageId }, '', hash);
+            
+            loadPage(pageId);
         });
+    });
+    
+    window.addEventListener('popstate', function(event) {
+        const hash = window.location.hash;
+        let pageId = 'home-page';
         
-        document.getElementById('supportModal').addEventListener('click', (e) => {
-            if (e.target === document.getElementById('supportModal')) {
-                document.getElementById('supportModal').classList.remove('active');
-            }
+        if (hash === '#analytics') pageId = 'analytics-page';
+        else if (hash === '#about') pageId = 'about-page';
+        
+        loadPage(pageId);
+    });
+    
+    function loadPage(pageId) {
+        document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+        document.querySelector(`.nav-link[data-page="${pageId}"]`).classList.add('active');
+        
+        document.querySelectorAll('.page').forEach(page => {
+            page.classList.remove('active');
         });
+        document.getElementById(pageId).classList.add('active');
+        currentPage = pageId;
+        
+        if (pageId === 'analytics-page') {
+            displaySubjectAnalytics();
+        }
+    }
+    
+    function initRouting() {
+        const hash = window.location.hash;
+        let pageId = 'home-page';
+        
+        if (hash === '#analytics') pageId = 'analytics-page';
+        else if (hash === '#about') pageId = 'about-page';
+        
+        loadPage(pageId);
+    }
 
-        window.addEventListener('DOMContentLoaded', () => {
-            initRouting();
-            fetchStudentData();
+    // Language selector functionality
+    document.getElementById('languageToggle').addEventListener('click', function(e) {
+        e.stopPropagation();
+        document.getElementById('languageDropdown').classList.toggle('show');
+    });
+    
+    document.querySelectorAll('.language-option').forEach(option => {
+        option.addEventListener('click', function() {
+            const lang = this.dataset.lang;
+            updateLanguage(lang);
         });
+    });
+    
+    // Close dropdown when clicking outside
+    document.addEventListener('click', function() {
+        document.getElementById('languageDropdown').classList.remove('show');
+    });
+
+    document.getElementById('searchButton').addEventListener('click', displayStudentResults);
+    
+    document.getElementById('studentNumberInput').addEventListener('keyup', (e) => {
+        if (e.key === 'Enter') displayStudentResults();
+    });
+    
+    document.getElementById('modalClose').addEventListener('click', () => {
+        document.getElementById('supportModal').classList.remove('active');
+    });
+    
+    document.getElementById('cancelSupport').addEventListener('click', () => {
+        document.getElementById('supportModal').classList.remove('active');
+    });
+    
+    document.getElementById('supportForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('تم إرسال طلبك بنجاح');
+        document.getElementById('supportModal').classList.remove('active');
+    });
+    
+    document.getElementById('supportModal').addEventListener('click', (e) => {
+        if (e.target === document.getElementById('supportModal')) {
+            document.getElementById('supportModal').classList.remove('active');
+        }
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        initRouting();
+        fetchStudentData();
+    });
     </script>
 </body>
 </html>
