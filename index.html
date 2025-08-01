@@ -118,6 +118,79 @@
             font-size: 20px;
         }
         
+        /* Language Selector Styles - Updated position */
+        .language-selector {
+            position: relative;
+            margin-left: auto; /* Changed to auto for proper positioning */
+            margin-right: 20px; /* Added space between language and nav links */
+        }
+        
+        .language-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 15px;
+            border-radius: 8px;
+            cursor: pointer;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+        
+        .language-toggle:hover {
+            color: var(--primary-green);
+            background: rgba(0, 255, 153, 0.1);
+        }
+        
+        .language-toggle:hover .language-icon,
+        .language-toggle:hover .language-chevron {
+            color: var(--primary-green);
+        }
+        
+        .language-icon {
+            font-size: 16px;
+            transition: color 0.3s ease;
+        }
+        
+        .language-code {
+            font-size: 18px;
+        }
+        
+        .language-chevron {
+            font-size: 12px;
+            transition: color 0.3s ease;
+        }
+        
+        .language-dropdown {
+            position: absolute;
+            top: 100%;
+            right: 0; /* Changed to right for RTL alignment */
+            background-color: var(--container-color);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 10px 0;
+            min-width: 120px;
+            z-index: 1001;
+            display: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .language-dropdown.show {
+            display: block;
+        }
+        
+        .language-option {
+            padding: 8px 20px;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: right; /* Align text to right for RTL */
+        }
+        
+        .language-option:hover {
+            color: var(--primary-green);
+            background: rgba(0, 255, 153, 0.1);
+        }
+        
         .page {
             display: none;
             animation: fadeIn 0.5s ease-out;
@@ -835,6 +908,12 @@
                 padding: 8px 12px;
             }
             
+            .language-selector {
+                margin-left: 0;
+                margin-top: 10px;
+                margin-right: 0;
+            }
+            
             .page-header h1 {
                 font-size: 28px;
             }
@@ -879,6 +958,21 @@
             <i class="fas fa-graduation-cap"></i>
             <span>منصة التحليل التعليمي</span>
         </div>
+        
+        <!-- Language Selector - Moved to the right -->
+        <div class="language-selector">
+            <div class="language-toggle" id="languageToggle">
+                <span class="language-icon">🌐</span>
+                <span class="language-code">AR</span>
+                <span class="language-chevron">▼</span>
+            </div>
+            <div class="language-dropdown" id="languageDropdown">
+                <div class="language-option" data-lang="en">English</div>
+                <div class="language-option" data-lang="tr">Türkçe</div>
+                <div class="language-option" data-lang="ar">العربية</div> <!-- Added Arabic option -->
+            </div>
+        </div>
+        
         <div class="nav-links">
             <a href="#home" class="nav-link active" data-page="home-page">
                 <i class="fas fa-home"></i> الرئيسية
@@ -1073,6 +1167,82 @@
                 ]
             }
         ];
+
+        // Language management
+        const translations = {
+            'ar': {
+                'home': 'الرئيسية',
+                'analytics': 'التحليلات',
+                'about': 'من نحن',
+                'searchPlaceholder': 'أدخل رقم القيد الخاص بك...',
+                'searchButton': 'بحث',
+                'errorMessage': 'لا يوجد طالب بهذا الرقم.',
+                'resultsTitle': 'نتائج الشهادة الثانوية - 2025',
+                'resultsSubtitle': 'استعرض نتائجك التفصيلية، احصل على تحليل أدائك، وقارن نفسك مع زملائك في جميع المواد الدراسية',
+                'analyticsTitle': 'تحليلات المواد الدراسية',
+                'analyticsSubtitle': 'استكشف أداء الطلاب في جميع المواد الدراسية، احصل على إحصائيات مفصلة وتوزيع الدرجات لكل مادة',
+                'aboutTitle': 'عن المنصة التعليمية',
+                'aboutSubtitle': 'تعرف على منصتنا، مصادر بياناتنا، وشروط استخدام الخدمة'
+            },
+            'en': {
+                'home': 'Home',
+                'analytics': 'Analytics',
+                'about': 'About',
+                'searchPlaceholder': 'Enter your student number...',
+                'searchButton': 'Search',
+                'errorMessage': 'No student found with this number.',
+                'resultsTitle': 'Secondary Certificate Results - 2025',
+                'resultsSubtitle': 'View your detailed results, get performance analysis, and compare yourself with peers in all subjects',
+                'analyticsTitle': 'Subject Analytics',
+                'analyticsSubtitle': 'Explore student performance in all subjects, get detailed statistics and grade distributions',
+                'aboutTitle': 'About the Platform',
+                'aboutSubtitle': 'Learn about our platform, data sources, and terms of service'
+            },
+            'tr': {
+                'home': 'Ana Sayfa',
+                'analytics': 'Analizler',
+                'about': 'Hakkımızda',
+                'searchPlaceholder': 'Öğrenci numaranızı girin...',
+                'searchButton': 'Ara',
+                'errorMessage': 'Bu numaraya sahip öğrenci bulunamadı.',
+                'resultsTitle': 'Lise Sertifika Sonuçları - 2025',
+                'resultsSubtitle': 'Detaylı sonuçlarınızı görüntüleyin, performans analizi alın ve tüm derslerde kendinizi akranlarınızla karşılaştırın',
+                'analyticsTitle': 'Ders Analizleri',
+                'analyticsSubtitle': 'Tüm derslerde öğrenci performansını keşfedin, detaylı istatistikler ve not dağılımları alın',
+                'aboutTitle': 'Platform Hakkında',
+                'aboutSubtitle': 'Platformumuz, veri kaynaklarımız ve hizmet şartları hakkında bilgi edinin'
+            }
+        };
+
+        let currentLanguage = 'ar';
+
+        function updateLanguage(lang) {
+            currentLanguage = lang;
+            document.querySelector('.language-code').textContent = lang.toUpperCase();
+            
+            // Update navigation links
+            document.querySelector('[data-page="home-page"]').innerHTML = `<i class="fas fa-home"></i> ${translations[lang]['home']}`;
+            document.querySelector('[data-page="analytics-page"]').innerHTML = `<i class="fas fa-chart-bar"></i> ${translations[lang]['analytics']}`;
+            document.querySelector('[data-page="about-page"]').innerHTML = `<i class="fas fa-info-circle"></i> ${translations[lang]['about']}`;
+            
+            // Update home page
+            document.querySelector('#home-page .page-header h1').textContent = translations[lang]['resultsTitle'];
+            document.querySelector('#home-page .page-header p').textContent = translations[lang]['resultsSubtitle'];
+            document.querySelector('#studentNumberInput').placeholder = translations[lang]['searchPlaceholder'];
+            document.querySelector('#searchButton').innerHTML = `<i class="fas fa-search"></i> ${translations[lang]['searchButton']}`;
+            document.querySelector('#error-message').textContent = translations[lang]['errorMessage'];
+            
+            // Update analytics page
+            document.querySelector('#analytics-page .page-header h1').textContent = translations[lang]['analyticsTitle'];
+            document.querySelector('#analytics-page .page-header p').textContent = translations[lang]['analyticsSubtitle'];
+            
+            // Update about page
+            document.querySelector('#about-page .page-header h1').textContent = translations[lang]['aboutTitle'];
+            document.querySelector('#about-page .page-header p').textContent = translations[lang]['aboutSubtitle'];
+            
+            // Close dropdown
+            document.getElementById('languageDropdown').classList.remove('show');
+        }
 
         async function fetchStudentData() {
             try {
@@ -1807,6 +1977,24 @@
             
             loadPage(pageId);
         }
+
+        // Language selector functionality
+        document.getElementById('languageToggle').addEventListener('click', function(e) {
+            e.stopPropagation();
+            document.getElementById('languageDropdown').classList.toggle('show');
+        });
+        
+        document.querySelectorAll('.language-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const lang = this.dataset.lang;
+                updateLanguage(lang);
+            });
+        });
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function() {
+            document.getElementById('languageDropdown').classList.remove('show');
+        });
 
         document.getElementById('searchButton').addEventListener('click', displayStudentResults);
         
