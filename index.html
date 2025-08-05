@@ -772,7 +772,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let streamChart = null;
     let feedbackTimeout = null;
     let currentPage = 'home-page';
-    let studentsData = []; // This will be populated by the initData function
+    let studentsData = []; // This will be populated by the fetchStudentData function
     let supportRequests = JSON.parse(localStorage.getItem('supportRequests')) || [];
     let currentLanguage = localStorage.getItem('language') || 'ar';
     const DASHBOARD_PASSWORD = "admin123";
@@ -833,14 +833,25 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     // ==================== CORE & DATA PROCESSING ====================
-    function initData() {
-        // Using embedded data directly instead of fetching
-        studentsData = [
-            {"number":3390599,"name":"دعاء سالم الهادى التميمى","stream":"علمي","result":"ممتاز","grades":[{"subject":"التربية الإسلامية","total":"76.0 / 80.0","status":"ناجح"},{"subject":"اللغة العربية","total":"152.0 / 160.0","status":"ناجح"},{"subject":"اللغة الإنجليزية","total":"135.0 / 160.0","status":"ناجح"},{"subject":"تقنية المعلومات","total":"74.0 / 80.0","status":"ناجح"},{"subject":"الرياضيات","total":"176.0 / 200.0","status":"ناجح"},{"subject":"الإحصاء","total":"72.0 / 80.0","status":"ناجح"},{"subject":"الفيزياء","total":"160.0 / 200.0","status":"ناجح"},{"subject":"الكيمياء","total":"129.0 / 160.0","status":"ناجح"},{"subject":"الأحياء","total":"137.0 / 160.0","status":"ناجح"}]},
-            {"number":3390600,"name":"علي محمد حسن","stream":"علمي","result":"دور ثان","grades":[{"subject":"التربية الإسلامية","total":"70.0 / 80.0","status":"ناجح"},{"subject":"اللغة العربية","total":"145.0 / 160.0","status":"ناجح"},{"subject":"اللغة الإنجليزية","total":"120.0 / 160.0","status":"ناجح"},{"subject":"تقنية المعلومات","total":"68.0 / 80.0","status":"ناجح"},{"subject":"الرياضيات","total":"150.0 / 200.0","status":"ناجح"},{"subject":"الإحصاء","total":"65.0 / 80.0","status":"ناجح"},{"subject":"الفيزياء","total":"85.0 / 200.0","status":"راسب"},{"subject":"الكيمياء","total":"110.0 / 160.0","status":"ناجح"},{"subject":"الأحياء","total":"130.0 / 160.0","status":"ناجح"}]},
-            {"number":1120304,"name":"فاطمة أحمد عبدالله","stream":"أدبي","result":"جيد جداً","grades":[{"subject":"التربية الإسلامية","total":"75.0 / 80.0","status":"ناجح"},{"subject":"اللغة العربية","total":"140.0 / 160.0","status":"ناجح"},{"subject":"اللغة الإنجليزية","total":"130.0 / 160.0","status":"ناجح"},{"subject":"تقنية المعلومات","total":"70.0 / 80.0","status":"ناجح"},{"subject":"التاريخ","total":"160.0 / 200.0","status":"ناجح"},{"subject":"الجغرافيا","total":"170.0 / 200.0","status":"ناجح"},{"subject":"علم النفس","total":"130.0 / 160.0","status":"ناجح"},{"subject":"الفلسفة","total":"120.0 / 160.0","status":"ناجح"}]}
-        ];
+    async function fetchStudentData() {
+        try {
+            // Attempt to fetch data from the external file
+            const response = await fetch('data.json');
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            studentsData = await response.json();
+        } catch (error) {
+            console.error('Could not fetch data.json:', error);
+            // Fallback to a small sample if the fetch fails
+            studentsData = [
+                {"number":3390599,"name":"(عينة) دعاء سالم","stream":"علمي","result":"ممتاز","grades":[{"subject":"التربية الإسلامية","total":"76.0/80.0","status":"ناجح"},{"subject":"اللغة العربية","total":"152.0/160.0","status":"ناجح"}]},
+                {"number":3390600,"name":"(عينة) علي محمد","stream":"علمي","result":"دور ثان","grades":[{"subject":"التربية الإسلامية","total":"70.0/80.0","status":"ناجح"},{"subject":"الفيزياء","total":"85.0/200.0","status":"راسب"}]}
+            ];
+            alert("Warning: Could not load data.json. Using sample data.");
+        }
         
+        // Once data is loaded (either fetched or fallback), process it
         preCacheStudentResults();
         processAnalytics();
         
@@ -1260,8 +1271,8 @@ document.addEventListener('DOMContentLoaded', () => {
             loadPage(hash === 'analytics' ? 'analytics-page' : (hash === 'about' ? 'about-page' : 'home-page'));
         }
         
-        // Initialize data
-        initData();
+        // Initialize data by fetching from JSON file
+        fetchStudentData();
     }
 
     init();
